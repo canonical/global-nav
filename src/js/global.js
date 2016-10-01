@@ -13,7 +13,7 @@ let ai = [{ url: "http://www.ubuntu.com", title:"Ubuntu" },
 let more = [{ url: "https://help.ubuntu.com", title:"Help" },
 { url: "https://ubuntuforums.org", title:"Forum" },
 { url: "https://www.launchpad.net", title:"Launchpad" },
-{ url: "https://shop.ubuntu.com", title:"Merchandise" },
+{ url: "https://shop.canonical.com", title:"Merchandise" },
 { url: "http://www.canonical.com", title:"Canonical" }];
 
 const global = {};
