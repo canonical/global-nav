@@ -35,6 +35,8 @@ gulp.task('sass', function () {
 
 gulp.task('test', ['lint:sass', 'lint:js']);
 
+gulp.task('build', ['babel', 'sass']);
+
 gulp.task('dev', function () {
   gulp.watch('./src/sass/**/*.scss', ['sass']);
   gulp.watch('./src/js/**/*.js', ['babel']);
