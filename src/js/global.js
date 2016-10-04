@@ -49,8 +49,7 @@ global.addNav = function(mu) {
     if (this.globalPrepend) {
         gI = this.globalPrepend;
     }
-
-    document.querySelector(gI).innerHTML = mu;
+    document.querySelector(gI).innerHTML += mu;
     let ml = document.querySelector('#nav-global .more');
     if (ml){
         ml.addEventListener('click',function(e) {
