@@ -4,22 +4,21 @@
 if (typeof ubuntu === 'undefined') {
   var ubuntu = {};
 }
+
 if (ubuntu.hasOwnProperty('globalNav')) {
-  throw TypeError("Namespace 'ubuntuGlobal' not available");
+  throw TypeError("Namespace 'ubuntu' not available");
 }
 
-
 ubuntu.globalNav = function() {
-  /**
-   * Helpers & polyfills
-   */
-  let createFromHTML = function(html) {
+  // Helpers & polyfills
+  const createFromHTML = function(html) {
     let div = document.createElement('div');
     div.innerHTML = html;
     return div.childNodes[0];
   };
+
   if (!String.prototype.startsWith) {
-    String.prototype.startsWith = function(searchString, position){
+    String.prototype.startsWith = function(searchString, position) {
       position = position || 0;
       return this.substr(position, searchString.length) === searchString;
     };
@@ -62,21 +61,23 @@ ubuntu.globalNav = function() {
       let siteLink = document.createElement('a');
 
       siteLink.href = site.url;
+      siteLink.classList.add('global-nav__link');
       siteLink.innerText = site.title;
 
       if (document.URL.startsWith(site.url)) {
         siteLink.className = 'active';
       }
 
+      siteItem.classList.add('global-nav__list-item');
       siteItem.appendChild(siteLink);
       return siteItem;
     },
 
     createNav: function() {
       let wrapper = createFromHTML(
-        '<nav role="navigation" id="nav-global">' +
-        '  <div class="nav-global-wrapper">' +
-        '    <ul class="nav-global-main">' +
+        '<nav class="global-nav">' +
+        '  <div class="global-nav__wrapper">' +
+        '    <ul class="global-nav__list">' +
         '      ' +
         '    </ul>' +
         '  </div>' +
@@ -97,11 +98,11 @@ ubuntu.globalNav = function() {
       // Add "more" sites
       if (this.more.length > 0) {
         let moreItem = createFromHTML(
-          '<li class="more">' +
-          '  <a href="#">' +
-          '    More <span>&rsaquo;</span>' +
+          '<li class="global-nav__list-item--more">' +
+          '  <a class="global-nav__link" href="#">' +
+          '    More <span class="global-nav__more-chevron">&rsaquo;</span>' +
           '  </a>' +
-          '  <ul class="nav-global-more"></ul>' +
+          '  <ul class="global-nav__more"></ul>' +
           '</li>'
         );
         let moreList = moreItem.querySelector('ul');
@@ -126,8 +127,8 @@ ubuntu.globalNav = function() {
         document.body.firstElementChild
       );
 
-      let moreList = globalNav.querySelector('.more');
-      let moreToggle = globalNav.querySelector('.more>a');
+      let moreList = globalNav.querySelector('.global-nav__list-item--more');
+      let moreToggle = globalNav.querySelector('.global-nav__list-item--more > .global-nav__link');
 
       if (moreList){
         /* Open and close the menu on click of heading */
@@ -135,7 +136,7 @@ ubuntu.globalNav = function() {
           'click',
           function(moreList) {
             return function(clickEvent) {
-              moreList.classList.toggle('open');
+              moreList.classList.toggle('is-revealed');
             };
           }(moreList)
         );
@@ -149,7 +150,7 @@ ubuntu.globalNav = function() {
                   moreList.contains(clickEvent.target) ||
                   moreList == clickEvent.target)
               ) {
-                moreList.classList.remove('open');
+                moreList.classList.remove('is-revealed');
               }
             };
           }(moreList)
