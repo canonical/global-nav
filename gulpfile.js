@@ -1,5 +1,5 @@
 'use strict';
- 
+
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sassLint = require('gulp-sass-lint');
@@ -13,20 +13,20 @@ gulp.task('babel', function() {
     }))
     .pipe(gulp.dest('./build/js'))
 });
- 
+
 gulp.task('lint:js', function() {
   return gulp.src('./src/js/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
- 
+
 gulp.task('lint:sass', function () {
   return gulp.src('./src/sass/**/*.scss')
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
 });
- 
+
 gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
     .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
@@ -41,4 +41,3 @@ gulp.task('dev', function () {
   gulp.watch('./src/sass/**/*.scss', ['sass']);
   gulp.watch('./src/js/**/*.js', ['babel']);
 });
-
