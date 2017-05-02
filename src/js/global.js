@@ -77,6 +77,7 @@ ubuntu.globalNav = function() {
       let wrapper = createFromHTML(
         '<nav class="global-nav">' +
         '  <div class="global-nav__wrapper">' +
+        '    <h2 class="global-nav__title">Ubuntu websites</h2>' +
         '    <ul class="global-nav__list">' +
         '      ' +
         '    </ul>' +
@@ -130,7 +131,7 @@ ubuntu.globalNav = function() {
       let moreList = globalNav.querySelector('.global-nav__list-item--more');
       let moreToggle = globalNav.querySelector('.global-nav__list-item--more > .global-nav__link');
 
-      if (moreList){
+      if (moreList) {
         /* Open and close the menu on click of heading */
         moreToggle.addEventListener(
           'click',
@@ -154,6 +155,20 @@ ubuntu.globalNav = function() {
               }
             };
           }(moreList)
+        );
+      }
+
+      let smallScreenToggle = globalNav.querySelector('.global-nav__title');
+      let navList = globalNav.querySelector('.global-nav__list');
+      if (smallScreenToggle && navList) {
+        smallScreenToggle.addEventListener(
+          'click',
+          function(smallScreenToggle) {
+            return function(clickEvent) {
+              navList.classList.toggle('is-revealed');
+              smallScreenToggle.classList.toggle('is-revealed');
+            };
+          }(smallScreenToggle)
         );
       }
     },
