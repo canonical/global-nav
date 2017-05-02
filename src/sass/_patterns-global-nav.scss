@@ -1,12 +1,17 @@
 $global-asset-path: 'https://assets.ubuntu.com/v1/';
 $navigaiton-height: 1.875rem;
+@media only screen and (max-width: $global-breakpoint-medium) {
+  $navigaiton-height: 2.5rem;
+}
 
 @mixin global-p-nav {
   body {
+    position: relative;
     padding-top: $navigaiton-height;
 
     @media only screen and (max-width: $global-breakpoint-medium) {
       padding-top: 0;
+      padding-bottom: $navigaiton-height;
     }
   }
 
@@ -23,7 +28,6 @@ $navigaiton-height: 1.875rem;
     z-index: 101;
 
     @media only screen and (max-width: $global-breakpoint-medium) {
-      $navigaiton-height: 2.5rem;
       background: $global-transparent;
       bottom: 0;
       box-shadow: none;
