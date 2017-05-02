@@ -77,8 +77,10 @@ ubuntu.globalNav = function() {
       let wrapper = createFromHTML(
         '<nav class="global-nav">' +
         '  <div class="global-nav__wrapper">' +
-        '    <h2 class="global-nav__title">Ubuntu websites</h2>' +
-        '    <ul class="global-nav__list">' +
+        '    <button class="global-nav__title" aria-expanded="false" aria-controls="global-navigation">' +
+        '      Ubuntu websites' +
+        '    </button>' +
+        '    <ul class="global-nav__list" id="global-navigation" aria-hidden="true">' +
         '      ' +
         '    </ul>' +
         '  </div>' +
@@ -165,8 +167,10 @@ ubuntu.globalNav = function() {
           'click',
           function(smallScreenToggle) {
             return function(clickEvent) {
-              navList.classList.toggle('is-revealed');
               smallScreenToggle.classList.toggle('is-revealed');
+              smallScreenToggle.setAttribute('aria-expanded', true);
+              navList.classList.toggle('is-revealed');
+              navList.setAttribute('aria-hidden', false);
             };
           }(smallScreenToggle)
         );
