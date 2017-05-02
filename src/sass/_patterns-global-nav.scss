@@ -5,7 +5,7 @@ $navigaiton-height: 1.875rem;
   body {
     padding-top: $navigaiton-height;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: $global-breakpoint-medium) {
       padding-top: 0;
     }
   }
@@ -22,7 +22,7 @@ $navigaiton-height: 1.875rem;
     width: 100%;
     z-index: 101;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: $global-breakpoint-medium) {
       $navigaiton-height: 2.5rem;
       height: $navigaiton-height;
       background: $global-transparent;
@@ -39,19 +39,19 @@ $navigaiton-height: 1.875rem;
       text-align: left;
       width: 100%;
 
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: $global-breakpoint-medium) {
         width: auto;
       }
 
-      @media only screen and (min-width: 984px) {
-        width: 984px;
+      @media only screen and (min-width: $global-breakpoint-large) {
+        width: $global-breakpoint-large;
       }
     }
 
     &__title {
       display: none;
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: $global-breakpoint-medium) {
         background-image: url('#{$global-asset-path}7bd1bd7b-arrow_down_9fa097.svg');
         background-position: calc(100% - .625rem) 50%;
         background-repeat: no-repeat;
@@ -97,7 +97,7 @@ $navigaiton-height: 1.875rem;
       margin-left: 0;
       top: 0;
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: $global-breakpoint-medium) {
         display: none;
 
         &.is-revealed {
@@ -116,7 +116,7 @@ $navigaiton-height: 1.875rem;
       text-align: left;
       top: 0;
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: $global-breakpoint-medium) {
         border-bottom: 1px solid $global-mid-grey;
         border-left: 1px solid $global-mid-grey;
         box-sizing: border-box;
@@ -143,7 +143,7 @@ $navigaiton-height: 1.875rem;
         border-right: 1px solid $global-transparent;
         min-width: 3.75rem;
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $global-breakpoint-medium) {
           border: 0;
           height: 0;
           top: -1px;
@@ -162,7 +162,7 @@ $navigaiton-height: 1.875rem;
         }
       }
 
-      @media only screen and (min-width: 984px) {
+      @media only screen and (min-width: $global-breakpoint-large) {
         &:first-of-type .global-nav__link {
           margin-left: 0;
         }
@@ -179,7 +179,7 @@ $navigaiton-height: 1.875rem;
       position: absolute;
       top: $navigaiton-height;
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: $global-breakpoint-medium) {
         min-width: none;
         top: 0;
         width: 100%;
@@ -193,7 +193,7 @@ $navigaiton-height: 1.875rem;
       .global-nav__list-item {
         float: none;
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $global-breakpoint-medium) {
           border-bottom: 1px solid $global-mid-grey;
           border-left: 1px solid $global-mid-grey;
           box-sizing: border-box;
@@ -213,11 +213,11 @@ $navigaiton-height: 1.875rem;
       .global-nav__list-item:first-of-type {
         padding-top: 5px;
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $global-breakpoint-medium) {
           padding-top: 0;
         }
 
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: $global-breakpoint-medium) {
           .global-nav__link {
             margin-left: .625rem;
           }
@@ -255,7 +255,7 @@ $navigaiton-height: 1.875rem;
         text-decoration: none;
         transition: opacity .25s ease-in-out;
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $global-breakpoint-medium) {
           margin-bottom: 3px;
           margin-left: 20px;
         }
