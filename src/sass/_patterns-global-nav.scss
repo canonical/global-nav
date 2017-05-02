@@ -107,6 +107,10 @@ $navigaiton-height: 1.875rem;
 
         &.is-revealed {
           display: block;
+
+          .global-nav__more {
+            display: block;
+          }
         }
       }
     }
@@ -164,6 +168,23 @@ $navigaiton-height: 1.875rem;
           border-left: 1px solid $global-grey;
           border-right: 1px solid $global-grey;
           min-width: 120px;
+        }
+
+        &.is-revealed {
+          .global-nav__more {
+            display: block;
+
+            .global-nav__link:hover {
+              color: $global-orange;
+              text-decoration: none;
+            }
+          }
+
+          > .global-nav__link,
+          .global-nav__more-chevron {
+            color: $global-orange;
+            opacity: 1;
+          }
         }
       }
 
@@ -276,23 +297,6 @@ $navigaiton-height: 1.875rem;
       &:hover {
         color: $global-orange;
         text-decoration: none;
-      }
-    }
-
-    .is-revealed {
-      .global-nav__more {
-        display: block;
-
-        .global-nav__link:hover {
-          color: $global-orange;
-          text-decoration: none;
-        }
-      }
-
-      > .global-nav__link,
-      .global-nav__more-chevron {
-        color: $global-orange;
-        opacity: 1;
       }
     }
   }
