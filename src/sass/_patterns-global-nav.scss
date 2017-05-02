@@ -6,12 +6,12 @@ $navigaiton-height: 1.875rem;
 
 @mixin global-p-nav {
   body {
-    position: relative;
     padding-top: $navigaiton-height;
+    position: relative;
 
     @media only screen and (max-width: $global-breakpoint-medium) {
-      padding-top: 0;
       padding-bottom: $navigaiton-height;
+      padding-top: 0;
     }
   }
 
@@ -177,11 +177,11 @@ $navigaiton-height: 1.875rem;
         &.is-revealed {
           .global-nav__more {
             display: block;
+          }
 
-            .global-nav__link:hover {
-              color: $global-orange;
-              text-decoration: none;
-            }
+          .global-nav__more .global-nav__link:hover {
+            color: $global-orange;
+            text-decoration: none;
           }
 
           > .global-nav__link,
