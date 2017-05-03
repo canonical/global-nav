@@ -168,9 +168,10 @@ ubuntu.globalNav = function() {
           function(smallScreenToggle) {
             return function(clickEvent) {
               smallScreenToggle.classList.toggle('is-revealed');
-              smallScreenToggle.setAttribute('aria-expanded', true);
               navList.classList.toggle('is-revealed');
-              navList.setAttribute('aria-hidden', false);
+              var expand = (smallScreenToggle.getAttribute('aria-expanded') == 'true');
+              smallScreenToggle.setAttribute('aria-expanded', !expand);
+              navList.setAttribute('aria-hidden', expand);
             };
           }(smallScreenToggle)
         );
@@ -183,9 +184,12 @@ ubuntu.globalNav = function() {
           clickEvent.preventDefault();
 
           try {
-            _gaq.push(
-              ['_trackEvent', 'Global bar click', clickEvent.target.get('text'), core.getURL()]
-            );
+            _gaq.push([
+              '_trackEvent',
+              'Global bar click',
+              clickEvent.target.get('text'),
+              core.getURL()
+            ]);
           } catch(err) {}
 
           setTimeout(
