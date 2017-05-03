@@ -237,6 +237,10 @@ $navigaiton-height: 1.875rem;
           &:nth-child(odd) {
             border-left: 0;
           }
+
+          &:last-of-type {
+            border-bottom: 0;
+          }
         }
       }
 
