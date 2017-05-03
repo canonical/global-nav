@@ -77,7 +77,10 @@ ubuntu.globalNav = function() {
       let wrapper = createFromHTML(
         '<nav class="global-nav">' +
         '  <div class="global-nav__wrapper">' +
-        '    <ul class="global-nav__list">' +
+        '    <button class="global-nav__title" aria-expanded="false" aria-controls="global-navigation">' +
+        '      Ubuntu websites' +
+        '    </button>' +
+        '    <ul class="global-nav__list" id="global-navigation" aria-hidden="true">' +
         '      ' +
         '    </ul>' +
         '  </div>' +
@@ -130,7 +133,7 @@ ubuntu.globalNav = function() {
       let moreList = globalNav.querySelector('.global-nav__list-item--more');
       let moreToggle = globalNav.querySelector('.global-nav__list-item--more > .global-nav__link');
 
-      if (moreList){
+      if (moreList) {
         /* Open and close the menu on click of heading */
         moreToggle.addEventListener(
           'click',
@@ -156,6 +159,23 @@ ubuntu.globalNav = function() {
           }(moreList)
         );
       }
+
+      let smallScreenToggle = globalNav.querySelector('.global-nav__title');
+      let navList = globalNav.querySelector('.global-nav__list');
+      if (smallScreenToggle && navList) {
+        smallScreenToggle.addEventListener(
+          'click',
+          function(smallScreenToggle) {
+            return function(clickEvent) {
+              smallScreenToggle.classList.toggle('is-revealed');
+              navList.classList.toggle('is-revealed');
+              var expand = (smallScreenToggle.getAttribute('aria-expanded') == 'true');
+              smallScreenToggle.setAttribute('aria-expanded', !expand);
+              navList.setAttribute('aria-hidden', expand);
+            };
+          }(smallScreenToggle)
+        );
+      }
     },
     trackClicks: function(navGlobal) {
       navGlobal.querySelector('a').addEventListener(
@@ -164,9 +184,12 @@ ubuntu.globalNav = function() {
           clickEvent.preventDefault();
 
           try {
-            _gaq.push(
-              ['_trackEvent', 'Global bar click', clickEvent.target.get('text'), core.getURL()]
-            );
+            _gaq.push([
+              '_trackEvent',
+              'Global bar click',
+              clickEvent.target.get('text'),
+              core.getURL()
+            ]);
           } catch(err) {}
 
           setTimeout(
