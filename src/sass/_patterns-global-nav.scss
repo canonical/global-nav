@@ -234,11 +234,16 @@ $navigaiton-height: 1.875rem;
           margin: 0;
           width: 50%;
 
-          &:nth-child(odd) {
+          &:nth-child(odd):nth-last-child(1) {
+            border-right: 1px solid $global-mid-grey;
+            width: calc(50% + 1px);
+          }
+
+          &:nth-last-child(1):not(:nth-child(even)) {
             border-left: 0;
           }
 
-          &:last-of-type {
+          &:nth-last-child(1):nth-child(odd) {
             border-bottom: 0;
           }
         }
