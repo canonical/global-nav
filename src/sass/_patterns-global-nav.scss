@@ -16,7 +16,7 @@ $navigaiton-height: 1.875rem;
   }
 
   .global-nav {
-    background: $global-background;
+    background-color: $global-background;
     box-shadow: 0 2px 2px transparentize($global-black, .8);
     display: block;
     height: $navigaiton-height;
@@ -28,7 +28,7 @@ $navigaiton-height: 1.875rem;
     z-index: 101;
 
     @media only screen and (max-width: $global-breakpoint-medium) {
-      background: $global-transparent;
+      background-color: $global-transparent;
       bottom: 0;
       box-shadow: none;
       height: $navigaiton-height;
@@ -36,7 +36,7 @@ $navigaiton-height: 1.875rem;
     }
 
     &__wrapper {
-      background: none repeat scroll 0 0 $global-white;
+      background: none repeat scroll 0 0 transparent;
       box-sizing: border-box;
       margin: 0 auto;
       position: relative;
@@ -45,6 +45,7 @@ $navigaiton-height: 1.875rem;
 
       @media only screen and (min-width: $global-breakpoint-medium) {
         width: auto;
+        background-color: $global-white;
       }
 
       @media only screen and (min-width: $global-breakpoint-large) {
@@ -80,6 +81,7 @@ $navigaiton-height: 1.875rem;
         &:hover,
         &:active,
         &:focus {
+          background-color: transparent;
           color: $global-orange;
         }
 
@@ -168,7 +170,7 @@ $navigaiton-height: 1.875rem;
         }
 
         &.is-revealed {
-          background: $global-white;
+          background-color: $global-white;
           border-left: 1px solid $global-grey;
           border-right: 1px solid $global-grey;
           min-width: 120px;
@@ -200,16 +202,18 @@ $navigaiton-height: 1.875rem;
     }
 
     &__more {
-      background: $global-white;
+      background-color: $global-white;
       border-top: 1px solid $global-grey;
       box-shadow: 0 2px 2px transparentize($global-black, .7);
       display: none;
       float: none;
+      margin-left: 0;
       min-width: 7.5rem;
       position: absolute;
       top: $navigaiton-height;
 
       @media only screen and (max-width: $global-breakpoint-medium) {
+        background-color: transparent;
         min-width: none;
         top: 0;
         width: 100%;
