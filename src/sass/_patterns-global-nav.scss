@@ -57,15 +57,15 @@ $navigaiton-height: 1.875rem;
       display: none;
 
       @media only screen and (max-width: $global-breakpoint-medium) {
-        background-color: $global-white;
+        background-color: $global-dark-grey;
         background-image: url('#{$global-asset-path}7bd1bd7b-arrow_down_9fa097.svg');
         background-position: calc(100% - .625rem) 50%;
         background-repeat: no-repeat;
         background-size: .8125rem;
         border-width: 1px 0;
         border-style: solid;
-        border-color: $global-mid-grey;
-        color: $global-x-dark-grey;
+        border-color: $global-dark-grey;
+        color: $global-white;
         cursor: pointer;
         display: block;
         font-family: Ubuntu, Arial, 'libra sans', sans-serif;
@@ -81,8 +81,8 @@ $navigaiton-height: 1.875rem;
         &:hover,
         &:active,
         &:focus {
-          background-color: $global-white;
-          color: $global-orange;
+          background-color: $global-dark-grey;
+          color: $global-white;
         }
 
         &.is-revealed {
