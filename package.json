@@ -1,6 +1,6 @@
 {
   "name": "global-nav",
-  "version": "0.0.2",
+  "version": "0.1.3",
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
   "main": "index.js",
   "scripts": {
