@@ -1,7 +1,7 @@
 {
-  "name": "global-nav",
+  "name": "canonical-global-nav",
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
-  "main": "index.js",
+  "main": "src/js/global.js",
   "authors": [
     "Anthony Dillon"
   ],
