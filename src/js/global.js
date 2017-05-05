@@ -56,7 +56,7 @@ ubuntu.globalNav = function() {
       return globalNav;
     },
 
-    createItem: function (site) {
+    createItem: function (site, last = false) {
       let siteItem = document.createElement('li');
       let siteLink = document.createElement('a');
 
@@ -69,6 +69,9 @@ ubuntu.globalNav = function() {
       }
 
       siteItem.classList.add('global-nav__list-item');
+      if (last) {
+        siteItem.id = 'global-nav-menu';
+      }
       siteItem.appendChild(siteLink);
       return siteItem;
     },
@@ -112,8 +115,12 @@ ubuntu.globalNav = function() {
 
         this.more.forEach(
           function (obj) {
-            return function(moreSite) {
-              moreList.appendChild(obj.createItem(moreSite));
+            return function(moreSite, index, more) {
+              if (index === more.length - 1){
+                moreList.appendChild(obj.createItem(moreSite, true));
+              } else {
+                moreList.appendChild(obj.createItem(moreSite));
+              }
             };
           }(this)
         );
@@ -172,6 +179,7 @@ ubuntu.globalNav = function() {
               var expand = (smallScreenToggle.getAttribute('aria-expanded') == 'true');
               smallScreenToggle.setAttribute('aria-expanded', !expand);
               navList.setAttribute('aria-hidden', expand);
+              window.location.hash = 'global-nav-menu';
             };
           }(smallScreenToggle)
         );
@@ -187,8 +195,7 @@ ubuntu.globalNav = function() {
             _gaq.push([
               '_trackEvent',
               'Global bar click',
-              clickEvent.target.get('text'),
-              core.getURL()
+              clickEvent.target.get('text')
             ]);
           } catch(err) {}
 
