@@ -179,7 +179,11 @@ ubuntu.globalNav = function() {
               var expand = (smallScreenToggle.getAttribute('aria-expanded') == 'true');
               smallScreenToggle.setAttribute('aria-expanded', !expand);
               navList.setAttribute('aria-hidden', expand);
-              window.location.hash = 'global-nav-menu';
+              if (expand) {
+                window.location.hash = 'global-nav';
+              } else {
+                window.location.hash = 'global-nav-menu';
+              }
             };
           }(smallScreenToggle)
         );
