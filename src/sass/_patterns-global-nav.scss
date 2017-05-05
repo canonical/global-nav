@@ -57,7 +57,7 @@ $navigaiton-height: 1.875rem;
       display: none;
 
       @media only screen and (max-width: $global-breakpoint-medium) {
-        background-color: transparent;
+        background-color: $global-white;
         background-image: url('#{$global-asset-path}7bd1bd7b-arrow_down_9fa097.svg');
         background-position: calc(100% - .625rem) 50%;
         background-repeat: no-repeat;
@@ -81,7 +81,7 @@ $navigaiton-height: 1.875rem;
         &:hover,
         &:active,
         &:focus {
-          background-color: transparent;
+          background-color: $global-white;
           color: $global-orange;
         }
 

@@ -41,6 +41,8 @@ ubuntu.globalNav = function () {
     },
 
     createItem: function createItem(site) {
+      var last = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
       var siteItem = document.createElement('li');
       var siteLink = document.createElement('a');
 
@@ -53,6 +55,9 @@ ubuntu.globalNav = function () {
       }
 
       siteItem.classList.add('global-nav__list-item');
+      if (last) {
+        siteItem.id = 'global-nav-menu';
+      }
       siteItem.appendChild(siteLink);
       return siteItem;
     },
@@ -78,8 +83,12 @@ ubuntu.globalNav = function () {
           var moreList = moreItem.querySelector('ul');
 
           _this.more.forEach(function (obj) {
-            return function (moreSite) {
-              moreList.appendChild(obj.createItem(moreSite));
+            return function (moreSite, index, more) {
+              if (index === more.length - 1) {
+                moreList.appendChild(obj.createItem(moreSite, true));
+              } else {
+                moreList.appendChild(obj.createItem(moreSite));
+              }
             };
           }(_this));
 
@@ -123,6 +132,7 @@ ubuntu.globalNav = function () {
             var expand = smallScreenToggle.getAttribute('aria-expanded') == 'true';
             smallScreenToggle.setAttribute('aria-expanded', !expand);
             navList.setAttribute('aria-hidden', expand);
+            window.location.hash = 'global-nav-menu';
           };
         }(smallScreenToggle));
       }
@@ -132,7 +142,7 @@ ubuntu.globalNav = function () {
         clickEvent.preventDefault();
 
         try {
-          _gaq.push(['_trackEvent', 'Global bar click', clickEvent.target.get('text'), core.getURL()]);
+          _gaq.push(['_trackEvent', 'Global bar click', clickEvent.target.get('text')]);
         } catch (err) {}
 
         setTimeout(function () {
