@@ -44,7 +44,8 @@ ubuntu.globalNav = function() {
       { url: "https://ubuntuforums.org", title:"Forum" },
       { url: "https://www.launchpad.net", title:"Launchpad" },
       { url: "https://shop.canonical.com", title:"Merchandise" },
-      { url: "http://www.canonical.com", title:"Canonical" }
+      { url: "http://www.canonical.com", title:"Canonical" },
+      { url: "https://conjure-up.io", title:"conjure-up" }
     ],
 
     setup: function () {

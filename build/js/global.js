@@ -29,7 +29,7 @@ ubuntu.globalNav = function () {
   return {
     sites: [{ url: "http://www.ubuntu.com", title: "Ubuntu" }, { url: "https://community.ubuntu.com/", title: "Community" }, { url: "https://askubuntu.com", title: "Ask!" }, { url: "https://developer.ubuntu.com", title: "Developer" }, { url: "https://design.ubuntu.com", title: "Design" }, { url: "https://certification.ubuntu.com", title: "Hardware" }, { url: "https://insights.ubuntu.com", title: "Insights" }, { url: "https://jujucharms.com", title: "Juju" }, { url: "http://maas.ubuntu.com", title: "MAAS" }, { url: "http://partners.ubuntu.com", title: "Partners" }, { url: "https://buy.ubuntu.com/", title: "Shop" }],
 
-    more: [{ url: "https://help.ubuntu.com", title: "Help" }, { url: "https://ubuntuforums.org", title: "Forum" }, { url: "https://www.launchpad.net", title: "Launchpad" }, { url: "https://shop.canonical.com", title: "Merchandise" }, { url: "http://www.canonical.com", title: "Canonical" }],
+    more: [{ url: "https://help.ubuntu.com", title: "Help" }, { url: "https://ubuntuforums.org", title: "Forum" }, { url: "https://www.launchpad.net", title: "Launchpad" }, { url: "https://shop.canonical.com", title: "Merchandise" }, { url: "http://www.canonical.com", title: "Canonical" }, { url: "https://conjure-up.io", title: "conjure-up" }],
 
     setup: function setup() {
       var globalNav = this.createNav();
@@ -63,8 +63,6 @@ ubuntu.globalNav = function () {
     },
 
     createNav: function createNav() {
-      var _this = this;
-
       var wrapper = createFromHTML('<nav class="global-nav">' + '  <div class="global-nav__wrapper">' + '    <button class="global-nav__title" aria-expanded="false" aria-controls="global-navigation">' + '      Ubuntu websites' + '    </button>' + '    <ul class="global-nav__list" id="global-navigation" aria-hidden="true">' + '      ' + '    </ul>' + '  </div>' + '</nav>');
 
       var navList = wrapper.querySelector('ul');
@@ -78,22 +76,20 @@ ubuntu.globalNav = function () {
 
       // Add "more" sites
       if (this.more.length > 0) {
-        (function () {
-          var moreItem = createFromHTML('<li class="global-nav__list-item--more">' + '  <a class="global-nav__link" href="#">' + '    More <span class="global-nav__more-chevron">&rsaquo;</span>' + '  </a>' + '  <ul class="global-nav__more"></ul>' + '</li>');
-          var moreList = moreItem.querySelector('ul');
+        var moreItem = createFromHTML('<li class="global-nav__list-item--more">' + '  <a class="global-nav__link" href="#">' + '    More <span class="global-nav__more-chevron">&rsaquo;</span>' + '  </a>' + '  <ul class="global-nav__more"></ul>' + '</li>');
+        var moreList = moreItem.querySelector('ul');
 
-          _this.more.forEach(function (obj) {
-            return function (moreSite, index, more) {
-              if (index === more.length - 1) {
-                moreList.appendChild(obj.createItem(moreSite, true));
-              } else {
-                moreList.appendChild(obj.createItem(moreSite));
-              }
-            };
-          }(_this));
+        this.more.forEach(function (obj) {
+          return function (moreSite, index, more) {
+            if (index === more.length - 1) {
+              moreList.appendChild(obj.createItem(moreSite, true));
+            } else {
+              moreList.appendChild(obj.createItem(moreSite));
+            }
+          };
+        }(this));
 
-          navList.appendChild(moreItem);
-        })();
+        navList.appendChild(moreItem);
       }
 
       return wrapper;
