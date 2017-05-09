@@ -66,7 +66,7 @@ ubuntu.globalNav = function() {
       siteLink.innerText = site.title;
 
       if (document.URL.startsWith(site.url)) {
-        siteLink.className = 'active';
+        siteLink.classList.add('is-active');
       }
 
       siteItem.classList.add('global-nav__list-item');
