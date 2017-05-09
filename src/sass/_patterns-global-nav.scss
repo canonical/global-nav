@@ -305,10 +305,13 @@ $navigaiton-height: 1.875rem;
       }
 
       &.is-active {
-        border-top: 3px solid $global-orange;
         color: $global-orange;
         opacity: 1;
         text-decoration: none;
+
+        @media only screen and (min-width: $global-breakpoint-medium) {
+          border-top: 3px solid $global-orange;
+        }
       }
 
       &:hover {
