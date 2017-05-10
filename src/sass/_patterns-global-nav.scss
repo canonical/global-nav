@@ -28,7 +28,6 @@ $navigaiton-height: 1.875rem;
     z-index: 101;
 
     @media only screen and (max-width: $global-breakpoint-medium) {
-      background-color: $global-transparent;
       bottom: 0;
       box-shadow: none;
       height: $navigaiton-height;
@@ -57,16 +56,15 @@ $navigaiton-height: 1.875rem;
       display: none;
 
       @media only screen and (max-width: $global-breakpoint-medium) {
-        background-color: $global-dark-grey;
-        background-image: url('#{$global-asset-path}7bd1bd7b-arrow_down_9fa097.svg');
+        background-image: url('#{$global-asset-path}c3ca35d3-arrow_down_dark.svg');
         background-position: calc(100% - .625rem) 50%;
         background-repeat: no-repeat;
         background-size: .8125rem;
         border-width: 1px 0;
         border-style: solid;
-        border-color: $global-dark-grey;
-        color: $global-white;
+        border-color: $global-mid-grey;
         cursor: pointer;
+        color: $global-dark-grey;
         display: block;
         font-family: Ubuntu, Arial, 'libra sans', sans-serif;
         font-size: .8125rem;
@@ -81,16 +79,15 @@ $navigaiton-height: 1.875rem;
         &:hover,
         &:active,
         &:focus {
-          background-color: $global-dark-grey;
-          color: $global-white;
+          background-color: darken($global-background, 10%);
         }
 
         &.is-revealed {
-          background-image: url('#{$global-asset-path}c65b8106-icon-arrow-up.svg');
+          background-image: url('#{$global-asset-path}9ec2c354-icon-arrow-up.svg');
         }
 
         &::before {
-          background-image: url('#{$global-asset-path}e1b12fdd-external-link-9fa097.svg');
+          background-image: url('#{$global-asset-path}eb41826c-external-link-dark.svg');
           background-position: 0 3px;
           background-repeat: no-repeat;
           background-size: .875rem;
