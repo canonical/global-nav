@@ -201,7 +201,6 @@ $navigaiton-height: 1.875rem;
 
     &__more {
       background-color: $global-white;
-      border-top: 1px solid $global-grey;
       box-shadow: 0 2px 2px transparentize($global-black, .7);
       display: none;
       float: none;
@@ -211,6 +210,7 @@ $navigaiton-height: 1.875rem;
       top: $navigaiton-height;
 
       @media only screen and (max-width: $global-breakpoint-medium) {
+        border-top: 1px solid $global-grey;
         background-color: transparent;
         min-width: none;
         top: 0;
@@ -252,12 +252,6 @@ $navigaiton-height: 1.875rem;
       }
 
       .global-nav__list-item:first-of-type {
-        padding-top: 5px;
-
-        @media only screen and (max-width: $global-breakpoint-medium) {
-          padding-top: 0;
-        }
-
         @media only screen and (min-width: $global-breakpoint-medium) {
           .global-nav__link {
             margin-left: .625rem;
