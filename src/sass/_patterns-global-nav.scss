@@ -78,10 +78,9 @@ $navigaiton-height: 1.875rem;
         text-align: left;
         width: 100%;
 
-        &:hover,
         &:active,
         &:focus {
-          background-color: darken($global-background, 10%);
+          @include global-u-focus;
         }
 
         &.is-revealed {
@@ -310,6 +309,11 @@ $navigaiton-height: 1.875rem;
       &:hover {
         color: $global-orange;
         text-decoration: none;
+      }
+
+      &:focus,
+      &:active {
+        @include global-u-focus;
       }
     }
   }
