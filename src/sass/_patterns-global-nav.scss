@@ -78,6 +78,10 @@ $navigaiton-height: 1.875rem;
         text-align: left;
         width: 100%;
 
+        &:hover {
+          background-color: $global-background;
+        }
+
         &:active,
         &:focus {
           @include global-u-focus;
