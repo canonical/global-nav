@@ -63,8 +63,6 @@ ubuntu.globalNav = function () {
     },
 
     createNav: function createNav() {
-      var _this = this;
-
       var wrapper = createFromHTML('<nav class="global-nav">' + '  <div class="global-nav__wrapper">' + '    <button class="global-nav__title" aria-expanded="false" aria-controls="global-navigation">' + '      Ubuntu websites' + '    </button>' + '    <ul class="global-nav__list" id="global-navigation" aria-hidden="true">' + '      ' + '    </ul>' + '  </div>' + '</nav>');
 
       var navList = wrapper.querySelector('ul');
@@ -78,22 +76,20 @@ ubuntu.globalNav = function () {
 
       // Add "more" sites
       if (this.more.length > 0) {
-        (function () {
-          var moreItem = createFromHTML('<li class="global-nav__list-item--more">' + '  <a class="global-nav__link" href="#">' + '    More <span class="global-nav__more-chevron">&rsaquo;</span>' + '  </a>' + '  <ul class="global-nav__more"></ul>' + '</li>');
-          var moreList = moreItem.querySelector('ul');
+        var moreItem = createFromHTML('<li class="global-nav__list-item--more">' + '  <a class="global-nav__link" href="#">' + '    More <span class="global-nav__more-chevron">&rsaquo;</span>' + '  </a>' + '  <ul class="global-nav__more"></ul>' + '</li>');
+        var moreList = moreItem.querySelector('ul');
 
-          _this.more.forEach(function (obj) {
-            return function (moreSite, index, more) {
-              if (index === more.length - 1) {
-                moreList.appendChild(obj.createItem(moreSite, true));
-              } else {
-                moreList.appendChild(obj.createItem(moreSite));
-              }
-            };
-          }(_this));
+        this.more.forEach(function (obj) {
+          return function (moreSite, index, more) {
+            if (index === more.length - 1) {
+              moreList.appendChild(obj.createItem(moreSite, true));
+            } else {
+              moreList.appendChild(obj.createItem(moreSite));
+            }
+          };
+        }(this));
 
-          navList.appendChild(moreItem);
-        })();
+        navList.appendChild(moreItem);
       }
 
       return wrapper;

@@ -106,8 +106,8 @@ $navigaiton-height: 1.875rem;
     }
 
     &__list {
-      margin-bottom: 0;
-      margin-left: 0;
+      margin: 0;
+      padding-left: 0;
       top: 0;
 
       @media only screen and (max-width: $global-breakpoint-medium) {
@@ -118,6 +118,8 @@ $navigaiton-height: 1.875rem;
 
           .global-nav__more {
             display: block;
+            margin-top: 0;
+            padding-left: 0;
           }
         }
       }
@@ -181,6 +183,8 @@ $navigaiton-height: 1.875rem;
         &.is-revealed {
           .global-nav__more {
             display: block;
+            margin: 0;
+            padding-left: 0;
           }
 
           .global-nav__more .global-nav__link:hover {
