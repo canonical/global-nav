@@ -4,7 +4,7 @@
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
