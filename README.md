@@ -4,7 +4,28 @@ This project contains the JavaScript and styles to display a banner across the t
 
 ## Usage
 
-Currently there is no deployment system for this project as its under development. Once the project hits v1 this message will be replaced with some links to the latest versions of the JS and CSS.
+Simply use bower to install this component and then link the CSS and the JS files into the header of your site.
+
+1. Installing via bower
+```bash
+bower install canonical-global-nav --save
+```
+
+2. Add link to the JS and CSS files in your sites header
+```html
+<link rel="stylesheet" type="text/css" media="screen" href="/bower-componetnts/canonical-global-nav/build/css/cookie-policy.css" />
+<script src="/bower-componetnts/canonical-global-nav/build/js/global.js"></script>
+<script>ubuntu.globalNav.setup();</script>
+```
+
+The canonical global nav should now appear across the top of you site.
+
+Note: You can specify the directory in which you want your bower components installed in a `.bowerrc`. For example:
+```json
+{
+  "directory": "static/components/"
+}
+```
 
 ## Contributing
 
