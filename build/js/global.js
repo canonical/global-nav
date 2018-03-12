@@ -146,7 +146,7 @@ ubuntu.globalNav = function () {
         } catch (err) {}
 
         setTimeout(function () {
-          document.location.href = clickEvent.target.get('href');
+          document.location.href = clickEvent.target.getAttribute('href');
         }, 100);
       });
     }
