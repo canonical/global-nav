@@ -32,7 +32,7 @@ ubuntu.globalNav = function() {
       { url: "https://developer.ubuntu.com", title:"Developer" },
       { url: "https://design.ubuntu.com", title:"Design" },
       { url: "https://certification.ubuntu.com", title:"Hardware" },
-      { url: "https://insights.ubuntu.com", title:"Insights" },
+      { url: "https://blog.ubuntu.com", title:"Blog" },
       { url: "https://jujucharms.com", title:"Juju" },
       { url: "http://maas.ubuntu.com", title:"MAAS" },
       { url: "http://partners.ubuntu.com", title:"Partners" },

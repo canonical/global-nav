@@ -27,7 +27,7 @@ ubuntu.globalNav = function () {
   }
 
   return {
-    sites: [{ url: "http://www.ubuntu.com", title: "Ubuntu" }, { url: "https://community.ubuntu.com/", title: "Community" }, { url: "https://askubuntu.com", title: "Ask!" }, { url: "https://developer.ubuntu.com", title: "Developer" }, { url: "https://design.ubuntu.com", title: "Design" }, { url: "https://certification.ubuntu.com", title: "Hardware" }, { url: "https://insights.ubuntu.com", title: "Insights" }, { url: "https://jujucharms.com", title: "Juju" }, { url: "http://maas.ubuntu.com", title: "MAAS" }, { url: "http://partners.ubuntu.com", title: "Partners" }, { url: "https://buy.ubuntu.com/", title: "Shop" }],
+    sites: [{ url: "http://www.ubuntu.com", title: "Ubuntu" }, { url: "https://community.ubuntu.com/", title: "Community" }, { url: "https://askubuntu.com", title: "Ask!" }, { url: "https://developer.ubuntu.com", title: "Developer" }, { url: "https://design.ubuntu.com", title: "Design" }, { url: "https://certification.ubuntu.com", title: "Hardware" }, { url: "https://blog.ubuntu.com", title: "Blog" }, { url: "https://jujucharms.com", title: "Juju" }, { url: "http://maas.ubuntu.com", title: "MAAS" }, { url: "http://partners.ubuntu.com", title: "Partners" }, { url: "https://buy.ubuntu.com/", title: "Shop" }],
 
     more: [{ url: "https://help.ubuntu.com", title: "Help" }, { url: "https://ubuntuforums.org", title: "Forum" }, { url: "https://www.launchpad.net", title: "Launchpad" }, { url: "https://shop.canonical.com", title: "Merchandise" }, { url: "http://www.canonical.com", title: "Canonical" }, { url: "https://conjure-up.io", title: "conjure-up" }],
 
