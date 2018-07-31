@@ -11,7 +11,7 @@ gulp.task('babel', function() {
     .pipe(babel({
       presets: ['es2015']
     }))
-    .pipe(gulp.dest('./build/js'))
+    .pipe(gulp.dest('./dist/js'))
 });
 
 gulp.task('lint:js', function() {
@@ -30,7 +30,7 @@ gulp.task('lint:sass', function () {
 gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
     .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(gulp.dest('./build/css'));
+    .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('test', ['lint:sass', 'lint:js']);
