@@ -4,11 +4,9 @@
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist && yarn build-css && rollup -c",
-    "build-css": "node-sass src/sass --output dist",
+    "build": "rm -rf dist && rollup -c",
     "lint": "yarn eslint src",
-    "watch": "rollup -c -w",
-    "watch-css": "yarn build-css && node-sass --watch src/sass --output dist"
+    "watch": "rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -21,16 +19,18 @@
   },
   "homepage": "https://github.com/ubuntudesign/global-nav#readme",
   "devDependencies": {
+    "autoprefixer": "^9.0.2",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
     "babel-preset-stage-0": "^6.24.1",
+    "cssnano": "^4.0.5",
     "eslint": "^5.2.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
-    "node-sass": "^4.9.2",
+    "postcss": "^7.0.2",
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.4",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-sass": "^0.9.2"
   }
 }
