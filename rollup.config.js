@@ -24,6 +24,7 @@ export default {
         ['env', { modules: false }],
         'stage-0',
       ],
+      plugins: ['external-helpers'],
     }),
     commonjs(),
     resolve(),

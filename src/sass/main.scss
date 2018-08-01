@@ -1,12 +1,6 @@
-// Settings
-@import 'settings-colors';
-@import 'settings-breakpoints';
+// Import relevant Vanilla patterns
+@import 'node_modules/vanilla-framework/scss/build';
 
-// Patterns
+// Import global nav styles
 @import 'patterns-global-nav';
-
-// Utilities
-@import 'utilities-focus';
-
-// Include all the CSS
-@include global-p-nav;
+@include global-nav;
