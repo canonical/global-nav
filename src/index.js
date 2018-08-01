@@ -1,2 +1,5 @@
 import './sass/main.scss';
-import './js/global';
+
+import { canonicalGlobalNav } from './js/global-nav';
+
+export { canonicalGlobalNav };
