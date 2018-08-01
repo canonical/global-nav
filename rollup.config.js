@@ -12,14 +12,18 @@ export default {
   input: 'src/index.js',
   output: {
     file: pkg.main,
-    format: 'cjs',
+    format: 'umd',
+    name: 'index.js',
     sourcemap: true,
   },
   plugins: [
     babel({
       babelrc: false,
       exclude: ['node_modules/**', 'src/**/*.scss'],
-      presets: ['stage-0'],
+      presets: [
+        ['env', { modules: false }],
+        'stage-0',
+      ],
     }),
     commonjs(),
     resolve(),
