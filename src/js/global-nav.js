@@ -14,12 +14,13 @@ class GlobalNav {
     this.logins = logins;
     this.logoUrl = 'https://assets.ubuntu.com/v1/9c74eb2d-logo-canonical-white.svg';
     this.navBreakpoint = navBreakpoint;
+    this.overlay = createFromHTML('<div class="global-nav__dropdown-overlay"></div>');
     this.products = products;
     this.wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
   }
 
   createNav() {
-    const { wrapper } = this;
+    const { overlay, wrapper } = this;
     const navRow = this.createNavRow();
     const navDropdown = this.createNavDropdown();
 
@@ -27,9 +28,10 @@ class GlobalNav {
     document.body.insertBefore(wrapper, document.body.firstElementChild);
     wrapper.appendChild(navRow);
     wrapper.appendChild(navDropdown);
+    wrapper.appendChild(overlay);
 
     // Add event listeners
-    // this.addListeners();
+    this.addListeners();
   }
 
   createNavRow() {
@@ -57,7 +59,7 @@ class GlobalNav {
     const loginDropdown = this.createLoginDropdown();
     const productDropdown = this.createProductDropdown();
     const navDropdown = createFromHTML(
-      `<div class="global-nav__dropdown show-global-nav-content">
+      `<div class="global-nav__dropdown">
         ${loginDropdown}
         ${productDropdown}
       </div>`,
@@ -182,9 +184,13 @@ class GlobalNav {
       .map((loginItem) => {
         const loginItemMarkup = (
           `<li class="p-matrix__item">
-            <img class="p-logomark u-hide--small" src=${loginItem.logoUrl} alt="">
+            <a class="p-link" href=${loginItem.login}>
+              <img class="p-logomark u-hide--small" src=${loginItem.logoUrl} alt="">
+            </a>
             <div class="p-matrix__content">
-              <h4 class="p-matrix__title">${loginItem.title}</h4>
+              <a class="p-link" href=${loginItem.login}>
+                <h4 class="p-matrix__title">${loginItem.title}</h4>
+              </a>
               <p class="p-matrix__desc u-sv1">${loginItem.description}</p>
               <ul class="p-inline-list u-no-margin--bottom">
                 <li class="p-inline-list__item">
@@ -217,6 +223,50 @@ class GlobalNav {
     );
 
     return loginDropdown;
+  }
+
+  addListeners() {
+    const { globalNavSelector, wrapper } = this;
+    const dropdownLinks = wrapper.querySelectorAll(`${globalNavSelector}__link--dropdown`);
+    const dropdownContainer = wrapper.querySelector(`${globalNavSelector}__dropdown`);
+    const dropdownContents = wrapper.querySelectorAll(`${globalNavSelector}__dropdown-content`);
+    const overlay = wrapper.querySelector(`${globalNavSelector}__dropdown-overlay`);
+
+    function closeNav() {
+      dropdownContainer.classList.remove('show-global-nav-content');
+      dropdownLinks.forEach(link => link.classList.remove('is-selected'));
+      overlay.classList.remove('is-visible');
+    }
+
+    function openDropdown(dropdownLink) {
+      const targetMenuLink = dropdownLink.querySelector(`${globalNavSelector}__link-anchor`);
+      const targetMenuId = targetMenuLink.getAttribute('href');
+      const targetMenu = wrapper.querySelector(targetMenuId);
+
+      dropdownLink.classList.add('is-selected');
+      dropdownContents.forEach(menu => menu !== targetMenu && menu.classList.add('u-hide'));
+      targetMenu.classList.remove('u-hide');
+      overlay.classList.add('is-visible');
+    }
+
+    dropdownLinks.forEach((dropdownLink) => {
+      dropdownLink.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (dropdownContainer.classList.contains('show-global-nav-content')) {
+          if (dropdownLink.classList.contains('is-selected')) {
+            closeNav();
+          } else {
+            dropdownLinks.forEach(link => link.classList.remove('is-selected'));
+            openDropdown(dropdownLink);
+          }
+        } else {
+          dropdownContainer.classList.add('show-global-nav-content');
+          openDropdown(dropdownLink);
+        }
+      });
+    });
+    overlay.addEventListener('click', closeNav);
   }
 }
 

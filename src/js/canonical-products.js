@@ -8,7 +8,7 @@ const canonicalProducts = {
     }, {
       title: 'MAAS',
       url: 'https://maas.io/',
-      logoUrl: 'https://assets.ubuntu.com/v1/c5cb0f8e-picto-ubuntu.svg',
+      logoUrl: 'https://assets.ubuntu.com/v1/0de4fcd5-logo-maas-icon.svg',
       description: 'Create a bare metal cloud with Metal as a Service for IPAM and provisioning',
     }, {
       title: 'Landscape',
