@@ -8,6 +8,13 @@ $global-nav-bg-color: #262626; //matches Mark's document //lighten($color-dark, 
 $global-nav-dropdown-bg-color: $global-nav-bg-color; //lighten($color-dark, 13.55%); //#333
 $nav-bg-color: lighten($global-nav-bg-color, $contrast-ratio);
 
+@mixin footer-title {
+  color: $color-mid-dark;
+  cursor: pointer;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
 @mixin global-nav {
   $global-nav-chevron-height: 4 * $px;
   $global-nav-chevron-width: 10 * $px;
@@ -315,5 +322,65 @@ $nav-bg-color: lighten($global-nav-bg-color, $contrast-ratio);
     margin-bottom: $spv-intra--scaleable;
     position: relative;
     top: .1rem;
+  }
+
+  .p-footer__title {
+    @include footer-title;
+    background-image: url("#{$assets-path}7bd1bd7b-arrow_down_9fa097.svg");
+    background-position: calc(100% - 10px) 50%;
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    border-top: 1px solid $color-mid-light;
+    font-size: .8125rem;
+    max-width: inherit;
+    padding: $sp-medium 0;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      background: none;
+      border: 0;
+      color: $color-dark;
+      padding: 0 0 $sp-x-small;
+    }
+
+    @media only screen and (min-width: $breakpoint-large) {
+      font-size: .8125rem;
+    }
+
+    a:link,
+    a:visited {
+      color: $color-mid-dark;
+      padding-left: $sp-x-small;
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        color: $color-dark;
+        font-weight: normal;
+        padding-left: 0;
+      }
+    }
+
+    a::after {
+      content: ''; // hide the default > */
+    }
+
+    /// open and close the primary/secondary navs
+    + .second-level-nav {
+      display: none;
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        display: block;
+      }
+    }
+
+    &.active {
+      background-image: url("#{$assets-path}43e2b367-arrow_up_9fa097.png");
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        background: none;
+      }
+
+      + .second-level-nav {
+        display: block;
+      }
+    }
   }
 }
