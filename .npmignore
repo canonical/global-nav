@@ -1,5 +1,2 @@
-node_modules
-index.html
-gulpfile.js
-.jshintrc
-.sass-lint.yml
+/*
+!/dist
