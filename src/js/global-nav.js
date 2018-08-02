@@ -140,7 +140,7 @@ class GlobalNav {
         return aboutMarkup;
       })
       .join('');
-    
+
     const mobileDropdown = this.createMobileDropdown();
 
     const productDropdown = (
@@ -228,62 +228,58 @@ class GlobalNav {
   }
 
   createMobileDropdown() {
-    const { products, logins } = this;
     const {
-      flagships, others, resources, abouts
-    } = products;
+      flagships, others, resources, abouts,
+    } = this.products;
+
+    function createListItem(obj) {
+      return (
+        `<li class="p-list__item">
+          <a class="p-link" href=${obj.url}>${obj.title}</a>
+        </li>`
+      );
+    }
+
+    const mobileFlagships = flagships
+      .map(flagship => createListItem(flagship))
+      .join('');
+
+    const mobileOthers = others
+      .map(other => createListItem(other))
+      .join('');
+
+    const mobileResources = resources
+      .map(resource => createListItem(resource))
+      .join('');
+
+    const mobileAbouts = abouts
+      .map(about => createListItem(about))
+      .join('');
 
     const mobileDropdown = (
       `<div class="p-strip--dark is-shallow u-hide--medium u-hide--large global-nav--mobile">
         <div class="row">
           <h5 class="p-muted-heading p-footer__title">Products</h5>
           <ul class="p-list is-split second-level-nav">
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com/">Ubuntu</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://maas.io/">MAAS</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://landscape.canonical.com/">Landscape</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://jujucharms.com/">Juju</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://linuxcontainers.org/">LXD</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://snapcraft.io/">Snaps</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com/openstack">OpenStack</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com/kubernetes">Kubernetes</a></li>
+            ${mobileFlagships}
           </ul>
         </div>
         <div class="row">
           <h5 class="p-muted-heading p-footer__title">Other websites</h5>
           <ul class="p-list is-split second-level-nav">
-            <li class="p-list__item"><a class="p-link" href="http://www.ubuntu.com/support">Enterprise Support</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://wiki.ubuntu.com/Mir">Mir</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://cloud-images.ubuntu.com/">Image Service</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://conjure-up.io/">Conjure-up</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://cloud-init.io/">Cloud-init</a></li>
-            <li class="p-list__item"><a class="p-link" href="http://www.netplan.io/">Netplan</a></li>
+            ${mobileOthers}
           </ul>
         </div>
         <div class="row">
           <h5 class="p-muted-heading p-footer__title">Resources</h5>
           <ul class="p-list is-split second-level-nav">
-            <li class="p-list__item"><a class="p-link" href="https://www.brighttalk.com/search?q=Canonical" title="Visit the Webinars - external site">Webinars</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://tutorials.ubuntu.com/" title="Visit the Tutorials - external site">Tutorials</a></li>
-            <li class="p-list__item"><a class="p-link" href="/resources?content=videos" title="Visit the Videos">Videos</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://blog.ubuntu.com/archives?category=case-studies" title="Visit the Case studies - external site">Case studies</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://blog.ubuntu.com/archives?category=white-papers" title="Visit the White papers - external site">White papers</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://docs.ubuntu.com" title="Visit the Docs - external site">Docs</a></li>
-            <li class="p-list__item"><a class="p-link" href="/cloud/training">Training</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://blog.ubuntu.com" title="Visit the Blog - external site">Blog</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://developer.ubuntu.com">Developer</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com/download/cloud">Install</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com/download">Download</a></li>
+            ${mobileResources}
           </ul>
         </div>
         <div class="row">
           <h5 class="p-muted-heading p-footer__title">About</h5>
           <ul class="p-list is-split second-level-nav">
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com">Ubuntu</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://www.canonical.com">Canonical</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://blog.ubuntu.com/press-centre">Press centre</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://partners.ubuntu.com">Partners</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://shop.canonical.com/">Merchandise</a></li>
-            <li class="p-list__item"><a class="p-link" href="https://mongoose.ubuntu.com/about/contact-us">Contact</a></li>
+            ${mobileAbouts}
           </ul>
         </div>
       </div>`
