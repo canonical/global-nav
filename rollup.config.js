@@ -12,8 +12,8 @@ export default {
   input: 'src/index.js',
   output: {
     file: pkg.main,
-    format: 'umd',
-    name: 'index.js',
+    format: 'iife',
+    name: 'canonicalGlobalNav',
     sourcemap: true,
   },
   plugins: [
