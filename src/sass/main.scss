@@ -1,12 +1,9 @@
-// Settings
-@import 'settings-colors';
-@import 'settings-breakpoints';
+$breakpoint-medium:    875px;
+$grid-max-width: 68rem;
 
-// Patterns
+// Import relevant Vanilla patterns
+@import 'node_modules/vanilla-framework/scss/build';
+
+// Import global nav styles
 @import 'patterns-global-nav';
-
-// Utilities
-@import 'utilities-focus';
-
-// Include all the CSS
-@include global-p-nav;
+@include global-nav;

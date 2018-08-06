@@ -1,2 +1,3 @@
 import './sass/main.scss';
-import './js/global';
+
+export { createNav } from './js/global-nav';
