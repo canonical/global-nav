@@ -1,5 +1,4 @@
-import canonicalProducts from './canonical-products';
-import canonicalLogins from './canonical-logins';
+import { canonicalProducts, canonicalLogins } from './product-details';
 
 function createFromHTML(html) {
   const div = window.document.createElement('div');
