@@ -6,19 +6,19 @@ function createFromHTML(html) {
   return div.childNodes[0];
 }
 
-function createNavRow(homeUrl, logoUrl, maxWidth) {
+function createNavHeader(homeUrl, logoUrl, maxWidth) {
   const navRow = createFromHTML(`<div class="global-nav__header global-nav__row" style="max-width:${maxWidth}">
-    <div class="global-nav__logo">
-      <a class="global-nav__logo-anchor" href=${homeUrl}>
+    <div class="global-nav__header-logo">
+      <a class="global-nav__header-logo-anchor" href=${homeUrl}>
         <img src=${logoUrl} width="74px">
       </a>
     </div>
-    <ul class="global-nav__links">
-      <li class="global-nav__link--dropdown">
-        <a class="global-nav__link-anchor" href="#canonical-products">Products</a>
+    <ul class="global-nav__header-list">
+      <li class="global-nav__header-link">
+        <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
       </li>
-      <li class="global-nav__link--dropdown">
-        <a class="global-nav__link-anchor" href="#canonical-login">Login</a>
+      <li class="global-nav__header-link">
+        <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>
       </li>
     </ul>
   </div>`);
@@ -26,7 +26,7 @@ function createNavRow(homeUrl, logoUrl, maxWidth) {
   return navRow;
 }
 
-function createMobileDropdown(products, maxWidth) {
+function createMobileDropdown(products) {
   const {
     flagships, others, resources, abouts,
   } = products;
@@ -56,27 +56,27 @@ function createMobileDropdown(products, maxWidth) {
     .join('');
 
   const mobileDropdown = (
-    `<div class="global-nav--mobile u-hide--medium u-hide--large">
-      <div class="global-nav__row" style="max-width:${maxWidth}">
-        <h5 class="global-nav__muted-heading global-nav--mobile-heading">Products</h5>
+    `<div class="global-nav__mobile-strip">
+      <div class="global-nav__row">
+        <h5 class="global-nav__muted-heading global-nav__expanding-row">Products</h5>
         <ul class="global-nav__split-list">
           ${mobileFlagships}
         </ul>
       </div>
-      <div class="global-nav__row" style="max-width:${maxWidth}">
-        <h5 class="global-nav__muted-heading global-nav--mobile-heading">Other websites</h5>
+      <div class="global-nav__row">
+        <h5 class="global-nav__muted-heading global-nav__expanding-row">Other websites</h5>
         <ul class="global-nav__split-list">
           ${mobileOthers}
         </ul>
       </div>
-      <div class="global-nav__row" style="max-width:${maxWidth}">
-        <h5 class="global-nav__muted-heading global-nav--mobile-heading">Resources</h5>
+      <div class="global-nav__row">
+        <h5 class="global-nav__muted-heading global-nav__expanding-row">Resources</h5>
         <ul class="global-nav__split-list">
           ${mobileResources}
         </ul>
       </div>
-      <div class="global-nav__row" style="max-width:${maxWidth}">
-        <h5 class="global-nav__muted-heading global-nav--mobile-heading">About</h5>
+      <div class="global-nav__row">
+        <h5 class="global-nav__muted-heading global-nav__expanding-row">About</h5>
         <ul class="global-nav__split-list">
           ${mobileAbouts}
         </ul>
@@ -171,21 +171,21 @@ function createProductDropdown(products, maxWidth) {
     })
     .join('');
 
-  const mobileDropdown = createMobileDropdown(products, maxWidth);
+  const mobileDropdown = createMobileDropdown(products);
 
   const productDropdown = (
     `<div class="global-nav__dropdown-content u-hide" id="canonical-products">
       ${mobileDropdown}
-      <div class="global-nav__strip u-hide--small">
+      <div class="global-nav__strip u-hide--mobile">
         <div class="global-nav__row is-bordered" style="max-width:${maxWidth}">
           <ul class="global-nav__matrix">
             ${productFlagships}
           </ul>
         </div>
       </div>
-      <div class="global-nav__strip u-hide--small">
+      <div class="global-nav__strip u-hide--mobile">
         <div class="global-nav__row" style="max-width:${maxWidth}">
-          <div class="global-nav__product-extras">
+          <div class="global-nav__flex-container">
             <div class="global-nav__others-col">
               <h5 class="global-nav__muted-heading">Other websites</h5>
               <div class="global-nav__matrix">
@@ -258,16 +258,16 @@ function createLoginDropdown(logins, maxWidth) {
 }
 
 function addListeners(breakpoint, wrapper) {
-  const dropdownLinks = wrapper.querySelectorAll('.global-nav__link--dropdown');
+  const headerLinks = wrapper.querySelectorAll('.global-nav__header-link');
   const dropdownContainer = wrapper.querySelector('.global-nav__dropdown');
   const dropdownContents = wrapper.querySelectorAll('.global-nav__dropdown-content');
-  const dropdownLinksMobile = wrapper.querySelectorAll('.global-nav--mobile-heading');
+  const expandingRows = wrapper.querySelectorAll('.global-nav__expanding-row');
   const overlay = wrapper.querySelector('.global-nav__overlay');
   const isMobile = window.innerWidth < breakpoint;
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
-    dropdownLinks.forEach(link => link.classList.remove('is-selected'));
+    headerLinks.forEach(link => link.classList.remove('is-selected'));
     overlay.classList.remove('show-overlay');
   }
 
@@ -275,12 +275,12 @@ function addListeners(breakpoint, wrapper) {
     window.scrollTo(0, wrapper.offsetTop);
   }
 
-  function openDropdown(dropdownLink) {
-    const targetMenuLink = dropdownLink.querySelector('.global-nav__link-anchor');
+  function openDropdown(headerLink) {
+    const targetMenuLink = headerLink.querySelector('.global-nav__header-link-anchor');
     const targetMenuId = targetMenuLink.getAttribute('href');
     const targetMenu = wrapper.querySelector(targetMenuId);
 
-    dropdownLink.classList.add('is-selected');
+    headerLink.classList.add('is-selected');
     dropdownContents.forEach(menu => menu !== targetMenu && menu.classList.add('u-hide'));
     targetMenu.classList.remove('u-hide');
     overlay.classList.add('show-overlay');
@@ -290,26 +290,26 @@ function addListeners(breakpoint, wrapper) {
     }
   }
 
-  dropdownLinks.forEach((dropdownLink) => {
-    dropdownLink.addEventListener('click', (e) => {
+  headerLinks.forEach((headerLink) => {
+    headerLink.addEventListener('click', (e) => {
       e.preventDefault();
 
       if (dropdownContainer.classList.contains('show-content')) {
-        if (dropdownLink.classList.contains('is-selected')) {
+        if (headerLink.classList.contains('is-selected')) {
           closeNav();
         } else {
-          dropdownLinks.forEach(link => link.classList.remove('is-selected'));
-          openDropdown(dropdownLink);
+          headerLinks.forEach(link => link.classList.remove('is-selected'));
+          openDropdown(headerLink);
         }
       } else {
         dropdownContainer.classList.add('show-content');
-        openDropdown(dropdownLink);
+        openDropdown(headerLink);
       }
     });
   });
 
-  dropdownLinksMobile.forEach((dropdownLink) => {
-    dropdownLink.addEventListener('click', (e) => {
+  expandingRows.forEach((expandingRow) => {
+    expandingRow.addEventListener('click', (e) => {
       e.target.classList.toggle('is-active');
       scrollGlobalNavToTop();
     });
@@ -318,18 +318,18 @@ function addListeners(breakpoint, wrapper) {
   overlay.addEventListener('click', closeNav);
 }
 
-export const createNav = (
-  breakpoint = 900,
+export const createNav = ({
   maxWidth = '68rem',
+  breakpoint = 900,
   homeUrl = 'https://www.canonical.com',
   logoUrl = 'https://assets.ubuntu.com/v1/9c74eb2d-logo-canonical-white.svg',
   products = canonicalProducts,
   logins = canonicalLogins,
-) => {
+} = {}) => {
   // Build global nav components
   const wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
-  const navRow = createNavRow(homeUrl, logoUrl, maxWidth);
+  const navHeader = createNavHeader(homeUrl, logoUrl, maxWidth);
   const loginDropdown = createLoginDropdown(logins, maxWidth);
   const productDropdown = createProductDropdown(products, maxWidth);
   const navDropdown = createFromHTML(
@@ -341,7 +341,7 @@ export const createNav = (
 
   // Attach to the DOM
   document.body.insertBefore(wrapper, document.body.firstElementChild);
-  wrapper.appendChild(navRow);
+  wrapper.appendChild(navHeader);
   wrapper.appendChild(navDropdown);
   wrapper.appendChild(overlay);
 
