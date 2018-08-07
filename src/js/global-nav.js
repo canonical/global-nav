@@ -7,7 +7,7 @@ function createFromHTML(html) {
 }
 
 function createNavRow(homeUrl, logoUrl) {
-  const navRow = createFromHTML(`<div class="global-nav__header row">
+  const navRow = createFromHTML(`<div class="global-nav__header global-nav__row">
     <div class="global-nav__logo">
       <a class="global-nav__logo-anchor" href=${homeUrl}>
         <img src=${logoUrl} width="74px">
@@ -57,25 +57,25 @@ function createMobileDropdown(products) {
 
   const mobileDropdown = (
     `<div class="global-nav--mobile u-hide--medium u-hide--large">
-      <div class="row">
+      <div class="global-nav__row">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">Products</h5>
         <ul class="global-nav__split-list">
           ${mobileFlagships}
         </ul>
       </div>
-      <div class="row">
+      <div class="global-nav__row">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">Other websites</h5>
         <ul class="global-nav__split-list">
           ${mobileOthers}
         </ul>
       </div>
-      <div class="row">
+      <div class="global-nav__row">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">Resources</h5>
         <ul class="global-nav__split-list">
           ${mobileResources}
         </ul>
       </div>
-      <div class="row">
+      <div class="global-nav__row">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">About</h5>
         <ul class="global-nav__split-list">
           ${mobileAbouts}
@@ -125,14 +125,24 @@ function createProductDropdown(products) {
   const productOthers = others
     .map((other, index) => {
       let otherMarkup = (
-        `<h5><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h5>
-        <p>${other.description}</p>`
+        `<li class="global-nav__matrix-item">
+          <div class="global-nav__matrix-content">
+            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h4>
+            <p class="global-nav__matrix-desc">${other.description}</p>
+          </div>
+        </li>`
       );
 
-      if (index % 2 === 0) {
-        otherMarkup = `<div class="col-3${index === 0 ? ' u-no-margin--left' : ''}">${otherMarkup}`;
-      } else {
-        otherMarkup = `${otherMarkup}</div>`;
+      // Check whether to add extra empty matrix items
+      if (index === others.length - 1) {
+        const extraMatrixCount = (2 * others.length) % 3;
+        for (let i = 0; i < extraMatrixCount; i += 1) {
+          otherMarkup += (
+            `<li class="global-nav__matrix-item">
+              &nbsp;
+            </li>`
+          );
+        }
       }
 
       return otherMarkup;
@@ -167,29 +177,31 @@ function createProductDropdown(products) {
     `<div class="global-nav__dropdown-content u-hide" id="canonical-products">
       ${mobileDropdown}
       <div class="global-nav__strip u-hide--small">
-        <div class="row is-bordered">
+        <div class="global-nav__row is-bordered">
           <ul class="global-nav__matrix">
             ${productFlagships}
           </ul>
         </div>
       </div>
       <div class="global-nav__strip u-hide--small">
-        <div class="row">
-          <div class="col-9 u-no-margin--left">
-            <h5 class="global-nav__muted-heading">Other websites</h5>
-            <div class="row">
-              ${productOthers}
+        <div class="global-nav__row">
+          <div class="global-nav__product-extras">
+            <div class="global-nav__others-col">
+              <h5 class="global-nav__muted-heading">Other websites</h5>
+              <div class="global-nav__matrix">
+                ${productOthers}
+              </div>
             </div>
-          </div>
-          <div class="col-3">
-            <h5 class="global-nav__muted-heading">Resources</h5>
-            <ul class="global-nav__split-list">
-              ${productResources}
-            </ul>
-            <h5 class="global-nav__muted-heading">About</h5>
-            <ul class="global-nav__split-list">
-              ${productAbouts}
-            </ul>
+            <div class="global-nav__resources-col">
+              <h5 class="global-nav__muted-heading">Resources</h5>
+              <ul class="global-nav__split-list">
+                ${productResources}
+              </ul>
+              <h5 class="global-nav__muted-heading">About</h5>
+              <ul class="global-nav__split-list">
+                ${productAbouts}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -230,10 +242,10 @@ function createLoginDropdown(logins) {
   const loginDropdown = (
     `<div class="global-nav__dropdown-content" id="canonical-login">
       <div class="global-nav__strip">
-        <div class="row">
+        <div class="global-nav__row">
           <h5 class="global-nav__muted-heading">Customer portals</h5>
         </div>
-        <div class="row">
+        <div class="global-nav__row">
           <ul class="global-nav__matrix">
             ${loginItems}
           </ul>

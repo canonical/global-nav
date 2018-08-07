@@ -3,7 +3,6 @@ $grid-max-width: 68rem;
 
 @import 'node_modules/vanilla-framework/scss/base_placeholders';
 @import 'node_modules/vanilla-framework/scss/base_typography';
-@import 'node_modules/vanilla-framework/scss/patterns_grid';
 @import 'node_modules/vanilla-framework/scss/utilities_hide';
 @import 'node_modules/vanilla-framework/scss/utilities_margin-collapse';
 @import 'node_modules/vanilla-framework/scss/utilities_padding-collapse';
@@ -21,8 +20,6 @@ $grid-max-width: 68rem;
 .global-nav {
   @include vf-b-placeholders;
   @include vf-b-typography;
-  @include vf-p-grid;
-  @include vf-p-grid-modifications;
   @include vf-u-hide;
   @include vf-u-margin-collapse;
   @include vf-u-padding-collapse;
@@ -36,10 +33,17 @@ $grid-max-width: 68rem;
   font-weight: 300;
   line-height: map-get($line-heights, default-text);
   position: relative;
+  overflow-y: hide;
   z-index: 10;
 
   * {
     box-sizing: border-box;
+  }
+
+  .global-nav__row {
+    margin: 0 auto;
+    max-width: $grid-max-width;
+    padding: 0 1.5rem;
   }
 
   .row.is-bordered::after {
@@ -61,6 +65,7 @@ $grid-max-width: 68rem;
   .global-nav__header {
     background-color: #262626;
     display: flex;
+    width: 100%;
     z-index: 5;
   }
   
@@ -275,6 +280,29 @@ $grid-max-width: 68rem;
   .global-nav__muted-heading {
     @extend %muted-heading;
     color: #f7f7f7;
+  }
+
+  .global-nav__product-extras {
+    display: flex;
+
+    .global-nav__matrix-item {
+      border: 0;
+      padding: 0 0 2rem 0;
+    }
+
+    .global-nav__matrix-title {
+      @extend %vf-heading-5;
+      font-weight: 300;
+    }
+  }
+
+  .global-nav__others-col {
+    width: 74.17808%;
+  }
+
+  .global-nav__resources-col {
+    margin-left: 3.2877%;
+    width: 22.53423%;
   }
 
   .show-content {
