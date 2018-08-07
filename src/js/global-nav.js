@@ -6,8 +6,8 @@ function createFromHTML(html) {
   return div.childNodes[0];
 }
 
-function createNavRow(homeUrl, logoUrl) {
-  const navRow = createFromHTML(`<div class="global-nav__header global-nav__row">
+function createNavRow(homeUrl, logoUrl, maxWidth) {
+  const navRow = createFromHTML(`<div class="global-nav__header global-nav__row" style="max-width:${maxWidth}">
     <div class="global-nav__logo">
       <a class="global-nav__logo-anchor" href=${homeUrl}>
         <img src=${logoUrl} width="74px">
@@ -26,7 +26,7 @@ function createNavRow(homeUrl, logoUrl) {
   return navRow;
 }
 
-function createMobileDropdown(products) {
+function createMobileDropdown(products, maxWidth) {
   const {
     flagships, others, resources, abouts,
   } = products;
@@ -57,25 +57,25 @@ function createMobileDropdown(products) {
 
   const mobileDropdown = (
     `<div class="global-nav--mobile u-hide--medium u-hide--large">
-      <div class="global-nav__row">
+      <div class="global-nav__row" style="max-width:${maxWidth}">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">Products</h5>
         <ul class="global-nav__split-list">
           ${mobileFlagships}
         </ul>
       </div>
-      <div class="global-nav__row">
+      <div class="global-nav__row" style="max-width:${maxWidth}">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">Other websites</h5>
         <ul class="global-nav__split-list">
           ${mobileOthers}
         </ul>
       </div>
-      <div class="global-nav__row">
+      <div class="global-nav__row" style="max-width:${maxWidth}">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">Resources</h5>
         <ul class="global-nav__split-list">
           ${mobileResources}
         </ul>
       </div>
-      <div class="global-nav__row">
+      <div class="global-nav__row" style="max-width:${maxWidth}">
         <h5 class="global-nav__muted-heading global-nav--mobile-heading">About</h5>
         <ul class="global-nav__split-list">
           ${mobileAbouts}
@@ -87,7 +87,7 @@ function createMobileDropdown(products) {
   return mobileDropdown;
 }
 
-function createProductDropdown(products) {
+function createProductDropdown(products, maxWidth) {
   const {
     flagships, others, resources, abouts,
   } = products;
@@ -171,20 +171,20 @@ function createProductDropdown(products) {
     })
     .join('');
 
-  const mobileDropdown = createMobileDropdown(products);
+  const mobileDropdown = createMobileDropdown(products, maxWidth);
 
   const productDropdown = (
     `<div class="global-nav__dropdown-content u-hide" id="canonical-products">
       ${mobileDropdown}
       <div class="global-nav__strip u-hide--small">
-        <div class="global-nav__row is-bordered">
+        <div class="global-nav__row is-bordered" style="max-width:${maxWidth}">
           <ul class="global-nav__matrix">
             ${productFlagships}
           </ul>
         </div>
       </div>
       <div class="global-nav__strip u-hide--small">
-        <div class="global-nav__row">
+        <div class="global-nav__row" style="max-width:${maxWidth}">
           <div class="global-nav__product-extras">
             <div class="global-nav__others-col">
               <h5 class="global-nav__muted-heading">Other websites</h5>
@@ -211,7 +211,7 @@ function createProductDropdown(products) {
   return productDropdown;
 }
 
-function createLoginDropdown(logins) {
+function createLoginDropdown(logins, maxWidth) {
   const loginItems = logins
     .map((loginItem) => {
       const loginItemMarkup = (
@@ -240,12 +240,12 @@ function createLoginDropdown(logins) {
     .join('');
 
   const loginDropdown = (
-    `<div class="global-nav__dropdown-content" id="canonical-login">
+    `<div class="global-nav__dropdown-content u-hide" id="canonical-login">
       <div class="global-nav__strip">
-        <div class="global-nav__row">
+        <div class="global-nav__row" style="max-width:${maxWidth}">
           <h5 class="global-nav__muted-heading">Customer portals</h5>
         </div>
-        <div class="global-nav__row">
+        <div class="global-nav__row" style="max-width:${maxWidth}">
           <ul class="global-nav__matrix">
             ${loginItems}
           </ul>
@@ -320,6 +320,7 @@ function addListeners(breakpoint, wrapper) {
 
 export const createNav = (
   breakpoint = 900,
+  maxWidth = '68rem',
   homeUrl = 'https://www.canonical.com',
   logoUrl = 'https://assets.ubuntu.com/v1/9c74eb2d-logo-canonical-white.svg',
   products = canonicalProducts,
@@ -328,9 +329,9 @@ export const createNav = (
   // Build global nav components
   const wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
-  const navRow = createNavRow(homeUrl, logoUrl);
-  const loginDropdown = createLoginDropdown(logins);
-  const productDropdown = createProductDropdown(products);
+  const navRow = createNavRow(homeUrl, logoUrl, maxWidth);
+  const loginDropdown = createLoginDropdown(logins, maxWidth);
+  const productDropdown = createProductDropdown(products, maxWidth);
   const navDropdown = createFromHTML(
     `<div class="global-nav__dropdown">
       ${loginDropdown}

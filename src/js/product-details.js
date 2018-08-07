@@ -48,21 +48,21 @@ const canonicalProducts = {
       url: 'http://www.ubuntu.com/support',
       description: 'Canonical supports Ubuntu for clouds, data centers and devices',
     }, {
-      title: 'Mir',
-      url: 'https://wiki.ubuntu.com/Mir',
-      description: 'Ultra-fast and light Wayland compositor for secure device display management',
-    }, {
       title: 'Image Service',
       url: 'https://cloud-images.ubuntu.com/',
       description: 'A stream of hardened custom Ubuntu images on AWS, Google, KVM, VMware, MAAS, LXD',
     }, {
-      title: 'Conjure-up',
-      url: 'https://conjure-up.io/',
-      description: 'Summon up a big-software stack as a “spell” using conjure-up to get you a fully installed and usable stack',
-    }, {
       title: 'Cloud-init',
       url: 'https://cloud-init.io/',
       description: 'Apply user data to your instances automatically',
+    }, {
+      title: 'Mir',
+      url: 'https://wiki.ubuntu.com/Mir',
+      description: 'Ultra-fast and light Wayland compositor for secure device display management',
+    }, {
+      title: 'Conjure-up',
+      url: 'https://conjure-up.io/',
+      description: 'Summon up a big-software stack as a “spell” using conjure-up to get you a fully installed and usable stack',
     }, {
       title: 'Netplan',
       url: 'http://www.netplan.io/',

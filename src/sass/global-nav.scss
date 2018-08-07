@@ -1,6 +1,3 @@
-$breakpoint-medium: 875px;
-$grid-max-width: 68rem;
-
 @import 'node_modules/vanilla-framework/scss/base_placeholders';
 @import 'node_modules/vanilla-framework/scss/base_typography';
 @import 'node_modules/vanilla-framework/scss/utilities_hide';
@@ -42,15 +39,16 @@ $grid-max-width: 68rem;
 
   .global-nav__row {
     margin: 0 auto;
-    max-width: $grid-max-width;
     padding: 0 1.5rem;
-  }
 
-  .row.is-bordered::after {
-    background-color: #666;
-    margin-top: 2rem;
-    height: 1px;
-    width: 100%;
+    &.is-bordered::after {
+      background-color: #666;
+      content: '';
+      display: block;
+      margin-top: 2rem;
+      height: 1px;
+      width: 100%;
+    }
   }
 
   .global-nav__link {
