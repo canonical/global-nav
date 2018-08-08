@@ -7,20 +7,22 @@ function createFromHTML(html) {
 }
 
 function createNavHeader(homeUrl, logoUrl, maxWidth) {
-  const navRow = createFromHTML(`<div class="global-nav__header global-nav__row" style="max-width:${maxWidth}">
-    <div class="global-nav__header-logo">
-      <a class="global-nav__header-logo-anchor" href=${homeUrl}>
-        <img src=${logoUrl} width="74px">
-      </a>
+  const navRow = createFromHTML(`<div class="global-nav__header">
+    <div class="global-nav__header-row global-nav__row" style="max-width:${maxWidth}">
+      <div class="global-nav__header-logo">
+        <a class="global-nav__header-logo-anchor" href=${homeUrl}>
+          <img src=${logoUrl} width="74px">
+        </a>
+      </div>
+      <ul class="global-nav__header-list">
+        <li class="global-nav__header-link">
+          <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
+        </li>
+        <li class="global-nav__header-link">
+          <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>
+        </li>
+      </ul>
     </div>
-    <ul class="global-nav__header-list">
-      <li class="global-nav__header-link">
-        <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
-      </li>
-      <li class="global-nav__header-link">
-        <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>
-      </li>
-    </ul>
   </div>`);
 
   return navRow;
