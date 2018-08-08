@@ -1,7 +1,7 @@
 import { canonicalProducts, canonicalLogins } from './product-details';
 
 function createFromHTML(html) {
-  const div = window.document.createElement('div');
+  const div = window.document.createElement('div'); //eslint-disable-line
   div.innerHTML = html;
   return div.childNodes[0];
 }
@@ -77,7 +77,7 @@ function createMobileDropdown(products) {
       </div>
       <div class="global-nav__row">
         <h5 class="global-nav__muted-heading global-nav__expanding-row">About</h5>
-        <ul class="global-nav__split-list">
+        <ul class="global-nav__split-list u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
       </div>
@@ -263,7 +263,7 @@ function addListeners(breakpoint, wrapper) {
   const dropdownContents = wrapper.querySelectorAll('.global-nav__dropdown-content');
   const expandingRows = wrapper.querySelectorAll('.global-nav__expanding-row');
   const overlay = wrapper.querySelector('.global-nav__overlay');
-  const isMobile = window.innerWidth < breakpoint;
+  const isMobile = window.innerWidth < breakpoint; //eslint-disable-line
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
@@ -272,7 +272,7 @@ function addListeners(breakpoint, wrapper) {
   }
 
   function scrollGlobalNavToTop() {
-    window.scrollTo(0, wrapper.offsetTop);
+    window.scrollTo(0, wrapper.offsetTop); //eslint-disable-line
   }
 
   function openDropdown(headerLink) {
@@ -340,7 +340,7 @@ export const createNav = ({
   );
 
   // Attach to the DOM
-  document.body.insertBefore(wrapper, document.body.firstElementChild);
+  document.body.insertBefore(wrapper, document.body.firstElementChild); //eslint-disable-line
   wrapper.appendChild(navHeader);
   wrapper.appendChild(navDropdown);
   wrapper.appendChild(overlay);
