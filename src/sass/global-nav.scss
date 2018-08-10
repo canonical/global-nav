@@ -59,7 +59,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   .global-nav__header-logo-anchor {
     display: inline-block;
     line-height: 0;
-    padding: .6875rem 1rem;
+    padding: .6875rem 1rem .6875rem 0;
 
     @media (max-width: $global-nav-breakpoint) {
       display: block;

@@ -50,7 +50,7 @@ const canonicalProducts = {
     }, {
       title: 'Image Service',
       url: 'https://cloud-images.ubuntu.com/',
-      description: 'A stream of hardened custom Ubuntu images on AWS, Google, KVM, VMware, MAAS, LXD',
+      description: 'Hardened Ubuntu images on AWS, Google, KVM, VMware, MAAS, LXD',
     }, {
       title: 'Cloud-init',
       url: 'https://cloud-init.io/',
