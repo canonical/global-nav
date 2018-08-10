@@ -22,6 +22,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   @include vf-u-padding-collapse;
   color: $global-nav-font-color;
   display: flex;
+  flex-shrink: 0;
   font-family: "Ubuntu Light", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: $global-nav-font-size;
   font-weight: 300;
