@@ -26,7 +26,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   font-size: $global-nav-font-size;
   font-weight: 300;
   line-height: map-get($line-heights, default-text);
-  z-index: 10;
+  z-index: 100;
 
   @media (max-width: $global-nav-breakpoint) {
     bottom: 0;
@@ -43,7 +43,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   .global-nav__header {
     background-color: $global-nav-bg-color;
     width: 100%;
-    z-index: 5;
+    z-index: 99;
   }
 
   .global-nav__header-row {
@@ -118,7 +118,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     top: 2rem;
     transform: translateY(-100%);
     width: 100%;
-    z-index: 4;
+    z-index: 98;
 
     @media (max-width: $global-nav-breakpoint) {
       height: 0;
@@ -382,7 +382,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     pointer-events: none;
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 97;
 
     @media (max-width: $global-nav-breakpoint) {
       display: none;
