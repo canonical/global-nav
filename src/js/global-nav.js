@@ -89,7 +89,7 @@ function createMobileDropdown(products) {
   return mobileDropdown;
 }
 
-function createProductDropdown(products, maxWidth) {
+function createProductDropdown(products) {
   const {
     flagships, others, resources, abouts,
   } = products;
@@ -176,34 +176,32 @@ function createProductDropdown(products, maxWidth) {
   const mobileDropdown = createMobileDropdown(products);
 
   const productDropdown = (
-    `<div class="global-nav__dropdown-content u-hide" id="canonical-products">
-      ${mobileDropdown}
-      <div class="global-nav__strip u-hide--mobile">
-        <div class="global-nav__row is-bordered" style="max-width:${maxWidth}">
-          <ul class="global-nav__matrix">
-            ${productFlagships}
-          </ul>
-        </div>
+    `${mobileDropdown}
+    <div class="global-nav__strip u-hide--mobile">
+      <div class="global-nav__row is-bordered">
+        <ul class="global-nav__matrix">
+          ${productFlagships}
+        </ul>
       </div>
-      <div class="global-nav__strip u-hide--mobile">
-        <div class="global-nav__row" style="max-width:${maxWidth}">
-          <div class="global-nav__flex-container">
-            <div class="global-nav__others-col">
-              <h5 class="global-nav__muted-heading">Other websites</h5>
-              <div class="global-nav__matrix">
-                ${productOthers}
-              </div>
+    </div>
+    <div class="global-nav__strip u-hide--mobile">
+      <div class="global-nav__row">
+        <div class="global-nav__flex-container">
+          <div class="global-nav__others-col">
+            <h5 class="global-nav__muted-heading">Other websites</h5>
+            <div class="global-nav__matrix">
+              ${productOthers}
             </div>
-            <div class="global-nav__resources-col">
-              <h5 class="global-nav__muted-heading">Resources</h5>
-              <ul class="global-nav__split-list">
-                ${productResources}
-              </ul>
-              <h5 class="global-nav__muted-heading">About</h5>
-              <ul class="global-nav__split-list">
-                ${productAbouts}
-              </ul>
-            </div>
+          </div>
+          <div class="global-nav__resources-col">
+            <h5 class="global-nav__muted-heading">Resources</h5>
+            <ul class="global-nav__split-list">
+              ${productResources}
+            </ul>
+            <h5 class="global-nav__muted-heading">About</h5>
+            <ul class="global-nav__split-list">
+              ${productAbouts}
+            </ul>
           </div>
         </div>
       </div>
@@ -213,7 +211,7 @@ function createProductDropdown(products, maxWidth) {
   return productDropdown;
 }
 
-function createLoginDropdown(logins, maxWidth) {
+function createLoginDropdown(logins) {
   const loginItems = logins
     .map((loginItem) => {
       const loginItemMarkup = (
@@ -228,10 +226,10 @@ function createLoginDropdown(logins, maxWidth) {
             <p class="global-nav__matrix-desc">${loginItem.description}</p>
             <ul class="global-nav__inline-list">
               <li class="global-nav__list-item">
-                <a class="global-nav__link" href=${loginItem.login}>Login&nbsp;›</a>
+                <a class="global-nav__link" href=${loginItem.login}>Login&nbsp;&rsaquo;</a>
               </li>
               ${loginItem.signup ? `<li class="global-nav__list-item">
-                <a class="global-nav__link" href=${loginItem.signup}>Sign up&nbsp;›</a>
+                <a class="global-nav__link" href=${loginItem.signup}>Sign up&nbsp;&rsaquo;</a>
               </li>` : ''}
             </ul>
           </div>
@@ -242,16 +240,14 @@ function createLoginDropdown(logins, maxWidth) {
     .join('');
 
   const loginDropdown = (
-    `<div class="global-nav__dropdown-content u-hide" id="canonical-login">
-      <div class="global-nav__strip">
-        <div class="global-nav__row" style="max-width:${maxWidth}">
-          <h5 class="global-nav__muted-heading">Customer portals</h5>
-        </div>
-        <div class="global-nav__row" style="max-width:${maxWidth}">
-          <ul class="global-nav__matrix">
-            ${loginItems}
-          </ul>
-        </div>
+    `<div class="global-nav__strip">
+      <div class="global-nav__row">
+        <h5 class="global-nav__muted-heading">Customer portals</h5>
+      </div>
+      <div class="global-nav__row">
+        <ul class="global-nav__matrix">
+          ${loginItems}
+        </ul>
       </div>
     </div>`
   );
@@ -332,12 +328,16 @@ export const createNav = ({
   const wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
   const navHeader = createNavHeader(homeUrl, logoUrl, maxWidth);
-  const loginDropdown = createLoginDropdown(logins, maxWidth);
-  const productDropdown = createProductDropdown(products, maxWidth);
+  const loginDropdown = createLoginDropdown(logins);
+  const productDropdown = createProductDropdown(products);
   const navDropdown = createFromHTML(
     `<div class="global-nav__dropdown">
-      ${loginDropdown}
-      ${productDropdown}
+      <div class="global-nav__dropdown-content u-hide" id="canonical-login" style="max-width:${maxWidth}">
+        ${loginDropdown}
+      </div>
+      <div class="global-nav__dropdown-content u-hide" id="canonical-products" style="max-width:${maxWidth}">
+        ${productDropdown}
+      </div>
     </div>`,
   );
 
