@@ -4,56 +4,63 @@ This project contains the JavaScript and styles to display a banner across the t
 
 ## Usage
 
-Simply use bower to install this component and then link the CSS and the JS files into the head of your site.
+Simply use a node pacakage manager to install this component and then link the JS file into the head of your site, with optional settings. The styles will automatically be injected into the page's `<head>`.
 
-1. Installing via bower
+1. Install via yarn or npm
 ```bash
-bower install canonical-global-nav --save
+yarn add global-nav
+```
+```bash
+npm install global-nav --save
 ```
 
-2. Add link to the JS and CSS files in your sites header
+2. Add a link to the JS file and run the `canonicalGlobalNav.createNav()` function
 ```html
-<link rel="stylesheet" type="text/css" media="screen" href="/bower-components/canonical-global-nav/build/css/cookie-policy.css" />
-<script src="/bower-components/canonical-global-nav/build/js/global.js"></script>
-<script>ubuntu.globalNav.setup();</script>
+<script src="/node_modules/global-nav/dist/index.js"></script>
+<script>canonicalGlobalNav.createNav();</script>
 ```
 
-The canonical global nav should now appear across the top of you site.
+## Options
 
-Note: You can specify the directory in which you want your bower components installed in a `.bowerrc`. For example:
-```json
-{
-  "directory": "static/components/"
-}
+### `maxWidth`
+
++ Type: `String` _(default: "68rem")_
+
+Sets the max width of all `.global-nav__row`s.
+
+```js
+canonicalGlobalNav.createNav({
+  maxWidth: '68rem'
+})
 ```
 
-## Contributing
+## Building the Global nav
 
-If you would like to help improve this project, here is a list of commands to help you get started.
-
-### Building the Global nav
-
-To build the JS and CSS into the build folder, run:
+To build the JS into the `/dist` folder, run:
 
 ```
-gulp build
+yarn build
 ```
 
 You can view the build files in action by opening the `index.html` in the root of this project.
 
-### Hacking
+## Hacking
 
-When developing this project you can run the following command to listen to changes in the `src/js/*js` and `src/sass/*scss` and builds them into the `/build` folder.
+When developing this project you can run the following command to listen to changes in the `src/js/*js` and `src/sass/*scss` and builds them into the `/dist` folder.
 
 ```
-gulp dev
+yarn watch
 ```
 
 Before submitting your pull request. Run the lint, which checks both the JS and Sass for errors.
 
 ```
-gulp test
+yarn lint
 ```
+
+## Contributing
+
+If you would like to help improve this project, here is a list of commands to help you get started.
 
 Code licensed LGPLv3 by Canonical Ltd.
 

@@ -1,9 +1,0 @@
-$breakpoint-medium:    875px;
-$grid-max-width: 68rem;
-
-// Import relevant Vanilla patterns
-@import 'node_modules/vanilla-framework/scss/build';
-
-// Import global nav styles
-@import 'patterns-global-nav';
-@include global-nav;
