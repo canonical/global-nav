@@ -1,6 +1,11 @@
 const canonicalProducts = {
   flagships: [
     {
+      title: 'Canonical',
+      url: 'https://www.canonical.com/',
+      logoUrl: 'https://assets.ubuntu.com/v1/47ba7e44-picto-canonical-white.svg',
+      description: 'Canonical is the global software company behind Ubuntu and is the number-one Ubuntu services provider',
+    }, {
       title: 'Ubuntu',
       url: 'https://www.ubuntu.com/',
       logoUrl: 'https://assets.ubuntu.com/v1/c5cb0f8e-picto-ubuntu.svg',
@@ -9,7 +14,7 @@ const canonicalProducts = {
       title: 'MAAS',
       url: 'https://maas.io/',
       logoUrl: 'https://assets.ubuntu.com/v1/0de4fcd5-logo-maas-icon.svg',
-      description: 'Create a bare metal cloud with Metal as a Service for IPAM and provisioning',
+      description: 'Create a bare-metal cloud with Metal as a Service for IPAM and provisioning',
     }, {
       title: 'Landscape',
       url: 'https://landscape.canonical.com/',
@@ -39,7 +44,7 @@ const canonicalProducts = {
       title: 'Kubernetes',
       url: 'https://mongoose.ubuntu.com/kubernetes',
       logoUrl: 'https://assets.ubuntu.com/v1/b81a45e4-kubernetes.svg',
-      description: 'Canonical works with Google GKE and Azure AKS for app portability between private and public infra',
+      description: 'Canonical works with Google GKE and Azure AKS for app portability between private and public infrastructure',
     },
   ],
   others: [
@@ -72,19 +77,19 @@ const canonicalProducts = {
   resources: [
     {
       title: 'Webinars',
-      url: 'https://www.brighttalk.com/search?q=Canonical',
+      url: 'https://blog.ubuntu.com/?category=webinars#posts-list',
     }, {
       title: 'Tutorials',
       url: 'https://tutorials.ubuntu.com/',
     }, {
       title: 'Videos',
-      url: 'https://mongoose.ubuntu.com/resources?content=videos',
+      url: 'https://blog.ubuntu.com/?category=videos#posts-list',
     }, {
       title: 'Case studies',
-      url: 'https://blog.ubuntu.com/archives?category=case-studies',
+      url: 'https://blog.ubuntu.com/?category=case-studies#posts-list',
     }, {
       title: 'White papers',
-      url: 'https://blog.ubuntu.com/archives?category=white-papers',
+      url: 'https://blog.ubuntu.com/?category=white-papers#posts-list',
     }, {
       title: 'Docs',
       url: 'https://docs.ubuntu.com/',

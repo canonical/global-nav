@@ -100,9 +100,9 @@ function createProductDropdown(products) {
         `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${flagship.url}>
             <img class="global-nav__matrix-image" src=${flagship.logoUrl} alt="icon">
+            <h4 class="global-nav__matrix-title">${flagship.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
-            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${flagship.url}>${flagship.title}&nbsp;›</a></h4>
             <p class="global-nav__matrix-desc">${flagship.description}</p>
           </div>
         </li>`
@@ -130,7 +130,7 @@ function createProductDropdown(products) {
         `<li class="global-nav__matrix-item">
           <div class="global-nav__matrix-content">
             <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h4>
-            <p class="global-nav__matrix-desc">${other.description}</p>
+            <p class="global-nav__matrix-desc u-no-margin--left">${other.description}</p>
           </div>
         </li>`
       );
