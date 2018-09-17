@@ -218,11 +218,9 @@ function createLoginDropdown(logins) {
         `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${loginItem.login}>
             <img class="global-nav__matrix-image" src=${loginItem.logoUrl} alt="">
+            <h4 class="global-nav__matrix-title">${loginItem.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
-            <a class="global-nav__link" href=${loginItem.login}>
-              <h4 class="global-nav__matrix-title">${loginItem.title}</h4>
-            </a>
             <p class="global-nav__matrix-desc">${loginItem.description}</p>
             <ul class="global-nav__inline-list">
               <li class="global-nav__list-item">

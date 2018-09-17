@@ -147,7 +147,7 @@ const canonicalLogins = [
     login: 'https://landscape.canonical.com/login/authenticate',
   }, {
     title: 'Livepatch',
-    logoUrl: 'https://assets.ubuntu.com/v1/3c1de878-canonical-logo.png',
+    logoUrl: 'https://assets.ubuntu.com/v1/47ba7e44-picto-canonical-white.svg',
     description: 'Apply critical kernel security fixes without rebooting',
     login: 'https://livepatch.canonical.com/',
     signup: 'https://auth.livepatch.canonical.com/',

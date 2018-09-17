@@ -351,7 +351,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
 
   .global-nav__inline-list {
     margin: .5rem 0 0 0;
-    padding: 0;
+    padding: 0 0 0 2.75rem;
 
     @media (max-width: $global-nav-breakpoint) {
       margin-top: 0;
