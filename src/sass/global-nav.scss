@@ -325,7 +325,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   }
 
   .global-nav__link {
-    display: flex;
+    display: inline-flex;
     color: $global-nav-font-color;
     text-decoration: none;
 
@@ -355,6 +355,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
 
     @media (max-width: $global-nav-breakpoint) {
       margin-top: 0;
+      padding: 0;
     }
 
     .global-nav__list-item {
