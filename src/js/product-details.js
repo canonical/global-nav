@@ -37,12 +37,12 @@ const canonicalProducts = {
       description: 'A single secure package and auto-update system for Ubuntu, Debian, Arch, Centos, Amazon Linux',
     }, {
       title: 'OpenStack',
-      url: 'https://mongoose.ubuntu.com/openstack',
+      url: 'https://www.ubuntu.com/openstack',
       logoUrl: 'https://assets.ubuntu.com/v1/a7916513-picto-openstack.svg',
       description: 'The world’s first choice for OpenStack - the leader in density and cost per VM',
     }, {
       title: 'Kubernetes',
-      url: 'https://mongoose.ubuntu.com/kubernetes',
+      url: 'https://www.ubuntu.com/kubernetes',
       logoUrl: 'https://assets.ubuntu.com/v1/b81a45e4-kubernetes.svg',
       description: 'Canonical works with Google GKE and Azure AKS for app portability between private and public infrastructure',
     },
@@ -95,7 +95,7 @@ const canonicalProducts = {
       url: 'https://docs.ubuntu.com/',
     }, {
       title: 'Training',
-      url: 'https://mongoose.ubuntu.com/cloud/training',
+      url: 'https://www.ubuntu.com/cloud/training',
     }, {
       title: 'Blog',
       url: 'https://blog.ubuntu.com/',
@@ -104,10 +104,10 @@ const canonicalProducts = {
       url: 'https://developer.ubuntu.com/',
     }, {
       title: 'Install',
-      url: 'https://mongoose.ubuntu.com/download/cloud',
+      url: 'https://www.ubuntu.com/download/cloud',
     }, {
       title: 'Download',
-      url: 'https://mongoose.ubuntu.com/download',
+      url: 'https://www.ubuntu.com/download',
     },
   ],
   abouts: [
@@ -128,7 +128,7 @@ const canonicalProducts = {
       url: 'https://shop.canonical.com/',
     }, {
       title: 'Contact',
-      url: 'https://mongoose.ubuntu.com/about/contact-us',
+      url: 'https://www.ubuntu.com/about/contact-us',
     },
   ],
 };
