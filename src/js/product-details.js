@@ -62,7 +62,7 @@ const canonicalProducts = {
       description: 'Apply user data to your instances automatically',
     }, {
       title: 'Mir',
-      url: 'https://wiki.ubuntu.com/Mir',
+      url: 'https://mir-server.io/',
       description: 'Ultra-fast and light Wayland compositor for secure device display management',
     }, {
       title: 'Conjure-up',
