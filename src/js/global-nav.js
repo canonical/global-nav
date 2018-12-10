@@ -6,28 +6,6 @@ function createFromHTML(html) {
   return div.childNodes[0];
 }
 
-function createNavHeader(homeUrl, logoUrl, maxWidth) {
-  const navRow = createFromHTML(`<div class="global-nav__header">
-    <div class="global-nav__header-row global-nav__row" style="max-width:${maxWidth}">
-      <div class="global-nav__header-logo">
-        <a class="global-nav__header-logo-anchor" href=${homeUrl}>
-          <img src=${logoUrl} width="74px">
-        </a>
-      </div>
-      <ul class="global-nav__header-list">
-        <li class="global-nav__header-link">
-          <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
-        </li>
-        <li class="global-nav__header-link">
-          <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>`);
-
-  return navRow;
-}
-
 function createMobileDropdown(products) {
   const {
     flagships, others, resources, abouts,
@@ -316,26 +294,50 @@ function addListeners(breakpoint, wrapper) {
 
 export const createNav = ({
   maxWidth = '68rem',
-  breakpoint = 900,
-  homeUrl = 'https://www.canonical.com',
-  logoUrl = 'https://assets.ubuntu.com/v1/9c74eb2d-logo-canonical-white.svg',
-  products = canonicalProducts,
-  logins = canonicalLogins,
+  showLogins = true
 } = {}) => {
   // Build global nav components
   const wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
-  const navHeader = createNavHeader(homeUrl, logoUrl, maxWidth);
-  const loginDropdown = createLoginDropdown(logins);
-  const productDropdown = createProductDropdown(products);
+  var loginsHTML = '';
+  var loginsLink = '';
+
+  if (showLogins) {
+    loginsLink = [
+      '<li class="global-nav__header-link">',
+      '  <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>',
+      '</li>'
+    ].join("\n");
+
+    loginsHTML = [
+      `<div class="global-nav__dropdown-content u-hide" id="canonical-login" style="max-width:${maxWidth}">`,
+      `  ${createLoginDropdown(canonicalLogins)}`,
+      '</div>'
+    ].join("\n");
+  }
+
+  const navHeader = createFromHTML(`<div class="global-nav__header">
+    <div class="global-nav__header-row global-nav__row" style="max-width:${maxWidth}">
+      <div class="global-nav__header-logo">
+        <a class="global-nav__header-logo-anchor" href="https://www.canonical.com">
+          <img src="https://assets.ubuntu.com/v1/9c74eb2d-logo-canonical-white.svg" width="74px">
+        </a>
+      </div>
+      <ul class="global-nav__header-list">
+        <li class="global-nav__header-link">
+          <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
+        </li>
+        ${loginsLink}
+      </ul>
+    </div>
+  </div>`);
+
   const navDropdown = createFromHTML(
     `<div class="global-nav__dropdown">
-      <div class="global-nav__dropdown-content u-hide" id="canonical-login" style="max-width:${maxWidth}">
-        ${loginDropdown}
-      </div>
       <div class="global-nav__dropdown-content u-hide" id="canonical-products" style="max-width:${maxWidth}">
-        ${productDropdown}
+        ${createProductDropdown(canonicalProducts)}
       </div>
+      ${loginsHTML}
     </div>`,
   );
 
@@ -346,5 +348,5 @@ export const createNav = ({
   wrapper.appendChild(overlay);
 
   // Add event listeners
-  addListeners(breakpoint, wrapper);
+  addListeners(900, wrapper);
 };
