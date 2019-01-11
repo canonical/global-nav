@@ -296,6 +296,9 @@ export const createNav = ({
   maxWidth = '68rem',
   showLogins = true
 } = {}) => {
+  // Recruitment call to action
+  console.log('Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs');
+
   // Build global nav components
   const wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
