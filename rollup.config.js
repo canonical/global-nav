@@ -13,7 +13,7 @@ export default {
   input: 'src/index.js',
   output: {
     file: pkg.main,
-    format: 'iife',
+    format: 'umd',
     name: 'canonicalGlobalNav',
     sourcemap: true,
   },
