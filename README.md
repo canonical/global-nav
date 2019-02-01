@@ -8,16 +8,18 @@ Simply use a node pacakage manager to install this component and then link the J
 
 1. Install via yarn or npm
 
-``` bash
+```bash
 yarn add global-nav
 npm install global-nav --save
 ```
 
 2. Add a link to the JS file and run the `canonicalGlobalNav.createNav()` function
 
-``` html
+```html
 <script src="/node_modules/global-nav/dist/index.js"></script>
-<script>canonicalGlobalNav.createNav();</script>
+<script>
+  canonicalGlobalNav.createNav();
+</script>
 ```
 
 ### Options
@@ -29,9 +31,11 @@ The `createNav` function takes an object of options with the following propertie
 
 For example, to use the global-nav without the "login" section, and set the `max-width` to `80rem`:
 
-``` html
+```html
 <script src="/node_modules/global-nav/dist/index.js"></script>
-<script>canonicalGlobalNav.createNav({showLogins: false, maxWidt: '80rem'});</script>
+<script>
+  canonicalGlobalNav.createNav({ showLogins: false, maxWidt: '80rem' });
+</script>
 ```
 
 ## Building the Global nav
@@ -64,4 +68,4 @@ If you would like to help improve this project, here is a list of commands to he
 
 Code licensed LGPLv3 by Canonical Ltd.
 
-With ♥ from Canonical 
+With ♥ from Canonical

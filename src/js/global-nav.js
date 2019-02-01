@@ -7,36 +7,27 @@ function createFromHTML(html) {
 }
 
 function createMobileDropdown(products) {
-  const {
-    flagships, others, resources, abouts,
-  } = products;
+  const { flagships, others, resources, abouts } = products;
 
   function createListItem(obj) {
-    return (
-      `<li class="global-nav__list-item">
+    return `<li class="global-nav__list-item">
         <a class="global-nav__link" href=${obj.url}>${obj.title}</a>
-      </li>`
-    );
+      </li>`;
   }
 
   const mobileFlagships = flagships
     .map(flagship => createListItem(flagship))
     .join('');
 
-  const mobileOthers = others
-    .map(other => createListItem(other))
-    .join('');
+  const mobileOthers = others.map(other => createListItem(other)).join('');
 
   const mobileResources = resources
     .map(resource => createListItem(resource))
     .join('');
 
-  const mobileAbouts = abouts
-    .map(about => createListItem(about))
-    .join('');
+  const mobileAbouts = abouts.map(about => createListItem(about)).join('');
 
-  const mobileDropdown = (
-    `<div class="global-nav__mobile-strip">
+  const mobileDropdown = `<div class="global-nav__mobile-strip">
       <div class="global-nav__row">
         <h5 class="global-nav__muted-heading global-nav__expanding-row">Products</h5>
         <ul class="global-nav__split-list">
@@ -61,40 +52,35 @@ function createMobileDropdown(products) {
           ${mobileAbouts}
         </ul>
       </div>
-    </div>`
-  );
+    </div>`;
 
   return mobileDropdown;
 }
 
 function createProductDropdown(products) {
-  const {
-    flagships, others, resources, abouts,
-  } = products;
+  const { flagships, others, resources, abouts } = products;
 
   const productFlagships = flagships
     .map((flagship, index) => {
-      let flagshipMarkup = (
-        `<li class="global-nav__matrix-item">
+      let flagshipMarkup = `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${flagship.url}>
-            <img class="global-nav__matrix-image" src=${flagship.logoUrl} alt="icon">
+            <img class="global-nav__matrix-image" src=${
+              flagship.logoUrl
+            } alt="icon">
             <h4 class="global-nav__matrix-title">${flagship.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
             <p class="global-nav__matrix-desc">${flagship.description}</p>
           </div>
-        </li>`
-      );
+        </li>`;
 
       // Check whether to add extra empty matrix items
       if (index === flagships.length - 1) {
         const extraMatrixCount = (2 * flagships.length) % 3;
         for (let i = 0; i < extraMatrixCount; i += 1) {
-          flagshipMarkup += (
-            `<li class="global-nav__matrix-item">
+          flagshipMarkup += `<li class="global-nav__matrix-item">
               &nbsp;
-            </li>`
-          );
+            </li>`;
         }
       }
 
@@ -104,24 +90,24 @@ function createProductDropdown(products) {
 
   const productOthers = others
     .map((other, index) => {
-      let otherMarkup = (
-        `<li class="global-nav__matrix-item">
+      let otherMarkup = `<li class="global-nav__matrix-item">
           <div class="global-nav__matrix-content">
-            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h4>
-            <p class="global-nav__matrix-desc u-no-margin--left">${other.description}</p>
+            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${
+              other.url
+            }>${other.title}&nbsp;›</a></h4>
+            <p class="global-nav__matrix-desc u-no-margin--left">${
+              other.description
+            }</p>
           </div>
-        </li>`
-      );
+        </li>`;
 
       // Check whether to add extra empty matrix items
       if (index === others.length - 1) {
         const extraMatrixCount = (2 * others.length) % 3;
         for (let i = 0; i < extraMatrixCount; i += 1) {
-          otherMarkup += (
-            `<li class="global-nav__matrix-item">
+          otherMarkup += `<li class="global-nav__matrix-item">
               &nbsp;
-            </li>`
-          );
+            </li>`;
         }
       }
 
@@ -130,31 +116,28 @@ function createProductDropdown(products) {
     .join('');
 
   const productResources = resources
-    .map((resource) => {
-      const resourceMarkup = (
-        `<li class="global-nav__list-item">
-          <a class="global-nav__link" href=${resource.url} title="Visit ${resource.title}">${resource.title}</a>
-        </li>`
-      );
+    .map(resource => {
+      const resourceMarkup = `<li class="global-nav__list-item">
+          <a class="global-nav__link" href=${resource.url} title="Visit ${
+        resource.title
+      }">${resource.title}</a>
+        </li>`;
       return resourceMarkup;
     })
     .join('');
 
   const productAbouts = abouts
-    .map((about) => {
-      const aboutMarkup = (
-        `<li class="global-nav__list-item">
+    .map(about => {
+      const aboutMarkup = `<li class="global-nav__list-item">
           <a class="global-nav__link" href=${about.url}>${about.title}</a>
-        </li>`
-      );
+        </li>`;
       return aboutMarkup;
     })
     .join('');
 
   const mobileDropdown = createMobileDropdown(products);
 
-  const productDropdown = (
-    `${mobileDropdown}
+  const productDropdown = `${mobileDropdown}
     <div class="global-nav__strip u-hide--mobile">
       <div class="global-nav__row is-bordered">
         <ul class="global-nav__matrix">
@@ -183,40 +166,46 @@ function createProductDropdown(products) {
           </div>
         </div>
       </div>
-    </div>`
-  );
+    </div>`;
 
   return productDropdown;
 }
 
 function createLoginDropdown(logins) {
   const loginItems = logins
-    .map((loginItem) => {
-      const loginItemMarkup = (
-        `<li class="global-nav__matrix-item">
+    .map(loginItem => {
+      const loginItemMarkup = `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${loginItem.login}>
-            <img class="global-nav__matrix-image" src=${loginItem.logoUrl} alt="">
+            <img class="global-nav__matrix-image" src=${
+              loginItem.logoUrl
+            } alt="">
             <h4 class="global-nav__matrix-title">${loginItem.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
             <p class="global-nav__matrix-desc">${loginItem.description}</p>
             <ul class="global-nav__inline-list">
               <li class="global-nav__list-item">
-                <a class="global-nav__link" href=${loginItem.login}>Login&nbsp;&rsaquo;</a>
+                <a class="global-nav__link" href=${
+                  loginItem.login
+                }>Login&nbsp;&rsaquo;</a>
               </li>
-              ${loginItem.signup ? `<li class="global-nav__list-item">
-                <a class="global-nav__link" href=${loginItem.signup}>Sign up&nbsp;&rsaquo;</a>
-              </li>` : ''}
+              ${
+                loginItem.signup
+                  ? `<li class="global-nav__list-item">
+                <a class="global-nav__link" href=${
+                  loginItem.signup
+                }>Sign up&nbsp;&rsaquo;</a>
+              </li>`
+                  : ''
+              }
             </ul>
           </div>
-        </li>`
-      );
+        </li>`;
       return loginItemMarkup;
     })
     .join('');
 
-  const loginDropdown = (
-    `<div class="global-nav__strip">
+  const loginDropdown = `<div class="global-nav__strip">
       <div class="global-nav__row">
         <h5 class="global-nav__muted-heading">Customer portals</h5>
       </div>
@@ -225,8 +214,7 @@ function createLoginDropdown(logins) {
           ${loginItems}
         </ul>
       </div>
-    </div>`
-  );
+    </div>`;
 
   return loginDropdown;
 }
@@ -234,7 +222,9 @@ function createLoginDropdown(logins) {
 function addListeners(breakpoint, wrapper) {
   const headerLinks = wrapper.querySelectorAll('.global-nav__header-link');
   const dropdownContainer = wrapper.querySelector('.global-nav__dropdown');
-  const dropdownContents = wrapper.querySelectorAll('.global-nav__dropdown-content');
+  const dropdownContents = wrapper.querySelectorAll(
+    '.global-nav__dropdown-content'
+  );
   const expandingRows = wrapper.querySelectorAll('.global-nav__expanding-row');
   const overlay = wrapper.querySelector('.global-nav__overlay');
   const isMobile = window.innerWidth < breakpoint; //eslint-disable-line
@@ -250,12 +240,16 @@ function addListeners(breakpoint, wrapper) {
   }
 
   function openDropdown(headerLink) {
-    const targetMenuLink = headerLink.querySelector('.global-nav__header-link-anchor');
+    const targetMenuLink = headerLink.querySelector(
+      '.global-nav__header-link-anchor'
+    );
     const targetMenuId = targetMenuLink.getAttribute('href');
     const targetMenu = wrapper.querySelector(targetMenuId);
 
     headerLink.classList.add('is-selected');
-    dropdownContents.forEach(menu => menu !== targetMenu && menu.classList.add('u-hide'));
+    dropdownContents.forEach(
+      menu => menu !== targetMenu && menu.classList.add('u-hide')
+    );
     targetMenu.classList.remove('u-hide');
     overlay.classList.add('show-overlay');
 
@@ -264,8 +258,8 @@ function addListeners(breakpoint, wrapper) {
     }
   }
 
-  headerLinks.forEach((headerLink) => {
-    headerLink.addEventListener('click', (e) => {
+  headerLinks.forEach(headerLink => {
+    headerLink.addEventListener('click', e => {
       e.preventDefault();
 
       if (dropdownContainer.classList.contains('show-content')) {
@@ -282,8 +276,8 @@ function addListeners(breakpoint, wrapper) {
     });
   });
 
-  expandingRows.forEach((expandingRow) => {
-    expandingRow.addEventListener('click', (e) => {
+  expandingRows.forEach(expandingRow => {
+    expandingRow.addEventListener('click', e => {
       e.target.classList.toggle('is-active');
       scrollGlobalNavToTop();
     });
@@ -292,15 +286,16 @@ function addListeners(breakpoint, wrapper) {
   overlay.addEventListener('click', closeNav);
 }
 
-export const createNav = ({
-  maxWidth = '68rem',
-  showLogins = true
-} = {}) => {
+export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
   // Recruitment call to action
-  console.log('Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs');
+  console.log(
+    'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
+  );
 
   // Build global nav components
-  const wrapper = createFromHTML('<div id="canonical-global-nav" class="global-nav"></div>');
+  const wrapper = createFromHTML(
+    '<div id="canonical-global-nav" class="global-nav"></div>'
+  );
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
   var loginsHTML = '';
   var loginsLink = '';
@@ -309,14 +304,14 @@ export const createNav = ({
     loginsLink = [
       '<li class="global-nav__header-link">',
       '  <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>',
-      '</li>'
-    ].join("\n");
+      '</li>',
+    ].join('\n');
 
     loginsHTML = [
       `<div class="global-nav__dropdown-content u-hide" id="canonical-login" style="max-width:${maxWidth}">`,
       `  ${createLoginDropdown(canonicalLogins)}`,
-      '</div>'
-    ].join("\n");
+      '</div>',
+    ].join('\n');
   }
 
   const navHeader = createFromHTML(`<div class="global-nav__header">
@@ -341,7 +336,7 @@ export const createNav = ({
         ${createProductDropdown(canonicalProducts)}
       </div>
       ${loginsHTML}
-    </div>`,
+    </div>`
   );
 
   // Attach to the DOM

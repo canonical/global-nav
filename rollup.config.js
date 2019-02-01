@@ -29,9 +29,10 @@ export default [
       resolve(),
       sass({
         insert: true,
-        processor: css => postcss([autoprefixer, cssnano])
-          .process(css)
-          .then(result => result.css),
+        processor: css =>
+          postcss([autoprefixer, cssnano])
+            .process(css)
+            .then(result => result.css),
       }),
       uglify(),
     ],
