@@ -30,7 +30,7 @@ The `createNav` function takes an object of options with the following propertie
 For example, to use the global-nav without the "login" section, and set the `max-width` to `80rem`:
 
 ``` html
-<script src="/static/js/modules/global-nav.js"></script>
+<script src="/node_modules/global-nav/dist/index.js"></script>
 <script>canonicalGlobalNav.createNav({showLogins: false, maxWidth: '80rem'});</script>
 ```
 
