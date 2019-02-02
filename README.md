@@ -1,10 +1,12 @@
 # Canonical Ltd Global nav
 
-This project contains the JavaScript and styles to display a banner across the top of a page. This banner displays a list of corporate eco-system websites. Giving a user the ability to jump arounds the core sites easily.
+This project contains the JavaScript and styles to display a banner across the top of a page.
+
+This banner displays a list of corporate eco-system websites giving a user the ability to jump around the core sites easily.
 
 ## Usage
 
-Simply use a node pacakage manager to install this component and then link the JS file into the head of your site, with optional settings. The styles will automatically be injected into the page's `<head>`.
+Simply use a node package manager to install this component and then link the JS file into the head of your site, with optional settings. The styles will automatically be injected into the page's `<head>`.
 
 1. Install via yarn or npm
 
