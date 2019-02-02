@@ -35,6 +35,7 @@ For example, to use the global-nav without the "login" section, and set the `max
 
 ```html
 <script src="/node_modules/global-nav/dist/index.js"></script>
+
 <script>
   canonicalGlobalNav.createNav({ showLogins: false, maxWidt: '80rem' });
 </script>
