@@ -1,6 +1,7 @@
 {
   "extends": [
-    "airbnb-base"
+    "airbnb-base",
+    "prettier"
   ],
   "rules": {
     "import/prefer-default-export": false

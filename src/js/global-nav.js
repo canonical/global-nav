@@ -290,7 +290,7 @@ export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
   // Recruitment call to action
   console.log(
     'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
-  );
+  ); //eslint-disable-line
 
   // Build global nav components
   const wrapper = createFromHTML(
