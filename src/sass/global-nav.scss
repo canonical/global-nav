@@ -11,9 +11,9 @@ $global-nav-bg-color: #262626;
 $global-nav-border-color: #666;
 $global-nav-font-color: #f7f7f7;
 $global-nav-font-family: unquote($font-base-family);
-$global-nav-font-size: .875rem;
-$global-nav-font-size-mobile: .8175rem;
-$global-nav-overlay-color: rgba(17, 17, 17, .4);
+$global-nav-font-size: 0.875rem;
+$global-nav-font-size-mobile: 0.8175rem;
+$global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 
 .global-nav {
   @include vf-b-placeholders;
@@ -23,8 +23,8 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   @include vf-u-padding-collapse;
   color: $global-nav-font-color;
   display: flex;
-  font-family: $global-nav-font-family;
   flex-shrink: 0;
+  font-family: $global-nav-font-family;
   font-size: $global-nav-font-size;
   font-weight: 300;
   line-height: map-get($line-heights, default-text);
@@ -60,7 +60,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   .global-nav__header-logo-anchor {
     display: inline-block;
     line-height: 0;
-    padding: .6875rem 1rem .6875rem 0;
+    padding: 0.6875rem 1rem 0.6875rem 0;
 
     @media (max-width: $global-nav-breakpoint) {
       display: block;
@@ -91,7 +91,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     display: inline-block;
     line-height: 1.25rem;
     margin-bottom: 0;
-    padding: .375rem 1.625rem .375rem .5rem;
+    padding: 0.375rem 1.625rem 0.375rem 0.5rem;
     text-decoration: none;
 
     @media (max-width: $global-nav-breakpoint) {
@@ -103,11 +103,11 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
       @include vf-icon-chevron($global-nav-font-color);
       background-size: 100%;
       content: '';
-      height: .25rem;
+      height: 0.25rem;
       position: absolute;
-      right: .5rem;
-      top: .9625rem;
-      width: .625rem;
+      right: 0.5rem;
+      top: 0.9625rem;
+      width: 0.625rem;
     }
   }
 
@@ -139,7 +139,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     padding-top: 0;
 
     @media (max-width: $global-nav-breakpoint) {
-      padding: 1.5rem 0 .5rem 0;
+      padding: 1.5rem 0 0.5rem 0;
     }
   }
 
@@ -222,9 +222,9 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
       background-repeat: no-repeat;
       background-size: $global-nav-font-size-mobile;
       content: '';
-      height: .4rem;
+      height: 0.4rem;
       position: absolute;
-      right: .5rem;
+      right: 0.5rem;
       top: 1.5rem;
       width: $global-nav-font-size-mobile;
     }
@@ -260,11 +260,11 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     padding: 1rem;
     width: 33.33%;
 
-    &:nth-child(3n+1) {
+    &:nth-child(3n + 1) {
       padding-left: 0;
     }
 
-    &:nth-child(3n+3) {
+    &:nth-child(3n + 3) {
       border-right: 0;
       padding-right: 0;
     }
@@ -287,11 +287,11 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     display: inline-block;
     height: auto;
     margin-bottom: 1rem;
-    margin-right: .75rem;
+    margin-right: 0.75rem;
     max-height: 2rem;
     max-width: 2rem;
     position: relative;
-    top: .1rem;
+    top: 0.1rem;
 
     @media (max-width: $global-nav-breakpoint) {
       display: none;
@@ -317,7 +317,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   }
 
   .global-nav__matrix-desc {
-    margin: -1rem 0 .1rem 2.75rem;
+    margin: -1rem 0 0.1rem 2.75rem;
 
     @media (max-width: $global-nav-breakpoint) {
       display: none;
@@ -325,8 +325,8 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   }
 
   .global-nav__link {
-    display: inline-flex;
     color: $global-nav-font-color;
+    display: inline-flex;
     text-decoration: none;
 
     &:hover {
@@ -344,13 +344,13 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
     .global-nav__list-item {
       display: inline-block;
       margin: 0;
-      padding: .25rem 0;
+      padding: 0.25rem 0;
       width: 100%;
     }
   }
 
   .global-nav__inline-list {
-    margin: .5rem 0 0 0;
+    margin: 0.5rem 0 0 0;
     padding: 0 0 1rem 2.75rem;
 
     @media (max-width: $global-nav-breakpoint) {
