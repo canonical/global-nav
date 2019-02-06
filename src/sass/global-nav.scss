@@ -23,8 +23,8 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   @include vf-u-padding-collapse;
   color: $global-nav-font-color;
   display: flex;
-  font-family: $global-nav-font-family;
   flex-shrink: 0;
+  font-family: $global-nav-font-family;
   font-size: $global-nav-font-size;
   font-weight: 300;
   line-height: map-get($line-heights, default-text);
@@ -325,8 +325,8 @@ $global-nav-overlay-color: rgba(17, 17, 17, .4);
   }
 
   .global-nav__link {
-    display: inline-flex;
     color: $global-nav-font-color;
+    display: inline-flex;
     text-decoration: none;
 
     &:hover {
