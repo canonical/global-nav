@@ -51,61 +51,81 @@ const canonicalProducts = {
     {
       title: 'Enterprise Support',
       url: 'http://www.ubuntu.com/support',
-      description: 'Canonical supports Ubuntu for clouds, data centers and devices',
-    }, {
+      description:
+        'Canonical supports Ubuntu for clouds, data centers and devices',
+    },
+    {
       title: 'Image Service',
       url: 'https://cloud-images.ubuntu.com/',
-      description: 'Hardened Ubuntu images on AWS, Google, KVM, VMware, MAAS, LXD',
-    }, {
+      description:
+        'Hardened Ubuntu images on AWS, Google, KVM, VMware, MAAS, LXD',
+    },
+    {
       title: 'Cloud-init',
       url: 'https://cloud-init.io/',
       description: 'Apply user data to your instances automatically',
-    }, {
+    },
+    {
       title: 'Mir',
-      url: 'https://wiki.ubuntu.com/Mir',
-      description: 'Ultra-fast and light Wayland compositor for secure device display management',
-    }, {
+      url: 'https://mir-server.io/',
+      description:
+        'Ultra-fast and light Wayland compositor for secure device display management',
+    },
+    {
       title: 'Conjure-up',
       url: 'https://conjure-up.io/',
-      description: 'Summon up a big-software stack as a “spell” using conjure-up to get you a fully installed and usable stack',
-    }, {
+      description:
+        'Summon up a big-software stack as a “spell” using conjure-up to get you a fully installed and usable stack',
+    },
+    {
       title: 'Netplan',
       url: 'http://www.netplan.io/',
-      description: 'Easily configure your networks using Netplan, a YAML network configuration abstraction for various backends',
+      description:
+        'Easily configure your networks using Netplan, a YAML network configuration abstraction for various backends',
     },
   ],
   resources: [
     {
       title: 'Webinars',
       url: 'https://blog.ubuntu.com/?category=webinars#posts-list',
-    }, {
+    },
+    {
       title: 'Tutorials',
       url: 'https://tutorials.ubuntu.com/',
-    }, {
+    },
+    {
       title: 'Videos',
       url: 'https://blog.ubuntu.com/?category=videos#posts-list',
-    }, {
+    },
+    {
       title: 'Case studies',
       url: 'https://blog.ubuntu.com/?category=case-studies#posts-list',
-    }, {
+    },
+    {
       title: 'White papers',
       url: 'https://blog.ubuntu.com/?category=white-papers#posts-list',
-    }, {
+    },
+    {
       title: 'Docs',
       url: 'https://docs.ubuntu.com/',
-    }, {
+    },
+    {
       title: 'Training',
       url: 'https://www.ubuntu.com/cloud/training',
-    }, {
+    },
+    {
       title: 'Blog',
       url: 'https://blog.ubuntu.com/',
-    }, {
+    },
+    {
       title: 'Developer',
       url: 'https://developer.ubuntu.com/',
-    }, {
+    },
+    {
       title: 'Install',
       url: 'https://www.ubuntu.com/download/cloud',
-    }, {
+    },
+    {
       title: 'Download',
       url: 'https://www.ubuntu.com/download',
     },
@@ -114,19 +134,24 @@ const canonicalProducts = {
     {
       title: 'Ubuntu',
       url: 'https://www.ubuntu.com/',
-    }, {
+    },
+    {
       title: 'Canonical',
       url: 'https://www.canonical.com/',
-    }, {
+    },
+    {
       title: 'Press centre',
       url: 'https://blog.ubuntu.com/press-centre',
-    }, {
+    },
+    {
       title: 'Partners',
       url: 'https://partners.ubuntu.com/',
-    }, {
+    },
+    {
       title: 'Merchandise',
       url: 'https://shop.canonical.com/',
-    }, {
+    },
+    {
       title: 'Contact',
       url: 'https://www.ubuntu.com/about/contact-us',
     },
@@ -137,31 +162,36 @@ const canonicalLogins = [
   {
     title: 'Ubuntu Advantage',
     logoUrl: 'data:image/svg+xml,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%20standalone%3D%27no%27%3F%3E%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xml%3Aspace%3D%27preserve%27%20height%3D%27400px%27%20width%3D%27400px%27%20version%3D%271.1%27%20enable-background%3D%27new%20-97%20220.9%20400%20400%27%20viewBox%3D%27-97%20220.9%20400%20400%27%3E%0A%3Cstyle%20type%3D%27text%2Fcss%27%3E%0A%09.st0%7Bfill%3A%23E95420%3B%7D%0A%09.st1%7Bfill%3A%23FFFFFF%3B%7D%0A%3C%2Fstyle%3E%0A%09%3Cpath%20class%3D%27st0%27%20d%3D%27m303%20420.9c0%20110.4-89.5%20200-200%20200s-200-89.6-200-200c0-110.5%2089.5-200%20200-200s200%2089.5%20200%20200z%27%2F%3E%0A%09%09%3Cpath%20class%3D%27st1%27%20d%3D%27m-33%20394.2c-14.8%200-26.7%2012-26.7%2026.7s12%2026.7%2026.7%2026.7%2026.7-12%2026.7-26.7c0-14.8-12-26.7-26.7-26.7zm190.7%20121.3c-12.8%207.4-17.1%2023.7-9.8%2036.5%207.4%2012.8%2023.7%2017.2%2036.5%209.8s17.1-23.7%209.8-36.5c-7.5-12.7-23.8-17.1-36.5-9.8zm-132.7-94.6c0-26.4%2013.1-49.7%2033.2-63.8l-19.5-32.7c-23.4%2015.6-40.7%2039.5-48%2067.4%208.4%206.9%2013.8%2017.4%2013.8%2029.1s-5.4%2022.2-13.8%2029.1c7.2%2027.9%2024.6%2051.8%2048%2067.4l19.5-32.7c-20.1-14.1-33.2-37.4-33.2-63.8zm78-78c40.8%200%2074.2%2031.2%2077.7%2071.1l38.1-0.6c-1.9-29.4-14.7-55.8-34.5-75.2-10.2%203.8-21.9%203.2-32-2.6-10.2-5.9-16.5-15.7-18.3-26.5-9.9-2.7-20.3-4.2-31-4.2-18.5%200-35.9%204.3-51.4%2012l18.6%2033.2c9.9-4.6%2021.1-7.2%2032.8-7.2zm0%20156c-11.7%200-22.9-2.6-32.9-7.2l-18.6%2033.2c15.5%207.7%2033%2012%2051.4%2012%2010.7%200%2021.1-1.5%2031-4.2%201.7-10.7%208.1-20.6%2018.3-26.5%2010.1-5.9%2021.9-6.4%2032-2.6%2019.7-19.4%2032.6-45.8%2034.5-75.2l-38.1-0.6c-3.4%2039.8-36.8%2071.1-77.6%2071.1zm54.6-172.7c12.8%207.4%2029.1%203%2036.5-9.8s3-29.1-9.8-36.5-29.1-3-36.5%209.8c-7.3%2012.8-2.9%2029.1%209.8%2036.5z%27%2F%3E%0A%3C%2Fsvg%3E',
-    description: 'Enterprise support service to manage and add value to your Ubuntu deployment',
+    description: 'Enterprise support service to manage and add value to your Ubuntu 
     login: 'http://support.canonical.com/',
     signup: 'https://buy.ubuntu.com/',
-  }, {
+  },
+  {
     title: 'Landscape',
     logoUrl: 'data:image/svg+xml,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%20standalone%3D%27no%27%3F%3E%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20version%3D%271.1%27%20viewBox%3D%270%200%20340%20340%27%3E%0A%20%3Ctitle%3ELandscape%3C%2Ftitle%3E%0A%20%3Cg%20fill-rule%3D%27evenodd%27%20fill%3D%27none%27%3E%0A%20%20%3Cg%20transform%3D%27translate(0%20-1)%27%20fill-rule%3D%27nonzero%27%3E%0A%20%20%20%3Cpath%20d%3D%27m339.29%20170.99c0%2093.61-75.88%20169.51-169.51%20169.51-93.601%200-169.51-75.9-169.51-169.51%200.00337-93.624%2075.909-169.51%20169.51-169.51%2093.63%200.003%20169.51%2075.886%20169.51%20169.51z%27%20fill%3D%27%23E95420%27%2F%3E%0A%20%20%20%3Cpath%20d%3D%27m256.96%20214.58c0-2.67-2.17-4.84-4.84-4.84h-92.02v-150.14c0-1.284-0.51-2.516-1.42-3.425-0.91-0.907-2.14-1.418-3.43-1.418h-38.74c-2.67%200-4.84%202.17-4.84%204.844v193.73c0%202.67%202.17%204.84%204.84%204.84h116.23c1.29%200%202.52-0.51%203.43-1.42s1.42-2.14%201.42-3.42v-19.38c0-2.67-2.17-4.84-4.85-4.84h-92.02v-154.98h-9.68v159.82c0%202.68%202.17%204.85%204.84%204.85h92.02v9.68h-106.55v-184.04l29.06%200.005v150.14c0%202.68%202.17%204.84%204.84%204.84h92.02v48.44h-145.29v-208.26c0-2.673-2.17-4.841-4.846-4.841-2.674%200-4.844%202.168-4.844%204.844v213.1c0%202.67%202.172%204.84%204.844%204.84h154.98c1.29%200%202.52-0.51%203.43-1.42%200.91-0.9%201.42-2.14%201.42-3.42v-58.12z%27%20fill%3D%27%23fff%27%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%3C%2Fg%3E%0A%3C%2Fsvg%3E',
     description: 'Manage, deploy, and monitor your Ubuntu servers',
     login: 'https://landscape.canonical.com/login/authenticate',
-  }, {
+  },
+  {
     title: 'Livepatch',
     logoUrl: 'data:image/svg+xml,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%20standalone%3D%27no%27%3F%3E%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20version%3D%271.1%27%20viewBox%3D%270%200%2032%2032%27%3E%0A%20%3Ctitle%3ECanonical%3C%2Ftitle%3E%0A%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%3Cg%20fill-rule%3D%27evenodd%27%20fill%3D%27none%27%3E%0A%20%20%3Cg%20fill-rule%3D%27nonzero%27%20transform%3D%27translate(-320%20-69)%27%20fill%3D%27%23fff%27%3E%0A%20%20%20%3Cg%20transform%3D%27translate(314%2065)%27%3E%0A%20%20%20%20%3Cg%20transform%3D%27translate(6%204)%27%3E%0A%20%20%20%20%20%3Cpath%20d%3D%27m16%2026.188c-5.627%200-10.188-4.5598-10.188-10.188%200-5.6272%204.5611-10.188%2010.188-10.188%205.627%200%2010.188%204.5606%2010.188%2010.188%200%205.6282-4.5608%2010.188-10.188%2010.188v0.00008zm16-10.188c0%208.8362-7.1634%2016-16%2016-8.837%200-16-7.1637-16-16%200-8.837%207.163-16%2016-16%208.8366%200%2016%207.1632%2016%2016zm-16-12.108c-6.6874%200-12.108%205.4211-12.108%2012.108%200%206.688%205.4202%2012.108%2012.108%2012.108s12.108-5.4194%2012.108-12.108c0-6.687-5.4202-12.108-12.108-12.108h-0.00008z%27%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%20%20%20%3C%2Fg%3E%0A%20%20%3C%2Fg%3E%0A%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A',
     description: 'Apply critical kernel security fixes without rebooting',
     login: 'https://auth.livepatch.canonical.com/',
     signup: 'https://auth.livepatch.canonical.com/',
-  }, {
+  },
+  {
     title: 'Launchpad.net',
     logoUrl: 'data:image/svg+xml,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%20standalone%3D%27no%27%3F%3E%0A%3Csvg%20id%3D%27svg4180%27%20xmlns%3Ardf%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2714.58mm%27%20width%3D%2713.163mm%27%20version%3D%271.1%27%20xmlns%3Acc%3D%27http%3A%2F%2Fcreativecommons.org%2Fns%23%27%20xmlns%3Adc%3D%27http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%27%20viewBox%3D%270%200%2013.162958%2014.579835%27%3E%0A%20%3Cg%20id%3D%27layer1%27%20transform%3D%27translate(-5.5138%20-1.6922)%27%3E%0A%20%20%3Cg%20id%3D%27g2986%27%20fill-rule%3D%27evenodd%27%20transform%3D%27matrix(.54092%200%200%20.54092%20-77.73%20-99.989)%27%3E%0A%20%20%20%3Cpath%20id%3D%27path2988%27%20d%3D%27m165.22%20188.53-9.9287%205.7252%204.7648%202.7566%205.1514-2.9686z%27%20fill%3D%27%233895bd%27%2F%3E%0A%20%20%20%3Cpath%20id%3D%27path2990%27%20d%3D%27m166.91%20188.53v5.5132l5.1514%202.9686%204.7772-2.7566z%27%20fill%3D%27%238fb635%27%2F%3E%0A%20%20%20%3Cpath%20id%3D%27path2992%27%20d%3D%27m166.06%20195.51-5.1514%202.9686v5.9622l5.1514%202.9562%205.1514-2.9562v-5.9622z%27%20fill%3D%27%23f8c300%27%2F%3E%0A%20%20%20%3Cpath%20id%3D%27path2994%27%20d%3D%27m177.67%20195.72-4.7772%202.769v5.9372l4.7772%202.7566z%27%20fill%3D%27%23d18c3b%27%2F%3E%0A%20%20%20%3Cpath%20id%3D%27path2996%27%20d%3D%27m154.45%20195.73v11.45l4.7772-2.7566v-5.9497z%27%20fill%3D%27%233941bf%27%2F%3E%0A%20%20%20%3Cpath%20id%3D%27path2998%27%20d%3D%27m160.06%20205.88-4.7648%202.7566%209.9162%205.7377v-5.52l-5.139-2.9811z%27%20fill%3D%27%23bb3a84%27%2F%3E%0A%20%20%20%3Cpath%20id%3D%27path3000%27%20d%3D%27m172.06%20205.9-5.1514%202.9686v5.5132l9.9162-5.7377z%27%20fill%3D%27%23a02c35%27%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%3C%2Fg%3E%0A%3C%2Fsvg%3E',
     description: 'The software collaboration platform behind Ubuntu',
     login: 'https://launchpad.net/+login',
-  }, {
+  },
+  {
     title: 'Snapcraft.io',
     logoUrl: 'data:image/svg+xml,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%20standalone%3D%27no%27%3F%3E%0A%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20version%3D%271.1%27%20viewBox%3D%270%200%2044%2044%27%3E%0A%20%3Ctitle%3Esnapcraft%3Dprimary-icon%3C%2Ftitle%3E%0A%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%3Cg%20fill-rule%3D%27evenodd%27%20fill%3D%27none%27%3E%0A%20%20%3Ccircle%20cy%3D%2722%27%20cx%3D%2722%27%20r%3D%2722%27%20fill%3D%27%23fff%27%2F%3E%0A%20%20%3Cg%20transform%3D%27translate(7%208)%27%20fill-rule%3D%27nonzero%27%3E%0A%20%20%20%3Cpath%20d%3D%27m18.06%207.28l6.92%203.08-6.92%206.92v-10zm-13.22%2023.22l8.49-15.92%203.73%203.7-12.22%2012.22zm-4.84-30l17.47%206.32v11.05l-17.47-17.37z%27%20fill%3D%27%2382BFA1%27%2F%3E%0A%20%20%20%3Cpolygon%20points%3D%2728.53%206.82%2018.46%206.82%2031.4%2012.57%27%20fill%3D%27%23FA6340%27%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%3C%2Fg%3E%0A%3C%2Fsvg%3E',
     description: 'Manage your snaps and snap store(s)',
     login: 'https://snapcraft.io/account',
-  }, {
+  },
+  {
     title: 'JAAS',
     logoUrl: 'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27100%27%20height%3D%27100%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%3E%3Cpath%20fill%3D%27%23DD4814%27%20d%3D%27M50%200C22.385%200%200%2022.383%200%2049.997S22.385%20100%2050%20100c27.613%200%2050-22.39%2050-50.003C100%2022.383%2077.613%200%2050%200z%27%2F%3E%3Cpath%20fill%3D%27%23fff%27%20d%3D%27M25.733%2080.915c-.425.427-.987.66-1.59.66-.603%200-1.17-.235-1.594-.663-.425-.424-.66-.987-.66-1.59%200-.6.235-1.166.66-1.594.423-.424.99-.658%201.593-.658s1.165.234%201.59.658c.424.424.658.99.658%201.594.002.603-.232%201.166-.657%201.593zM35.545%2047.29c-.226-.72-.553-1.313-.968-1.763-.416-.446-.92-.784-1.498-.996-.58-.214-1.235-.323-1.95-.323-.717%200-1.368.11-1.935.324-.566.213-1.063.55-1.48.997-.414.45-.742%201.043-.966%201.764-.23.73-.347%201.616-.347%202.646V76.14H21.88V49.53c0-1.34.18-2.59.54-3.71.36-1.125.925-2.117%201.682-2.955.757-.837%201.723-1.492%202.87-1.953%201.146-.463%202.535-.697%204.124-.697%201.59%200%202.99.234%204.156.697%201.17.46%202.15%201.116%202.907%201.953.752.838%201.325%201.828%201.698%202.955.367%201.12.558%202.37.558%203.71v3.614h-4.52v-3.21c-.006-1.025-.122-1.913-.35-2.643zM54.425%2065.658c0%201.348-.188%202.598-.56%203.717-.37%201.125-.94%202.117-1.697%202.955-.757.834-1.736%201.492-2.905%201.953-1.17.46-2.57.694-4.156.694-1.59%200-2.974-.234-4.12-.694-1.152-.46-2.116-1.12-2.876-1.953-.754-.838-1.318-1.83-1.68-2.955-.357-1.12-.54-2.37-.54-3.717v-11.43h4.522V65.26c0%201.024.117%201.914.346%202.64.228.726.552%201.318.966%201.764.42.45.915.784%201.48%201%20.57.214%201.22.323%201.937.323.714%200%201.373-.113%201.95-.328.576-.212%201.08-.55%201.496-.996.417-.45.744-1.04.97-1.76.23-.73.346-1.622.346-2.644V54.227h4.522V65.66zM49.912%2050.93c0-1.245%201.008-2.252%202.25-2.252%201.24%200%202.252%201.007%202.252%202.252%200%201.238-1.01%202.248-2.252%202.248-1.243%200-2.25-1.01-2.25-2.248zM63.565%2019.012c-.226-.72-.552-1.316-.968-1.763-.416-.45-.92-.785-1.495-.997-.58-.218-1.235-.323-1.952-.323-.714%200-1.366.106-1.935.32-.565.215-1.064.552-1.48%201-.415.445-.74%201.04-.966%201.762-.23.73-.346%201.613-.346%202.643v26.203H49.9V21.255c0-1.34.18-2.59.54-3.713.36-1.128.926-2.12%201.683-2.958.755-.834%201.722-1.49%202.87-1.953%201.15-.46%202.536-.696%204.123-.696%201.587%200%202.985.237%204.154.697%201.173.464%202.15%201.12%202.905%201.954.76.838%201.33%201.83%201.7%202.955.37%201.124.557%202.374.557%203.715v3.608H63.91v-3.21c0-1.023-.117-1.913-.345-2.64zM82.446%2037.38c0%201.345-.188%202.595-.56%203.714-.37%201.127-.94%202.12-1.695%202.955-.76.833-1.736%201.49-2.905%201.954-1.172.458-2.57.692-4.156.692-1.592%200-2.98-.234-4.126-.692-1.147-.463-2.114-1.12-2.872-1.955-.755-.835-1.322-1.83-1.683-2.956-.356-1.12-.54-2.37-.54-3.714V25.95h4.524v11.03c0%201.024.116%201.914.345%202.643.225.723.55%201.314.968%201.764.415.446.915.78%201.48.996.567.215%201.217.326%201.933.326.718%200%201.375-.112%201.954-.327.576-.215%201.078-.55%201.494-.996.415-.45.743-1.04.97-1.764.228-.73.346-1.618.346-2.643V25.95h4.52v11.43h.002z%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E',
     description: 'Deploy, configure, scale and operate your software on public and private clouds',
