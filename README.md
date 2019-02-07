@@ -65,6 +65,18 @@ Before submitting your pull request. Run the lint, which checks both the JS and 
 yarn lint
 ```
 
+### How to add inline svgs
+
+Just because this was a bit of a pain, here is what I did.
+
+1. [Shrink the svg](https://www.svgminify.com/) as much as possible
+2. Upload it to the asset server for others - OPTIONAL
+3. View it in a browser and grab the source code.
+4. Convert the quotes from double `"` to single `'` - CRITICAL
+4. [Encode the svg](https://meyerweb.com/eric/tools/dencoder/)
+5. Add this with `data:image/svg+xml,` in the right place in product-details.js
+
+
 ## Contributing
 
 If you would like to help improve this project, here is a list of commands to help you get started.
