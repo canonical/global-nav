@@ -64,9 +64,7 @@ function createProductDropdown(products) {
     .map((flagship, index) => {
       let flagshipMarkup = `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${flagship.url}>
-            <img class="global-nav__matrix-image" src=${
-              flagship.logoUrl
-            } alt="icon">
+            <img class="global-nav__matrix-image" src=${flagship.logoUrl} width="32" height="32" alt="icon">
             <h4 class="global-nav__matrix-title">${flagship.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
@@ -178,7 +176,7 @@ function createLoginDropdown(logins) {
           <a class="global-nav__link" href=${loginItem.login}>
             <img class="global-nav__matrix-image" src=${
               loginItem.logoUrl
-            } alt="">
+            } width="32" height="32" alt="">
             <h4 class="global-nav__matrix-title">${loginItem.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
