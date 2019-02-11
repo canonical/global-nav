@@ -46,6 +46,7 @@ For example, to use the global-nav without the "login" section, and set the `max
 To build the JS into the `/dist` folder, run:
 
 ```
+yarn install
 yarn build
 ```
 
