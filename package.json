@@ -33,7 +33,7 @@
     "postcss": "7.0.14",
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
-    "rollup": "0.68.2",
+    "rollup": "1.2.2",
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-node-resolve": "3.4.0",
