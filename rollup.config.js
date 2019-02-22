@@ -13,8 +13,8 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: pkg.main,
-      format: 'umd',
+      file: pkg.iife,
+      format: 'iife',
       name: 'canonicalGlobalNav',
       sourcemap: true,
     },
@@ -38,20 +38,29 @@ export default [
     ],
   },
   {
-    input: 'test/es6-import-test.js',
+    input: 'src/index.js',
     output: {
-      file: 'dist/es6-import-test.js',
-      format: 'umd',
-      name: 'es6-import-test',
+      file: pkg.main,
+      format: 'esm',
+      name: 'canonicalGlobalNav',
+      sourcemap: true,
     },
     plugins: [
       babel({
         babelrc: false,
-        exclude: ['dist/**'],
+        exclude: ['node_modules/**', 'src/**/*.scss'],
         presets: [['env', { modules: false }], 'stage-0'],
         plugins: ['external-helpers'],
       }),
       commonjs(),
+      resolve(),
+      sass({
+        insert: true,
+        processor: css =>
+          postcss([autoprefixer, cssnano])
+            .process(css)
+            .then(result => result.css),
+      }),
     ],
   },
 ];

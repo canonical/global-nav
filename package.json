@@ -3,6 +3,7 @@
   "version": "2.0.1",
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
   "main": "dist/index.js",
+  "iife": "dist/iife.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "lint": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js",
