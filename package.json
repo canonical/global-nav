@@ -6,6 +6,7 @@
   "iife": "dist/iife.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
+    "prettier-check": "prettier **/* --check",
     "lint": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js",
     "watch": "rollup -c -w"
   },

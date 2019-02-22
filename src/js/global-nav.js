@@ -64,7 +64,9 @@ function createProductDropdown(products) {
     .map((flagship, index) => {
       let flagshipMarkup = `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${flagship.url}>
-            <img class="global-nav__matrix-image" src=${flagship.logoUrl} width="32" height="32" alt="icon">
+            <img class="global-nav__matrix-image" src=${
+              flagship.logoUrl
+            } width="32" height="32" alt="icon">
             <h4 class="global-nav__matrix-title">${flagship.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
@@ -286,9 +288,11 @@ function addListeners(breakpoint, wrapper) {
 
 export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
   // Recruitment call to action
+  /* eslint-disable */
   console.log(
     'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
-  ); //eslint-disable-line
+  );
+  /* eslint-enable */
 
   // Build global nav components
   const wrapper = createFromHTML(
