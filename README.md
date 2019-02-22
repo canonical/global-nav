@@ -15,13 +15,22 @@ yarn add global-nav
 npm install global-nav --save
 ```
 
-2. Add a link to the JS file and run the `canonicalGlobalNav.createNav()` function
+2. You can then install the library either by directly linking to it or via ES6 imports.
+
+To consume the library directly, add a link to the JS file containing an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and run the `canonicalGlobalNav.createNav()` function
 
 ```html
-<script src="/node_modules/global-nav/dist/index.js"></script>
+<script src="/node_modules/global-nav/dist/iife.js"></script>
 <script>
   canonicalGlobalNav.createNav();
 </script>
+```
+
+To import it, simply call it from your site-wide JS file;
+
+```js
+import {createNav} from 'global-nav';
+createNav();
 ```
 
 ### Options
@@ -37,8 +46,15 @@ For example, to use the global-nav without the "login" section, and set the `max
 <script src="/node_modules/global-nav/dist/index.js"></script>
 
 <script>
-  canonicalGlobalNav.createNav({ showLogins: false, maxWidt: '80rem' });
+  canonicalGlobalNav.createNav({ showLogins: false, maxWidth: '80rem' });
 </script>
+```
+
+If you're importing;
+
+```js
+import {createNav} from 'global-nav';
+createNav({ showLogins: false, maxWidth: '80rem' });
 ```
 
 ## Building the Global nav
@@ -54,7 +70,7 @@ You can view the build files in action by opening the `index.html` in the root o
 
 ## Hacking
 
-When developing this project you can run the following command to listen to changes in the `src/js/*js` and `src/sass/*scss` and builds them into the `/dist` folder.
+When developing this project you can run the following command to listen to changes in the `src/js/*.js` and `src/sass/*.scss` and builds them into the `/dist` folder.
 
 ```
 yarn watch
