@@ -288,11 +288,10 @@ function addListeners(breakpoint, wrapper) {
 
 export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
   // Recruitment call to action
-  /* eslint-disable */
+  // eslint-disable-next-line no-console
   console.log(
     'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
   );
-  /* eslint-enable */
 
   // Build global nav components
   const wrapper = createFromHTML(
