@@ -58,7 +58,7 @@ export default [
         insert: true,
         processor: css =>
           postcss([autoprefixer, cssnano])
-            .process(css)
+            .process(css, { from: undefined })
             .then(result => result.css),
       }),
     ],
