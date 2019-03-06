@@ -1,9 +1,9 @@
 {
   "name": "global-nav",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
-  "main": "dist/index.js",
-  "iife": "dist/iife.js",
+  "main": "dist/module.js",
+  "iife": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "prettier-check": "prettier **/* --check",
