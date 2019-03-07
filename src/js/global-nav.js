@@ -1,4 +1,5 @@
 import { canonicalProducts, canonicalLogins } from './product-details';
+import { instantPage } from './instant-page';
 
 function createFromHTML(html) {
   const div = window.document.createElement('div'); //eslint-disable-line
@@ -348,4 +349,7 @@ export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
 
   // Add event listeners
   addListeners(900, wrapper);
+
+  // Apply just-in-time preloading to links on hover
+  instantPage();
 };
