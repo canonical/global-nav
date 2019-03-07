@@ -39,7 +39,7 @@
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-commonjs": "9.2.1",
     "rollup-plugin-node-resolve": "4.0.1",
-    "rollup-plugin-sass": "0.9.3",
+    "rollup-plugin-sass": "1.1.0",
     "rollup-plugin-uglify": "6.0.2",
     "sass-lint": "1.12.1",
     "vanilla-framework": "1.8.1"
