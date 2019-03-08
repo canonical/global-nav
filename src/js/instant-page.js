@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*! instant.page v1.2.1 - (C) 2019 Alexandre Dieulot - https://instant.page/license */
 
 export const instantPage = () => {
