@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ubuntudesign/global-nav.git"
+    "url": "git+https://github.com/canonical-webteam/global-nav.git"
   },
   "author": "Anthony Dillon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ubuntudesign/global-nav/issues"
+    "url": "https://github.com/canonical-webteam/global-nav/issues"
   },
-  "homepage": "https://github.com/ubuntudesign/global-nav#readme",
+  "homepage": "https://github.com/canonical-webteam/global-nav#readme",
   "devDependencies": {
     "autoprefixer": "9.4.8",
     "babel-core": "6.26.3",
