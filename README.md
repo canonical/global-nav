@@ -11,8 +11,8 @@ Simply use a node package manager to install this component and then link the JS
 1. Install via yarn or npm
 
 ```bash
-yarn add global-nav
-npm install global-nav --save
+yarn add @canonical/global-nav
+npm install @canonical/global-nav --save
 ```
 
 2. You can then install the library either by directly linking to it or via ES6 imports.
@@ -20,7 +20,7 @@ npm install global-nav --save
 To consume the library directly, add a link to the JS file containing an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and run the `canonicalGlobalNav.createNav()` function
 
 ```html
-<script src="/node_modules/global-nav/dist/iife.js"></script>
+<script src="/node_modules/@canonical/global-nav/dist/iife.js"></script>
 <script>
   canonicalGlobalNav.createNav();
 </script>
@@ -29,7 +29,7 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 To import it, simply call it from your site-wide JS file;
 
 ```js
-import {createNav} from 'global-nav';
+import {createNav} from '@canonical/global-nav';
 createNav();
 ```
 
@@ -43,7 +43,7 @@ The `createNav` function takes an object of options with the following propertie
 For example, to use the global-nav without the "login" section, and set the `max-width` to `80rem`:
 
 ```html
-<script src="/node_modules/global-nav/dist/index.js"></script>
+<script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
 
 <script>
   canonicalGlobalNav.createNav({ showLogins: false, maxWidth: '80rem' });
@@ -53,7 +53,7 @@ For example, to use the global-nav without the "login" section, and set the `max
 If you're importing;
 
 ```js
-import {createNav} from 'global-nav';
+import {createNav} from '@canonical/global-nav';
 createNav({ showLogins: false, maxWidth: '80rem' });
 ```
 
