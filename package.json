@@ -6,8 +6,9 @@
   "iife": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
-    "prettier-check": "prettier **/* --check",
     "lint": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js",
+    "prepublishonly": "npm run build",
+    "prettier-check": "prettier **/* --check",
     "watch": "rollup -c -w"
   },
   "repository": {
