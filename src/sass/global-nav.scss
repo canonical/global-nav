@@ -409,3 +409,22 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     display: none;
   }
 }
+
+// Skip to #main-content link
+.skip-content a {
+  color: $color-link;
+  display: block;
+  left: -999px;
+  position: absolute;
+  top: -999px;
+
+  &:focus {
+    background: $color-x-light;
+    border: 1px solid $color-link;
+    left: 0;
+    padding: 3px;
+    position: relative;
+    top: 0;
+    z-index: 999999;
+  }
+}
