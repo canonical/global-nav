@@ -1,23 +1,31 @@
-# Canonical Ltd Global nav
+# Canonical Global Nav
 
 This project contains the JavaScript and styles to display a banner across the top of a page.
 
-This banner displays a list of corporate eco-system websites giving a user the ability to jump around the core sites easily.
+This banner displays a list of Canonical eco-system websites giving a user the ability to jump around the core sites easily.
 
 ## Usage
 
-Simply use a node package manager to install this component and then link the JS file into the head of your site, with optional settings. The styles will automatically be injected into the page's `<head>`.
+Use a node package manager to install this component and then link the JS file into the head of your site, with optional settings.
+
+The styles will automatically be injected into the page's `<head>`.
 
 1. Install via yarn or npm
 
 ```bash
 yarn add @canonical/global-nav
+
+```
+
+...or...
+
+```bash
 npm install @canonical/global-nav --save
 ```
 
 2. You can then install the library either by directly linking to it or via ES6 imports.
 
-To consume the library directly, add a link to the JS file containing an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and run the `canonicalGlobalNav.createNav()` function
+To consume the library directly, add a link to the JS file containing an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and run the `canonicalGlobalNav.createNav()` function;
 
 ```html
 <script src="/node_modules/@canonical/global-nav/dist/iife.js"></script>
@@ -29,7 +37,7 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 To import it, simply call it from your site-wide JS file;
 
 ```js
-import {createNav} from '@canonical/global-nav';
+import { createNav } from '@canonical/global-nav';
 createNav();
 ```
 
@@ -53,7 +61,7 @@ For example, to use the global-nav without the "login" section, and set the `max
 If you're importing;
 
 ```js
-import {createNav} from '@canonical/global-nav';
+import { createNav } from '@canonical/global-nav';
 createNav({ showLogins: false, maxWidth: '80rem' });
 ```
 
@@ -68,15 +76,15 @@ yarn build
 
 You can view the build files in action by opening the `index.html` in the root of this project.
 
-## Hacking
+## Contributing
 
-When developing this project you can run the following command to listen to changes in the `src/js/*.js` and `src/sass/*.scss` and builds them into the `/dist` folder.
+When developing this project you can run the following command to listen to changes in the `src/js/*.js` and `src/sass/*.scss` files and build them into the `/dist` folder.
 
 ```
 yarn watch
 ```
 
-Before submitting your pull request. Run the lint, which checks both the JS and Sass for errors.
+Before submitting your pull request, run the linters - which checks both the JS and Sass for errors.
 
 ```
 yarn lint
@@ -90,13 +98,20 @@ Just because this was a bit of a pain, here is what I did.
 2. Upload it to the asset server for others - OPTIONAL
 3. View it in a browser and grab the source code.
 4. Convert the quotes from double `"` to single `'` - CRITICAL
-4. [Encode the svg](https://meyerweb.com/eric/tools/dencoder/)
-5. Add this with `data:image/svg+xml,` in the right place in product-details.js
+5. [Encode the svg](https://meyerweb.com/eric/tools/dencoder/)
+6. Add this with `data:image/svg+xml,` in the right place in product-details.js
 
+### Release process
 
-## Contributing
+The package is versioned using [semantic versioning](https://semver.org/) and published to the NPM registry.
 
-If you would like to help improve this project, here is a list of commands to help you get started.
+To cut a new release run;
+
+```bash
+npm version [patch|minor|major]
+```
+
+This will trigger the `prepublishonly` script which will ensure requisite artefacts are built before publishing.
 
 Code licensed LGPLv3 by Canonical Ltd.
 
