@@ -35,7 +35,7 @@ jobs:
           command: yarn install
       - run:
           name: Lint Sass and JS
-          command: yarn lint
+          command: yarn test
 workflows:
   version: 2
   build:
