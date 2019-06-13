@@ -69,25 +69,28 @@ createNav({ showLogins: false, maxWidth: '80rem' });
 
 To build the JS into the `/dist` folder, run:
 
+##implest way to run the site locally is to first [install Docker](https://docs.docker.com/engine/installation/) (on Linux you may need to [add your user to the `docker` group](https://docs.docker.com/engine/installation/linux/linux-postinstall/)), and then use the `./run` script:
+
+```bash
+./run
 ```
-yarn install
-yarn build
-```
 
-You can view the build files in action by opening the `index.html` in the root of this project.
+Once the containers are setup, you can visit <http://127.0.0.1:8300> in your browser.
 
-## Contributing
+### Watching changed files
 
-When developing this project you can run the following command to listen to changes in the `src/js/*.js` and `src/sass/*.scss` files and build them into the `/dist` folder.
+For working on [Sass files](src/sass) and [JS files](src/js) , you may want to dynamically watch for changes to rebuild the dist files whenever something changes.
 
-```
-yarn watch
+To setup the watcher, open a new terminal window and run:
+
+```bash
+./run watch
 ```
 
 Before submitting your pull request, run the linters - which checks both the JS and Sass for errors.
 
 ```
-yarn lint
+./run test
 ```
 
 ### How to add inline svgs

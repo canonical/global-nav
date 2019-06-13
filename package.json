@@ -6,10 +6,12 @@
   "iife": "dist/global-nav.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
-    "lint": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js",
+    "serve": "http-server -p 8300",
+    "test": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js",
     "prepublishonly": "npm run build",
     "prettier-check": "prettier **/* --check",
-    "watch": "rollup -c -w"
+    "watch": "rollup -c -w",
+    "clean": "rm -rf node_modules && rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-0": "6.24.1",
     "cssnano": "4.1.10",
+    "http-server": "^0.11.1i",
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "4.2.0",
