@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Run Prettier over all files
           command: yarn prettier-check
-  lint:
+  test:
     <<: *defaults
     steps:
       - checkout
@@ -42,4 +42,4 @@ workflows:
     jobs:
       - test-build
       - check-prettier
-      - lint
+      - test
