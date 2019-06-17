@@ -87,7 +87,7 @@ To setup the watcher, open a new terminal window and run:
 ./run watch
 ```
 
-Before submitting your pull request, run the linters - which checks both the JS and Sass for errors.
+Before submitting your pull request, run the tests - which checks both the JS and Sass for errors.
 
 ```
 ./run test
