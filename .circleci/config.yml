@@ -31,5 +31,4 @@ workflows:
   build:
     jobs:
       - test-build
-      - check-prettier
-      - test
+      - lint
