@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run build
           command: yarn build
-  test:
+  lint:
     <<: *defaults
     steps:
       - checkout
@@ -24,8 +24,8 @@ jobs:
           name: Install yarn dependencies
           command: yarn install
       - run:
-          name: Lint Sass and JS
-          command: yarn test
+          name: Lint code files
+          command: yarn lint
 workflows:
   version: 2
   build:
