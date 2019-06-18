@@ -16,16 +16,6 @@ jobs:
       - run:
           name: Run build
           command: yarn build
-  check-prettier:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Install yarn dependencies
-          command: yarn install
-      - run:
-          name: Run Prettier over all files
-          command: yarn prettier-check
   test:
     <<: *defaults
     steps:

@@ -7,9 +7,8 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "serve": "http-server -p 8300",
-    "test": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js",
+    "test": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js && prettier **/* --check",
     "prepublishonly": "npm run build",
-    "prettier-check": "prettier **/* --check",
     "watch": "rollup -c -w",
     "clean": "rm -rf node_modules && rm -rf dist"
   },
