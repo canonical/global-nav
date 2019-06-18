@@ -45,7 +45,9 @@
     "rollup-plugin-node-resolve": "4.2.3",
     "rollup-plugin-sass": "0.9.3",
     "rollup-plugin-uglify": "6.0.2",
-    "sass-lint": "1.13.1",
+    "sass-lint": "1.13.1"
+  },
+  "dependencies": {
     "vanilla-framework": "1.8.1"
   },
   "husky": {
