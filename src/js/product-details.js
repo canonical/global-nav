@@ -113,7 +113,7 @@ const canonicalProducts = {
   resources: [
     {
       title: 'Webinars',
-      url: 'https://www.ubuntu.com/blog?category=webinars#posts-list',
+      url: 'https://ubuntu.com/blog?category=webinars#posts-list',
     },
     {
       title: 'Tutorials',
@@ -121,15 +121,15 @@ const canonicalProducts = {
     },
     {
       title: 'Videos',
-      url: 'https://www.ubuntu.com/blog?category=videos#posts-list',
+      url: 'https://ubuntu.com/blog?category=videos#posts-list',
     },
     {
       title: 'Case studies',
-      url: 'https://www.ubuntu.com/blog?category=case-studies#posts-list',
+      url: 'https://ubuntu.com/blog?category=case-studies#posts-list',
     },
     {
       title: 'White papers',
-      url: 'https://www.ubuntu.com/blog?category=white-papers#posts-list',
+      url: 'https://ubuntu.com/blog?category=white-papers#posts-list',
     },
     {
       title: 'Docs',
@@ -141,7 +141,7 @@ const canonicalProducts = {
     },
     {
       title: 'Blog',
-      url: 'https://www.ubuntu.com/blog',
+      url: 'https://ubuntu.com/blog',
     },
     {
       title: 'Developer',
@@ -167,7 +167,7 @@ const canonicalProducts = {
     },
     {
       title: 'Press centre',
-      url: 'https://www.ubuntu.com/blog/press-centre',
+      url: 'https://ubuntu.com/blog/press-centre',
     },
     {
       title: 'Partners',
