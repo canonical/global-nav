@@ -22,8 +22,7 @@ export default [
       babel({
         babelrc: false,
         exclude: ['node_modules/**', 'src/**/*.scss'],
-        presets: [['env', { modules: false }], 'stage-0'],
-        plugins: ['external-helpers'],
+        presets: [['@babel/env', { modules: false }]],
       }),
       commonjs(),
       resolve(),
@@ -49,8 +48,7 @@ export default [
       babel({
         babelrc: false,
         exclude: ['node_modules/**', 'src/**/*.scss'],
-        presets: [['env', { modules: false }], 'stage-0'],
-        plugins: ['external-helpers'],
+        presets: [['@babel/env', { modules: false }]],
       }),
       commonjs(),
       resolve(),
