@@ -1,7 +1,7 @@
 {
   "extends": ["airbnb-base", "prettier"],
   "rules": {
-    "import/prefer-default-export": false,
+    "import/prefer-default-export": 0,
     "implicit-arrow-linebreak": "off"
   }
 }
