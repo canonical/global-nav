@@ -103,10 +103,10 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
       @include vf-icon-chevron($global-nav-font-color);
       background-size: 100%;
       content: '';
-      height: 0.25rem;
+      height: 0.5rem;
       position: absolute;
       right: 0.5rem;
-      top: 0.9625rem;
+      top: 0.75rem;
       width: 0.625rem;
     }
   }
