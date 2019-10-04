@@ -287,6 +287,7 @@ function addListeners(breakpoint, wrapper) {
 }
 
 export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
+  performance.mark('Global nav - start');
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -352,4 +353,5 @@ export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
 
   // Add event listeners
   addListeners(900, wrapper);
+  performance.mark('Global nav - end');
 };
