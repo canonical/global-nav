@@ -35,7 +35,7 @@ function createMobileDropdown(products) {
         </ul>
       </div>
       <div class="global-nav__row">
-        <h5 class="global-nav__muted-heading global-nav__expanding-row">Other websites</h5>
+        <h5 class="global-nav__muted-heading global-nav__expanding-row">Also from Canonical</h5>
         <ul class="global-nav__split-list">
           ${mobileOthers}
         </ul>
@@ -60,15 +60,40 @@ function createMobileDropdown(products) {
 function createProductDropdown(products) {
   const { flagships, others, resources, abouts } = products;
 
+  function createLinkListItems(item) {
+    const items = item.links
+      .map(link => {
+        const itemMarkup = `<li class="global-nav__list-item">
+        <a class="global-nav__link" href="${link.url}">
+          ${link.text}&nbsp;&rsaquo;
+        </a>
+      </li>`;
+
+        return itemMarkup;
+      })
+      .join('');
+
+    return items;
+  }
+
   const productFlagships = flagships
     .map((flagship, index) => {
+      let linkList = '';
+
+      if (flagship.links) {
+        linkList = `<ul class="global-nav__inline-list">
+          ${createLinkListItems(flagship)}
+        <ul>`;
+      }
+
       let flagshipMarkup = `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${flagship.url}>
             <img class="global-nav__matrix-image" src=${flagship.logoUrl} width="32" height="32" alt="icon">
-            <h4 class="global-nav__matrix-title">${flagship.title}</h4>
+            <h4 class="global-nav__matrix-title">${flagship.title}&nbsp;&rsaquo;</h4>
           </a>
           <div class="global-nav__matrix-content">
             <p class="global-nav__matrix-desc">${flagship.description}</p>
+            ${linkList}
           </div>
         </li>`;
 
@@ -88,10 +113,19 @@ function createProductDropdown(products) {
 
   const productOthers = others
     .map((other, index) => {
+      let linkList = '';
+
+      if (other.links) {
+        linkList = `<ul class="global-nav__inline-list u-no-padding--left">
+          ${createLinkListItems(other)}
+        <ul>`;
+      }
+
       let otherMarkup = `<li class="global-nav__matrix-item">
           <div class="global-nav__matrix-content">
             <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h4>
             <p class="global-nav__matrix-desc u-no-margin--left">${other.description}</p>
+            ${linkList}
           </div>
         </li>`;
 
@@ -141,7 +175,7 @@ function createProductDropdown(products) {
       <div class="global-nav__row">
         <div class="global-nav__flex-container">
           <div class="global-nav__others-col">
-            <h5 class="global-nav__muted-heading">Other websites</h5>
+            <h5 class="global-nav__muted-heading">Also from Canonical</h5>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
