@@ -1,4 +1,4 @@
-import { canonicalProducts, canonicalLogins } from './product-details';
+import { canonicalProducts } from './product-details';
 
 function createFromHTML(html) {
   const div = window.document.createElement('div'); //eslint-disable-line
@@ -64,9 +64,7 @@ function createProductDropdown(products) {
     .map((flagship, index) => {
       let flagshipMarkup = `<li class="global-nav__matrix-item">
           <a class="global-nav__link" href=${flagship.url}>
-            <img class="global-nav__matrix-image" src=${
-              flagship.logoUrl
-            } width="32" height="32" alt="icon">
+            <img class="global-nav__matrix-image" src=${flagship.logoUrl} width="32" height="32" alt="icon">
             <h4 class="global-nav__matrix-title">${flagship.title}</h4>
           </a>
           <div class="global-nav__matrix-content">
@@ -92,12 +90,8 @@ function createProductDropdown(products) {
     .map((other, index) => {
       let otherMarkup = `<li class="global-nav__matrix-item">
           <div class="global-nav__matrix-content">
-            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${
-              other.url
-            }>${other.title}&nbsp;›</a></h4>
-            <p class="global-nav__matrix-desc u-no-margin--left">${
-              other.description
-            }</p>
+            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h4>
+            <p class="global-nav__matrix-desc u-no-margin--left">${other.description}</p>
           </div>
         </li>`;
 
@@ -118,9 +112,7 @@ function createProductDropdown(products) {
   const productResources = resources
     .map(resource => {
       const resourceMarkup = `<li class="global-nav__list-item">
-          <a class="global-nav__link" href=${resource.url} title="Visit ${
-        resource.title
-      }">${resource.title}</a>
+          <a class="global-nav__link" href=${resource.url} title="Visit ${resource.title}">${resource.title}</a>
         </li>`;
       return resourceMarkup;
     })
@@ -169,54 +161,6 @@ function createProductDropdown(products) {
     </div>`;
 
   return productDropdown;
-}
-
-function createLoginDropdown(logins) {
-  const loginItems = logins
-    .map(loginItem => {
-      const loginItemMarkup = `<li class="global-nav__matrix-item">
-          <a class="global-nav__link" href=${loginItem.login}>
-            <img class="global-nav__matrix-image" src=${
-              loginItem.logoUrl
-            } width="32" height="32" alt="">
-            <h4 class="global-nav__matrix-title">${loginItem.title}</h4>
-          </a>
-          <div class="global-nav__matrix-content">
-            <p class="global-nav__matrix-desc">${loginItem.description}</p>
-            <ul class="global-nav__inline-list">
-              <li class="global-nav__list-item">
-                <a class="global-nav__link" href=${
-                  loginItem.login
-                }>Login&nbsp;&rsaquo;</a>
-              </li>
-              ${
-                loginItem.signup
-                  ? `<li class="global-nav__list-item">
-                <a class="global-nav__link" href=${
-                  loginItem.signup
-                }>Sign up&nbsp;&rsaquo;</a>
-              </li>`
-                  : ''
-              }
-            </ul>
-          </div>
-        </li>`;
-      return loginItemMarkup;
-    })
-    .join('');
-
-  const loginDropdown = `<div class="global-nav__strip">
-      <div class="global-nav__row">
-        <h5 class="global-nav__muted-heading">Customer portals</h5>
-      </div>
-      <div class="global-nav__row">
-        <ul class="global-nav__matrix">
-          ${loginItems}
-        </ul>
-      </div>
-    </div>`;
-
-  return loginDropdown;
 }
 
 function addListeners(breakpoint, wrapper) {
@@ -286,7 +230,7 @@ function addListeners(breakpoint, wrapper) {
   overlay.addEventListener('click', closeNav);
 }
 
-export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
+export const createNav = ({ maxWidth = '68rem' } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -301,22 +245,6 @@ export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
     '<div id="canonical-global-nav" class="global-nav" role="complementary"></div>'
   );
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
-  let loginsHTML = '';
-  let loginsLink = '';
-
-  if (showLogins) {
-    loginsLink = [
-      '<li class="global-nav__header-link">',
-      '  <a class="global-nav__header-link-anchor" href="#canonical-login">Login</a>',
-      '</li>',
-    ].join('\n');
-
-    loginsHTML = [
-      `<div class="global-nav__dropdown-content u-hide" id="canonical-login" style="max-width:${maxWidth}">`,
-      `  ${createLoginDropdown(canonicalLogins)}`,
-      '</div>',
-    ].join('\n');
-  }
 
   const navHeader = createFromHTML(`<div class="global-nav__header">
     <div class="global-nav__header-row global-nav__row" style="max-width:${maxWidth}">
@@ -329,7 +257,6 @@ export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
         <li class="global-nav__header-link">
           <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
         </li>
-        ${loginsLink}
       </ul>
     </div>
   </div>`);
@@ -339,7 +266,6 @@ export const createNav = ({ maxWidth = '68rem', showLogins = true } = {}) => {
       <div class="global-nav__dropdown-content u-hide" id="canonical-products" style="max-width:${maxWidth}">
         ${createProductDropdown(canonicalProducts)}
       </div>
-      ${loginsHTML}
     </div>`
   );
 
