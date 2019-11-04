@@ -43,18 +43,17 @@ createNav();
 
 ### Options
 
-The `createNav` function takes an object of options with the following properties:
+The `createNav` function takes an object of options with the following property:
 
 - `maxWidth`: The [max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) of the global nav element (default: `68rem`)
-- `showLogins`: Should the "logins" drop-down be shown? (default: `false`)
 
-For example, to use the global-nav without the "login" section, and set the `max-width` to `80rem`:
+For example, to set the `max-width` to `80rem`:
 
 ```html
 <script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
 
 <script>
-  canonicalGlobalNav.createNav({ showLogins: false, maxWidth: '80rem' });
+  canonicalGlobalNav.createNav({ maxWidth: '80rem' });
 </script>
 ```
 
@@ -62,7 +61,7 @@ If you're importing;
 
 ```js
 import { createNav } from '@canonical/global-nav';
-createNav({ showLogins: false, maxWidth: '80rem' });
+createNav({ maxWidth: '80rem' });
 ```
 
 ## Building the Global nav
