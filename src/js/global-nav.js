@@ -1,5 +1,11 @@
 import { canonicalProducts } from './product-details';
 
+function forEach(array, callback, scope) {
+  for (let i = 0; i < array.length; i += 1) {
+    callback.call(scope, i, array[i]);
+  }
+}
+
 function createFromHTML(html) {
   const div = window.document.createElement('div'); //eslint-disable-line
   div.innerHTML = html;
@@ -209,7 +215,7 @@ function addListeners(breakpoint, wrapper) {
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
-    headerLinks.forEach(link => link.classList.remove('is-selected'));
+    forEach(headerLinks, (_, link) => link.classList.remove('is-selected'));
     overlay.classList.remove('show-overlay');
   }
 
@@ -225,8 +231,10 @@ function addListeners(breakpoint, wrapper) {
     const targetMenu = wrapper.querySelector(targetMenuId);
 
     headerLink.classList.add('is-selected');
-    dropdownContents.forEach(
-      menu => menu !== targetMenu && menu.classList.add('u-hide')
+
+    forEach(
+      dropdownContents,
+      (_, menu) => menu !== targetMenu && menu.classList.add('u-hide')
     );
     targetMenu.classList.remove('u-hide');
     overlay.classList.add('show-overlay');
@@ -236,7 +244,7 @@ function addListeners(breakpoint, wrapper) {
     }
   }
 
-  headerLinks.forEach(headerLink => {
+  forEach(headerLinks, (_, headerLink) => {
     headerLink.addEventListener('click', e => {
       e.preventDefault();
 
@@ -244,7 +252,9 @@ function addListeners(breakpoint, wrapper) {
         if (headerLink.classList.contains('is-selected')) {
           closeNav();
         } else {
-          headerLinks.forEach(link => link.classList.remove('is-selected'));
+          forEach(headerLinks, (__, link) =>
+            link.classList.remove('is-selected')
+          );
           openDropdown(headerLink);
         }
       } else {
@@ -254,7 +264,7 @@ function addListeners(breakpoint, wrapper) {
     });
   });
 
-  expandingRows.forEach(expandingRow => {
+  forEach(expandingRows, (_, expandingRow) => {
     expandingRow.addEventListener('click', e => {
       e.target.classList.toggle('is-active');
       scrollGlobalNavToTop();
