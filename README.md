@@ -57,7 +57,7 @@ For example, to set the `max-width` to `80rem`:
 </script>
 ```
 
-- `hiring`: A link to a hiring page which will display a link in the header to the job page (default: `false`)
+- `hiring`: A URL for a hiring page which will display a link in the header to the job page (default: `false`)
 
 For example, to set the `hiring` to `https://boards.greenhouse.io/canonical/jobs/1586585`
 
