@@ -61,7 +61,7 @@ For example, to set the `max-width` to `80rem`:
 
 For example, to set the `hiring` to `https://boards.greenhouse.io/canonical/jobs/1586585`
 
-````html
+```html
 <script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
 
 <script>
@@ -69,10 +69,14 @@ For example, to set the `hiring` to `https://boards.greenhouse.io/canonical/jobs
     hiring: 'https://boards.greenhouse.io/canonical/jobs/1586585',
   });
 </script>
+```
 
-If you're importing; ```js import { createNav } from '@canonical/global-nav';
+If you're importing;
+
+```js
+import { createNav } from '@canonical/global-nav';
 createNav({ maxWidth: '80rem' });
-````
+```
 
 ## Building the Global nav
 
