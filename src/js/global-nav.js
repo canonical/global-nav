@@ -204,7 +204,9 @@ function createProductDropdown(products) {
 }
 
 function addListeners(breakpoint, wrapper) {
-  const headerLinks = wrapper.querySelectorAll('.global-nav__header-link');
+  const headerLinks = wrapper.querySelectorAll(
+    '.global-nav__header-link.has-dropdown'
+  );
   const dropdownContainer = wrapper.querySelector('.global-nav__dropdown');
   const dropdownContents = wrapper.querySelectorAll(
     '.global-nav__dropdown-content'
@@ -274,7 +276,30 @@ function addListeners(breakpoint, wrapper) {
   overlay.addEventListener('click', closeNav);
 }
 
-export const createNav = ({ maxWidth = '68rem' } = {}) => {
+function validURL(str) {
+  let pattern = new RegExp(
+    '^(https?:\\/\\/)?' + // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string¬
+      '(\\#[-a-z\\d_]*)?$',
+    'i'
+  ); // fragment locator
+  return !!pattern.test(str);
+}
+
+function renderWereHiring(hiring) {
+  if (!hiring || !validURL(hiring)) {
+    return '';
+  }
+
+  return `<li class="global-nav__header-link">
+    <a class="global-nav__header-link-anchor" href="${hiring}">We are hiring</a>
+  </li>`;
+}
+
+export const createNav = ({ maxWidth = '68rem', hiring = false } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -298,7 +323,8 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
         </a>
       </div>
       <ul class="global-nav__header-list">
-        <li class="global-nav__header-link">
+        ${renderWereHiring(hiring)}
+        <li class="global-nav__header-link has-dropdown">
           <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
         </li>
       </ul>
