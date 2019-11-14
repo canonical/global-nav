@@ -57,6 +57,20 @@ For example, to set the `max-width` to `80rem`:
 </script>
 ```
 
+- `hiring`: A URL for a hiring page which will display a link in the header to the job page (default: `false`)
+
+For example, to set the `hiring` to `https://boards.greenhouse.io/canonical/jobs/1586585`
+
+```html
+<script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
+
+<script>
+  canonicalGlobalNav.createNav({
+    hiring: 'https://boards.greenhouse.io/canonical/jobs/1586585',
+  });
+</script>
+```
+
 If you're importing;
 
 ```js
