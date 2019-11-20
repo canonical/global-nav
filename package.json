@@ -24,20 +24,20 @@
   },
   "homepage": "https://github.com/canonical-webteam/global-nav#readme",
   "devDependencies": {
-    "@babel/core": "7.6.2",
-    "@babel/preset-env": "7.6.2",
-    "autoprefixer": "9.6.1",
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
+    "autoprefixer": "9.7.2",
     "cssnano": "4.1.10",
-    "eslint": "6.4.0",
+    "eslint": "6.6.0",
     "eslint-config-airbnb-base": "14.0.0",
-    "eslint-config-prettier": "6.3.0",
+    "eslint-config-prettier": "6.7.0",
     "eslint-plugin-import": "2.18.2",
     "http-server": "^0.11.1i",
-    "husky": "3.0.5",
-    "postcss": "7.0.18",
-    "prettier": "1.18.2",
-    "pretty-quick": "1.11.1",
-    "rollup": "1.21.4",
+    "husky": "3.1.0",
+    "postcss": "7.0.23",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
+    "rollup": "1.27.3",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
@@ -46,7 +46,7 @@
     "sass-lint": "1.13.1"
   },
   "dependencies": {
-    "vanilla-framework": "2.4.0"
+    "vanilla-framework": "2.4.1"
   },
   "husky": {
     "hooks": {
