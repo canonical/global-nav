@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canonical-webteam/global-nav.git"
+    "url": "git+https://github.com/canonical-web-and-design/global-nav.git"
   },
   "author": "Anthony Dillon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/canonical-webteam/global-nav/issues"
+    "url": "https://github.com/canonical-web-and-design/global-nav/issues"
   },
-  "homepage": "https://github.com/canonical-webteam/global-nav#readme",
+  "homepage": "https://github.com/canonical-web-and-design/global-nav#readme",
   "devDependencies": {
     "@babel/core": "7.8.3",
     "@babel/preset-env": "7.8.3",
