@@ -30,14 +30,6 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
   line-height: map-get($line-heights, default-text);
   z-index: 100;
 
-  @media (max-width: $global-nav-breakpoint) {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: auto;
-  }
-
   * {
     box-sizing: border-box;
   }
@@ -126,12 +118,6 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     width: 100%;
     z-index: 98;
 
-    @media (max-width: $global-nav-breakpoint) {
-      height: 0;
-      top: 3rem;
-      transform: translateY(0);
-    }
-
     &.show-content {
       height: auto;
       transform: translateY(0);
@@ -143,7 +129,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     padding-top: 0;
 
     @media (max-width: $global-nav-breakpoint) {
-      padding: 1.5rem 0 0.5rem 0;
+      padding: 0.5rem 0;
     }
   }
 
@@ -152,7 +138,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     padding: 0 1.5rem;
 
     @media (max-width: $global-nav-breakpoint) {
-      display: block;
+      padding: 0 1rem;
     }
 
     &.is-bordered::after {
@@ -226,10 +212,10 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
       background-repeat: no-repeat;
       background-size: $global-nav-font-size-mobile;
       content: '';
-      height: 0.4rem;
+      height: 0.8rem;
       position: absolute;
       right: 0.5rem;
-      top: 1.5rem;
+      top: 1.2rem;
       width: $global-nav-font-size-mobile;
     }
 
