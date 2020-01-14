@@ -219,10 +219,6 @@ const canonicalProducts = {
       url: 'https://partners.ubuntu.com/',
     },
     {
-      title: 'Merchandise',
-      url: 'https://shop.canonical.com/',
-    },
-    {
       title: 'Contact',
       url: 'https://ubuntu.com/about/contact-us',
     },
