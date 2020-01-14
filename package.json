@@ -33,7 +33,6 @@
     "eslint-config-prettier": "6.9.0",
     "eslint-plugin-import": "2.20.0",
     "http-server": "^0.11.1i",
-    "husky": "4.0.9",
     "postcss": "7.0.26",
     "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
@@ -47,10 +46,5 @@
   },
   "dependencies": {
     "vanilla-framework": "2.5.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run lint"
-    }
   }
 }
