@@ -15,42 +15,36 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canonical-webteam/global-nav.git"
+    "url": "git+https://github.com/canonical-web-and-design/global-nav.git"
   },
   "author": "Anthony Dillon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/canonical-webteam/global-nav/issues"
+    "url": "https://github.com/canonical-web-and-design/global-nav/issues"
   },
-  "homepage": "https://github.com/canonical-webteam/global-nav#readme",
+  "homepage": "https://github.com/canonical-web-and-design/global-nav#readme",
   "devDependencies": {
-    "@babel/core": "7.7.4",
-    "@babel/preset-env": "7.7.4",
-    "autoprefixer": "9.7.3",
+    "@babel/core": "7.8.3",
+    "@babel/preset-env": "7.8.3",
+    "autoprefixer": "9.7.4",
     "cssnano": "4.1.10",
-    "eslint": "6.7.2",
+    "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.0.0",
-    "eslint-config-prettier": "6.7.0",
-    "eslint-plugin-import": "2.18.2",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-import": "2.20.0",
     "http-server": "^0.11.1i",
-    "husky": "3.1.0",
-    "postcss": "7.0.23",
+    "postcss": "7.0.26",
     "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
-    "rollup": "1.27.8",
+    "rollup": "1.29.0",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-sass": "1.2.2",
-    "rollup-plugin-uglify": "6.0.3",
+    "rollup-plugin-uglify": "6.0.4",
     "sass-lint": "1.13.1"
   },
   "dependencies": {
-    "vanilla-framework": "2.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "vanilla-framework": "2.5.0"
   }
 }
