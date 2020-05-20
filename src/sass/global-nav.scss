@@ -392,11 +392,6 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 }
 
 @media (max-width: $global-nav-breakpoint) {
-  body {
-    padding-bottom: 3rem;
-    position: relative;
-  }
-
   .u-hide--mobile {
     display: none;
   }
