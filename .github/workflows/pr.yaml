@@ -1,0 +1,28 @@
+name: PR checks
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build js
+        run: yarn run build
+    
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Lint js and scss
+        run: yarn run lint
+
