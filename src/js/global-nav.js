@@ -295,7 +295,7 @@ export const createNav = ({ maxWidth = '68rem', hiring = false } = {}) => {
 
   // Build global nav components
   const skipLink = createFromHTML(
-    '<div class="skip-content"><a href="#main-content">Skip to main content</a></div'
+    '<div class="skip-content" role="navigation"><a href="#main-content">Skip to main content</a></div'
   );
   const wrapper = createFromHTML(
     '<div id="canonical-global-nav" class="global-nav" role="complementary"></div>'
