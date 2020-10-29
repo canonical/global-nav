@@ -80,7 +80,7 @@ const canonicalProducts = {
       links: [
         {
           url: 'http://ubuntu.com/advantage',
-          text: 'UA dashboard',
+          text: 'Your subscriptions',
         },
         {
           url: 'https://support.canonical.com/',
