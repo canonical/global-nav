@@ -1,12 +1,11 @@
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import postcss from 'postcss';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import sass from 'rollup-plugin-sass';
-import { uglify } from 'rollup-plugin-uglify';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import postcss from 'postcss';
-
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 export default [
@@ -33,7 +32,7 @@ export default [
             .process(css, { from: undefined })
             .then(result => result.css),
       }),
-      uglify(),
+      terser(),
     ],
   },
   {
