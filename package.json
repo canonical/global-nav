@@ -11,7 +11,8 @@
     "lint": "yarn sass-lint src/**/*.scss -v && yarn eslint src/js && prettier **/* --check",
     "prepublishonly": "npm run build",
     "watch": "rollup -c -w",
-    "clean": "rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "start": "yarn run build && yarn run serve"
   },
   "repository": {
     "type": "git",
