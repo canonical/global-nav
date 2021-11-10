@@ -62,3 +62,6 @@ node_modules
 dist
 npm-debug.log
 package-lock.json
+
+# Project-specific ignores
+.dotrun.json
