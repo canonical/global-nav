@@ -82,10 +82,22 @@ createNav({ maxWidth: '80rem' });
 
 To build the JS into the `/dist` folder, run:
 
-##implest way to run the site locally is to first [install Docker](https://docs.docker.com/engine/installation/) (on Linux you may need to [add your user to the `docker` group](https://docs.docker.com/engine/installation/linux/linux-postinstall/)), and then use the `./run` script:
+```bash
+./run build
+```
+
+## Running the project locally
+
+The simplest way to run the site locally is to first [install Docker](https://docs.docker.com/engine/installation/) (on Linux you may need to [add your user to the `docker` group](https://docs.docker.com/engine/installation/linux/linux-postinstall/)), and then use the `./run` script:
 
 ```bash
 ./run
+```
+
+You can also use the [dotrun snap](https://snapcraft.io/dotrun), by running:
+
+```bash
+dotrun
 ```
 
 Once the containers are setup, you can visit <http://127.0.0.1:8300> in your browser.
