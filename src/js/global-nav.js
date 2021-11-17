@@ -35,25 +35,25 @@ function createMobileDropdown(products) {
 
   const mobileDropdown = `<div class="global-nav__mobile-strip">
       <div class="global-nav__row">
-        <h5 class="global-nav__muted-heading global-nav__expanding-row">Products</h5>
+        <h3 class="global-nav__muted-heading global-nav__expanding-row">Products</h3>
         <ul class="global-nav__split-list">
           ${mobileFlagships}
         </ul>
       </div>
       <div class="global-nav__row">
-        <h5 class="global-nav__muted-heading global-nav__expanding-row">Also from Canonical</h5>
+        <h3 class="global-nav__muted-heading global-nav__expanding-row">Also from Canonical</h3>
         <ul class="global-nav__split-list">
           ${mobileOthers}
         </ul>
       </div>
       <div class="global-nav__row">
-        <h5 class="global-nav__muted-heading global-nav__expanding-row">Resources</h5>
+        <h3 class="global-nav__muted-heading global-nav__expanding-row">Resources</h3>
         <ul class="global-nav__split-list">
           ${mobileResources}
         </ul>
       </div>
       <div class="global-nav__row">
-        <h5 class="global-nav__muted-heading global-nav__expanding-row">About</h5>
+        <h3 class="global-nav__muted-heading global-nav__expanding-row">About</h3>
         <ul class="global-nav__split-list u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
@@ -181,17 +181,17 @@ function createProductDropdown(products) {
       <div class="global-nav__row">
         <div class="global-nav__flex-container">
           <div class="global-nav__others-col">
-            <h5 class="global-nav__muted-heading">Also from Canonical</h5>
+            <h3 class="global-nav__muted-heading">Also from Canonical</h3>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
           </div>
           <div class="global-nav__resources-col">
-            <h5 class="global-nav__muted-heading">Resources</h5>
+            <h3 class="global-nav__muted-heading">Resources</h3>
             <ul class="global-nav__split-list">
               ${productResources}
             </ul>
-            <h5 class="global-nav__muted-heading">About</h5>
+            <h3 class="global-nav__muted-heading">About</h3>
             <ul class="global-nav__split-list">
               ${productAbouts}
             </ul>
@@ -217,10 +217,19 @@ function addListeners(breakpoint, wrapper) {
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
-    forEach(headerLinks, (_, link) => link.classList.remove('is-selected'));
+
+    forEach(headerLinks, (_, link) => {
+      link.classList.remove('is-selected');
+      const anchor = link.querySelector('.global-nav__header-link-anchor');
+      if (anchor) {
+        anchor.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     forEach(dropdownContents, (_, menu) =>
       menu.setAttribute('aria-hidden', 'true')
     );
+
     // we are hiding dropdown content after the animation
     // to prevent it from being focusable
     // 500ms is hardcoded here, which should be enough for
@@ -230,6 +239,7 @@ function addListeners(breakpoint, wrapper) {
         menu.classList.add('u-hide');
       });
     }, 500);
+
     overlay.classList.remove('show-overlay');
   }
 
@@ -245,8 +255,7 @@ function addListeners(breakpoint, wrapper) {
     const targetMenu = wrapper.querySelector(targetMenuId);
 
     headerLink.classList.add('is-selected');
-
-    console.log(targetMenu);
+    targetMenuLink.setAttribute('aria-expanded', 'true');
 
     forEach(dropdownContents, (_, menu) => {
       if (menu !== targetMenu) {
@@ -331,7 +340,7 @@ export const createNav = ({ maxWidth = '68rem', hiring = false } = {}) => {
       <ul class="global-nav__header-list">
         ${renderWereHiring(hiring)}
         <li class="global-nav__header-link has-dropdown">
-          <a class="global-nav__header-link-anchor" href="#canonical-products">Products</a>
+          <a class="global-nav__header-link-anchor" aria-expanded="false" aria-controls="canonical-products" href="#canonical-products">Products</a>
         </li>
       </ul>
     </div>
