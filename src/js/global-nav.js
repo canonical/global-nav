@@ -218,6 +218,18 @@ function addListeners(breakpoint, wrapper) {
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
     forEach(headerLinks, (_, link) => link.classList.remove('is-selected'));
+    forEach(dropdownContents, (_, menu) =>
+      menu.setAttribute('aria-hidden', 'true')
+    );
+    // we are hiding dropdown content after the animation
+    // to prevent it from being focusable
+    // 500ms is hardcoded here, which should be enough for
+    // most of Vanilla animation speeds
+    setTimeout(() => {
+      forEach(dropdownContents, (_, menu) => {
+        menu.classList.add('u-hide');
+      });
+    }, 500);
     overlay.classList.remove('show-overlay');
   }
 
@@ -234,11 +246,18 @@ function addListeners(breakpoint, wrapper) {
 
     headerLink.classList.add('is-selected');
 
-    forEach(
-      dropdownContents,
-      (_, menu) => menu !== targetMenu && menu.classList.add('u-hide')
-    );
+    console.log(targetMenu);
+
+    forEach(dropdownContents, (_, menu) => {
+      if (menu !== targetMenu) {
+        menu.classList.add('u-hide');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+    });
+
     targetMenu.classList.remove('u-hide');
+    targetMenu.setAttribute('aria-hidden', 'false');
+
     overlay.classList.add('show-overlay');
 
     if (isMobile) {
@@ -320,7 +339,7 @@ export const createNav = ({ maxWidth = '68rem', hiring = false } = {}) => {
 
   const navDropdown = createFromHTML(
     `<div class="global-nav__dropdown">
-      <div class="global-nav__dropdown-content u-hide" id="canonical-products" style="max-width:${maxWidth}">
+      <div class="global-nav__dropdown-content u-hide" aria-hidden="true" id="canonical-products" style="max-width:${maxWidth}">
         ${createProductDropdown(canonicalProducts)}
       </div>
     </div>`
