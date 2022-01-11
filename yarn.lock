@@ -4323,7 +4323,7 @@ v8-compile-cache@^2.0.3:
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
-vanilla-framework@^3.0.0:
+vanilla-framework@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-3.0.0.tgz#97ebd707e8e73a83973aa66d70caedc38e48d740"
   integrity sha512-/q4P07hr7965s8HVVD8gjPubfd9laMzADje5Y1+4papnWaVq0Snpa+vSLA7tiBKU7vROf5J5dWy3nEo6YqrC8A==
