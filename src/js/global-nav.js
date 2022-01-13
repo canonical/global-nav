@@ -87,9 +87,9 @@ function createProductDropdown(products) {
       let linkList = '';
 
       if (flagship.links) {
-        linkList = `<ul class="global-nav__inline-list">
+        linkList = `<ul class="global-nav__inline-list .u-no-padding--bottom">
           ${createLinkListItems(flagship)}
-        <ul>`;
+        </ul>`;
       }
 
       let flagshipMarkup = `<li class="global-nav__matrix-item">
@@ -122,9 +122,9 @@ function createProductDropdown(products) {
       let linkList = '';
 
       if (other.links) {
-        linkList = `<ul class="global-nav__inline-list u-no-padding--left">
+        linkList = `<ul class="global-nav__inline-list .u-no-padding--bottom u-no-padding--left">
           ${createLinkListItems(other)}
-        <ul>`;
+        </ul>`;
       }
 
       let otherMarkup = `<li class="global-nav__matrix-item">
