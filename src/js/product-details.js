@@ -111,7 +111,7 @@ const canonicalProducts = {
       title: 'Cloud-init',
       url: 'https://cloud-init.io/',
       description:
-        'Control and customize your cloud instances on boot and during their lifecycle.',
+        'Control and customise your cloud instances on boot and during their lifecycle.',
     },
     {
       title: 'Mir',
@@ -132,10 +132,9 @@ const canonicalProducts = {
         'Network abstraction for Linux to simplify and standardise complex network configuration.',
     },
     {
-      title: 'DQlite',
-      url: 'https://dqlite.io/',
-      description:
-        'Fast, embedded, persistent SQL database with Raft consensus.',
+      title: 'Charmed Kubeflow',
+      url: 'https://charmed-kubeflow.io',
+      description: 'AI and MLOps at any scale, on any cloud.',
     },
     {
       title: 'MicroK8s',
