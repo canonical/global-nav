@@ -1,11 +1,5 @@
 import { canonicalProducts } from './product-details';
 
-function forEach(array, callback, scope) {
-  for (let i = 0; i < array.length; i += 1) {
-    callback.call(scope, i, array[i]);
-  }
-}
-
 function createFromHTML(html) {
   const div = window.document.createElement('div'); //eslint-disable-line
   div.innerHTML = html;
@@ -129,7 +123,7 @@ function createProductDropdown(products) {
 
       let otherMarkup = `<li class="global-nav__matrix-item">
           <div class="global-nav__matrix-content">
-            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;›</a></h4>
+            <h4 class="global-nav__matrix-title"><a class="global-nav__link" href=${other.url}>${other.title}&nbsp;&rsaquo;</a></h4>
             <p class="global-nav__matrix-desc u-no-margin--left">${other.description}</p>
             ${linkList}
           </div>
@@ -203,7 +197,7 @@ function createProductDropdown(products) {
   return productDropdown;
 }
 
-function addListeners(breakpoint, wrapper) {
+function addListeners(wrapper) {
   const headerLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
@@ -213,32 +207,33 @@ function addListeners(breakpoint, wrapper) {
   );
   const expandingRows = wrapper.querySelectorAll('.global-nav__expanding-row');
   const overlay = wrapper.querySelector('.global-nav__overlay');
-  const isMobile = window.innerWidth < breakpoint; //eslint-disable-line
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
 
-    forEach(headerLinks, (_, link) => {
-      link.classList.remove('is-selected');
+    headerLinks.forEach(link => {
       const anchor = link.querySelector('.global-nav__header-link-anchor');
+
+      link.classList.remove('is-selected');
+
       if (anchor) {
         anchor.setAttribute('aria-expanded', 'false');
       }
     });
 
-    forEach(dropdownContents, (_, menu) =>
-      menu.setAttribute('aria-hidden', 'true')
-    );
+    dropdownContents.forEach(menu => {
+      menu.setAttribute('aria-hidden', 'true');
+    });
 
     // we are hiding dropdown content after the animation
     // to prevent it from being focusable
     // 500ms is hardcoded here, which should be enough for
     // most of Vanilla animation speeds
     // setTimeout(() => {
-    forEach(dropdownContents, (_, menu) => {
+    dropdownContents.forEach(menu => {
       menu.classList.add('u-hide');
     });
-    // }, 20);
+    // }, 500);
 
     overlay.classList.remove('show-overlay');
   }
@@ -250,7 +245,7 @@ function addListeners(breakpoint, wrapper) {
     headerLink.classList.add('is-selected');
     headerLink.setAttribute('aria-expanded', 'true');
 
-    forEach(dropdownContents, (_, menu) => {
+    dropdownContents.forEach(menu => {
       if (menu !== targetMenu) {
         menu.classList.add('u-hide');
         menu.setAttribute('aria-hidden', 'true');
@@ -263,7 +258,7 @@ function addListeners(breakpoint, wrapper) {
     overlay.classList.add('show-overlay');
   }
 
-  forEach(headerLinks, (_, headerLink) => {
+  headerLinks.forEach(headerLink => {
     headerLink.addEventListener('click', e => {
       e.preventDefault();
 
@@ -273,9 +268,7 @@ function addListeners(breakpoint, wrapper) {
             closeNav();
           }
         } else {
-          forEach(headerLinks, (__, link) =>
-            link.classList.remove('is-selected')
-          );
+          headerLinks.forEach(link => link.classList.remove('is-selected'));
           openDropdown(headerLink);
         }
       } else {
@@ -287,7 +280,7 @@ function addListeners(breakpoint, wrapper) {
     });
   });
 
-  forEach(expandingRows, (_, expandingRow) => {
+  expandingRows.forEach(expandingRow => {
     expandingRow.addEventListener('click', e => {
       e.target.classList.toggle('is-active');
     });
@@ -303,16 +296,15 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
     'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
   );
 
+  const container = document.querySelector('.global-nav');
+
   // Build global nav components
   const skipLink = createFromHTML(
     '<div class="skip-content" role="navigation"><a href="#main-content">Skip to main content</a></div'
   );
-  const wrapper = createFromHTML(
-    '<div id="canonical-global-nav" class="global-nav" role="complementary"></div>'
-  );
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
 
-  const navHeader =
+  const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle" id="all-canonical">
       <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor ">All Canonical</a>
     </li><`);
@@ -327,15 +319,12 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
 
   // Attach to the DOM
   document.body.insertBefore(skipLink, document.body.firstElementChild); //eslint-disable-line
-  // wrapper.appendChild(navHeader);
-  navHeader.appendChild(navDropdown);
-  navHeader.appendChild(overlay);
-
-  const container = document.querySelector('.js-all-canonical-list');
+  navItem.appendChild(navDropdown);
+  navItem.appendChild(overlay);
 
   if (container) {
-    container.prepend(navHeader);
+    container.prepend(navItem);
     // Add event listeners
-    addListeners(900, container);
+    addListeners(container);
   }
 };
