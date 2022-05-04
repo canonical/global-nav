@@ -296,7 +296,7 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
     'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
   );
 
-  const container = document.querySelector('.global-nav');
+  const container = document.querySelector('.global-nav'); //eslint-disable-line
 
   // Build global nav components
   const skipLink = createFromHTML(

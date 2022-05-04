@@ -38,7 +38,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     overflow: hidden;
     width: 100%;
     z-index: 98;
-    
+
     @media (min-width: $global-nav-breakpoint) {
       left: 0;
       position: absolute;
@@ -56,7 +56,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     margin: 0 auto;
     padding-top: 0;
   }
-  
+
   .global-nav__dropdown-toggle {
     position: static;
 
@@ -67,7 +67,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     .global-nav__header-link-anchor {
       &::after {
         @include vf-icon-chevron($colors--dark-theme--text-muted);
-        
+
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -80,24 +80,25 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
         text-indent: calc(100% + 10rem);
         top: calc(#{$spv--large} + #{map-get($nudges, x-small)});
         width: map-get($icon-sizes, default);
-      
+
         @media (min-width: $threshold-4-6-col) {
           right: map-get($grid-margin-widths, default);
         }
-      
+
         @media (min-width: $breakpoint-navigation-threshold) {
-          right: calc(#{$sph--small} + 1px); // 1px for the border on selects. this aligns it with any selects underneath
+          right: calc(
+            #{$sph--small} + 1px
+          ); // 1px for the border on selects. this aligns it with any selects underneath
         }
       }
 
       &.is-selected {
         background-color: $colors--dark-theme--background-hover;
-        
+
         &::after {
           transform: rotate(180deg);
         }
       }
-        
     }
   }
 
