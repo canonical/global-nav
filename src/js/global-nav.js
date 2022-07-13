@@ -197,6 +197,7 @@ function createProductDropdown(products) {
 }
 
 function addListeners(wrapper) {
+  const primaryDropdownCTA = wrapper.querySelector('#all-canonical-link');
   const headerLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
@@ -285,6 +286,13 @@ function addListeners(wrapper) {
   });
 
   overlay.addEventListener('click', closeNav);
+
+  dropdownContainer.addEventListener('keyup', e => {
+    if (e.key === 'Escape') {
+      closeNav();
+      primaryDropdownCTA.focus();
+    }
+  });
 }
 
 export const createNav = ({ maxWidth = '68rem' } = {}) => {
@@ -304,7 +312,7 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide--mobile" id="all-canonical">
-      <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor ">All Canonical</a>
+      <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link">All Canonical</a>
     </li>`);
 
   const mobileDropdownHTML = createMobileDropdown(canonicalProducts);
