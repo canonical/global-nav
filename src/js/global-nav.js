@@ -225,15 +225,9 @@ function addListeners(wrapper) {
       menu.setAttribute('aria-hidden', 'true');
     });
 
-    // we are hiding dropdown content after the animation
-    // to prevent it from being focusable
-    // 500ms is hardcoded here, which should be enough for
-    // most of Vanilla animation speeds
-    // setTimeout(() => {
     dropdownContents.forEach(menu => {
       menu.classList.add('u-hide');
     });
-    // }, 500);
 
     overlay.classList.remove('show-overlay');
   }
@@ -311,7 +305,7 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide--mobile" id="all-canonical">
       <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor ">All Canonical</a>
-    </li><`);
+    </li>`);
 
   const mobileDropdownHTML = createMobileDropdown(canonicalProducts);
   const mobileDropdown = createFromHTML(mobileDropdownHTML);
