@@ -10,8 +10,8 @@ function createMobileDropdown(products) {
   const { flagships, others, resources, abouts } = products;
 
   function createListItem(obj) {
-    return `<li class="global-nav__list-item">
-        <a class="global-nav__link" href=${obj.url}>${obj.title}</a>
+    return `<li>
+        <a class="p-navigation__dropdown-item" href=${obj.url}>${obj.title}</a>
       </li>`;
   }
 
@@ -27,32 +27,34 @@ function createMobileDropdown(products) {
 
   const mobileAbouts = abouts.map(about => createListItem(about)).join('');
 
-  const mobileDropdown = `<div class="global-nav__mobile-strip">
-      <div class="global-nav__row">
-        <h3 class="global-nav__muted-heading global-nav__expanding-row">Products</h3>
-        <ul class="global-nav__split-list">
+  const mobileDropdown = `<div class="u-hide--medium u-hide--large">
+    <ul class="p-navigation__items">
+      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
+        <a class="p-navigation__link global-nav__header-link-anchor">Products</a>
+        <ul class="p-navigation__dropdown">
           ${mobileFlagships}
         </ul>
-      </div>
-      <div class="global-nav__row">
-        <h3 class="global-nav__muted-heading global-nav__expanding-row">Also from Canonical</h3>
-        <ul class="global-nav__split-list">
+      </li>
+      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
+        <a class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</a>
+        <ul class="p-navigation__dropdown">
           ${mobileOthers}
         </ul>
-      </div>
-      <div class="global-nav__row">
-        <h3 class="global-nav__muted-heading global-nav__expanding-row">Resources</h3>
-        <ul class="global-nav__split-list">
+      </li>
+      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
+        <a class="p-navigation__link global-nav__header-link-anchor">Resources</a>
+        <ul class="p-navigation__dropdown">
           ${mobileResources}
         </ul>
-      </div>
-      <div class="global-nav__row">
-        <h3 class="global-nav__muted-heading global-nav__expanding-row">About</h3>
-        <ul class="global-nav__split-list u-no-margin--bottom">
+      </li>
+      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
+        <a class="p-navigation__link global-nav__header-link-anchor">About</a>
+        <ul class="p-navigation__dropdown u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
-      </div>
-    </div>`;
+      </li>
+    </ul>
+  </div>`;
 
   return mobileDropdown;
 }
@@ -161,10 +163,7 @@ function createProductDropdown(products) {
     })
     .join('');
 
-  const mobileDropdown = createMobileDropdown(products);
-
-  const productDropdown = `${mobileDropdown}
-    <div class="global-nav__strip u-hide--mobile">
+  const productDropdown = `<div class="global-nav__strip u-hide--mobile">
       <div class="global-nav__row is-bordered">
         <ul class="global-nav__matrix">
           ${productFlagships}
@@ -215,6 +214,7 @@ function addListeners(wrapper) {
       const anchor = link.querySelector('.global-nav__header-link-anchor');
 
       link.classList.remove('is-selected');
+      link.parentNode.classList.remove('is-active');
 
       if (anchor) {
         anchor.setAttribute('aria-expanded', 'false');
@@ -243,6 +243,7 @@ function addListeners(wrapper) {
     const targetMenu = wrapper.querySelector(targetMenuId);
 
     headerLink.classList.add('is-selected');
+    headerLink.parentNode.classList.add('is-active');
     headerLink.setAttribute('aria-expanded', 'true');
 
     dropdownContents.forEach(menu => {
@@ -268,7 +269,10 @@ function addListeners(wrapper) {
             closeNav();
           }
         } else {
-          headerLinks.forEach(link => link.classList.remove('is-selected'));
+          headerLinks.forEach(link => {
+            link.classList.remove('is-selected');
+            link.parentNode.classList.remove('is-active');
+          });
           openDropdown(headerLink);
         }
       } else {
@@ -305,9 +309,12 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
   const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
 
   const navItem =
-    createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle" id="all-canonical">
+    createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide--mobile" id="all-canonical">
       <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor ">All Canonical</a>
     </li><`);
+
+  const mobileDropdownHTML = createMobileDropdown(canonicalProducts);
+  const mobileDropdown = createFromHTML(mobileDropdownHTML);
 
   const navDropdown = createFromHTML(
     `<div class="global-nav__dropdown">
@@ -324,6 +331,7 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
 
   if (container) {
     container.prepend(navItem);
+    container.prepend(mobileDropdown);
     // Add event listeners
     addListeners(container);
   }
