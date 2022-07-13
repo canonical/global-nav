@@ -27,34 +27,34 @@ function createMobileDropdown(products) {
 
   const mobileAbouts = abouts.map(about => createListItem(about)).join('');
 
-  const mobileDropdown = `<div class="u-hide--medium u-hide--large">
+  const mobileDropdown = `<li class="u-hide--medium u-hide--large">
     <ul class="p-navigation__items">
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a class="p-navigation__link global-nav__header-link-anchor">Products</a>
-        <ul class="p-navigation__dropdown">
+        <a href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</a>
+        <ul id="products" class="p-navigation__dropdown">
           ${mobileFlagships}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</a>
-        <ul class="p-navigation__dropdown">
+        <a href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</a>
+        <ul id="also-from-canonical" class="p-navigation__dropdown">
           ${mobileOthers}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a class="p-navigation__link global-nav__header-link-anchor">Resources</a>
-        <ul class="p-navigation__dropdown">
+        <a href="#resources" class="p-navigation__link global-nav__header-link-anchor">Resources</a>
+        <ul id="resources" class="p-navigation__dropdown">
           ${mobileResources}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a class="p-navigation__link global-nav__header-link-anchor">About</a>
-        <ul class="p-navigation__dropdown u-no-margin--bottom">
+        <a href="#about" class="p-navigation__link global-nav__header-link-anchor">About</a>
+        <ul id="about" class="p-navigation__dropdown u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
       </li>
     </ul>
-  </div>`;
+  </li>`;
 
   return mobileDropdown;
 }
