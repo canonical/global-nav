@@ -1,8 +1,8 @@
 # Canonical Global Nav
 
-This project contains the JavaScript and styles to display a banner across the top of a page.
+This project contains the JavaScript and styles to add an "All Canonical" navigation dropdown item to the [Vanilla navigation pattern](https://vanillaframework.io/docs/patterns/navigation#global-navigation).
 
-This banner displays a list of Canonical eco-system websites giving a user the ability to jump around the core sites easily.
+The dropdown contains a list of Canonical eco-system websites, giving a user the ability to jump around the core sites easily.
 
 ## Usage
 
@@ -41,42 +41,7 @@ import { createNav } from '@canonical/global-nav';
 createNav();
 ```
 
-### Options
-
-The `createNav` function takes an object of options with the following property:
-
-- `maxWidth`: The [max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) of the global nav element (default: `68rem`)
-
-For example, to set the `max-width` to `80rem`:
-
-```html
-<script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
-
-<script>
-  canonicalGlobalNav.createNav({ maxWidth: '80rem' });
-</script>
-```
-
-- `hiring`: A URL for a hiring page which will display a link in the header to the job page (default: `false`)
-
-For example, to set the `hiring` to `https://boards.greenhouse.io/canonical/jobs/1586585`
-
-```html
-<script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
-
-<script>
-  canonicalGlobalNav.createNav({
-    hiring: 'https://boards.greenhouse.io/canonical/jobs/1586585',
-  });
-</script>
-```
-
-If you're importing;
-
-```js
-import { createNav } from '@canonical/global-nav';
-createNav({ maxWidth: '80rem' });
-```
+3. You will then need to add the `.global-nav` class to a `ul.p-navigation__items` element within the navigation pattern. The module will look for this class and add the dropdown as the first item in the list.
 
 ## Building the Global nav
 
