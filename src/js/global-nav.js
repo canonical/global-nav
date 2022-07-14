@@ -211,14 +211,9 @@ function addListeners(wrapper) {
     dropdownContainer.classList.remove('show-content');
 
     headerLinks.forEach(link => {
-      const anchor = link.querySelector('.global-nav__header-link-anchor');
-
       link.classList.remove('is-selected');
       link.parentNode.classList.remove('is-active');
-
-      if (anchor) {
-        anchor.setAttribute('aria-expanded', 'false');
-      }
+      link.setAttribute('aria-expanded', 'false');
     });
 
     dropdownContents.forEach(menu => {
@@ -266,6 +261,7 @@ function addListeners(wrapper) {
           headerLinks.forEach(link => {
             link.classList.remove('is-selected');
             link.parentNode.classList.remove('is-active');
+            link.setAttribute('aria-expanded', 'false');
           });
           openDropdown(headerLink);
         }
@@ -311,7 +307,7 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide--mobile" id="all-canonical">
-      <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link">All Canonical</a>
+      <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</a>
     </li>`);
 
   const mobileDropdownHTML = createMobileDropdown(canonicalProducts);
