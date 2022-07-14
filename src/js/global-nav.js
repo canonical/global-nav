@@ -163,23 +163,22 @@ function createProductDropdown(products) {
     })
     .join('');
 
-  const productDropdown = `<div class="global-nav__strip u-hide--mobile">
+  const productDropdown = `<div class="global-nav__strip">
       <div class="global-nav__row is-bordered">
         <ul class="global-nav__matrix">
           ${productFlagships}
         </ul>
-      </div>
-    </div>
-    <div class="global-nav__strip u-hide--mobile">
-      <div class="global-nav__row">
-        <div class="global-nav__flex-container">
-          <div class="global-nav__others-col">
+
+        <hr class="is-dark" />
+
+        <div class="global-nav__flex-container row">
+          <div class="global-nav__others-col col-9">
             <h3 class="global-nav__muted-heading">Also from Canonical</h3>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
           </div>
-          <div class="global-nav__resources-col">
+          <div class="global-nav__resources-col col-3">
             <h3 class="global-nav__muted-heading">Resources</h3>
             <ul class="global-nav__split-list">
               ${productResources}
