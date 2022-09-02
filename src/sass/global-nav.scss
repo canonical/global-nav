@@ -10,8 +10,8 @@
 
 $global-nav-breakpoint: 619px;
 $global-nav-bg-color: #262626;
-$global-nav-border-color: #666;
-$global-nav-font-color: #f7f7f7;
+$global-nav-border-color: $colors--dark-theme--border-low-contrast;
+$global-nav-font-color: $colors--dark-theme--text-muted;
 $global-nav-font-family: unquote($font-base-family);
 $global-nav-font-size-mobile: 0.8175rem;
 $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
@@ -54,6 +54,7 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 
   .global-nav__dropdown-content {
     margin: 0 auto;
+    max-width: 72rem;
     padding-top: 0;
   }
 
@@ -283,6 +284,10 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
   .global-nav__resources-col {
     border-left: 1px solid $global-nav-border-color;
     padding-left: 2rem;
+  }
+
+  .global-nav__divider {
+    background: $global-nav-border-color;
   }
 }
 

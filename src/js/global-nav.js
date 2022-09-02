@@ -88,7 +88,7 @@ function createProductDropdown(products) {
         </ul>`;
       }
       let flagshipLinkContent = `<span class="p-heading--4">${flagship.title}</span>`;
-      let divider = `<hr class="is-dark u-no-margin--bottom" />`;
+      let divider = `<hr class="global-nav__divider u-no-margin--bottom" />`;
 
       if (flagship.logoUrl) {
         flagshipLinkContent = `<img class="global-nav__image" src=${flagship.logoUrl} alt="">${flagshipLinkContent}`;
@@ -288,7 +288,7 @@ function addListeners(wrapper) {
   });
 }
 
-export const createNav = ({ maxWidth = '68rem' } = {}) => {
+export const createNav = () => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -313,7 +313,7 @@ export const createNav = ({ maxWidth = '68rem' } = {}) => {
 
   const navDropdown = createFromHTML(
     `<div class="global-nav__dropdown">
-      <div class="global-nav__dropdown-content u-hide" aria-hidden="true" id="canonical-products" style="max-width:${maxWidth}">
+      <div class="global-nav__dropdown-content u-hide" aria-hidden="true" id="canonical-products">
         ${createProductDropdown(canonicalProducts)}
       </div>
     </div>`
