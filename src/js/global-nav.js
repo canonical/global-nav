@@ -209,7 +209,6 @@ function addListeners(wrapper) {
   const dropdownContents = wrapper.querySelectorAll(
     '.global-nav__dropdown-content'
   );
-  const expandingRows = wrapper.querySelectorAll('.global-nav__expanding-row');
   const overlay = wrapper.querySelector('.global-nav__overlay');
 
   function closeNav() {
