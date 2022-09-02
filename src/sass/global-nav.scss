@@ -213,12 +213,10 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     }
   }
 
-  .global-nav__split-list {
-    column-gap: 2rem;
-    columns: 2;
+  .global-nav__list {
     list-style: none;
     margin: 0 0 1.5rem 0;
-    padding: 0;
+    padding: 1rem 0 0;
 
     .global-nav__list-item {
       display: inline-block;
@@ -274,6 +272,17 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
       opacity: 1;
       pointer-events: all;
     }
+  }
+
+  .global-nav__image {
+    height: 1rem;
+    margin-right: 0.5rem;
+    width: 1rem;
+  }
+
+  .global-nav__resources-col {
+    border-left: 1px solid $global-nav-border-color;
+    padding-left: 2rem;
   }
 }
 
