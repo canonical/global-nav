@@ -35,7 +35,7 @@ $global-nav-link-color: #3097ff;
 
   .global-nav__dropdown {
     background-color: $global-nav-bg-color;
-    margin: 0;
+    margin: -1px 0 0;
     overflow: hidden;
     width: 100%;
     z-index: 98;
@@ -47,6 +47,7 @@ $global-nav-link-color: #3097ff;
       transform: translateY(-100%);
 
       &.show-content {
+        border-top: 1px solid $global-nav-border-color;
         height: auto;
         transform: translateY(0);
       }
@@ -284,8 +285,7 @@ $global-nav-link-color: #3097ff;
 
   .global-nav__others-col {
     @media (min-width: $breakpoint-small) and (max-width: $breakpoint-large) {
-      border-bottom: 1px solid $global-nav-border-color;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
   }
 
@@ -293,13 +293,18 @@ $global-nav-link-color: #3097ff;
     @media (min-width: $breakpoint-small) and (max-width: $breakpoint-large) {
       .global-nav__list {
         column-count: 2;
-      };
+      }
     }
 
     @media (min-width: $breakpoint-large) {
       border-left: 1px solid $global-nav-border-color;
       padding-left: 1rem;
     }
+  }
+
+  .p-divider {
+    background-color: $global-nav-border-color;
+    margin-bottom: 0.5rem;
   }
 
   .global-nav__link {

@@ -167,6 +167,8 @@ function createProductDropdown(products) {
           ${productFlagships}
         </ul>
 
+        <hr class="p-divider" />
+
         <div class="global-nav__flex-container row u-no-padding">
           <div class="global-nav__others-col col-8 col-medium-6">
             <span class="global-nav__muted-heading">Also from Canonical</span>
@@ -174,6 +176,7 @@ function createProductDropdown(products) {
               ${productOthers}
             </div>
           </div>
+          <hr class="p-divider u-hide--large" />
           <div class="global-nav__resources-col col-2 col-medium-4">
             <span class="global-nav__muted-heading">Resources</span>
             <ul class="global-nav__list">
