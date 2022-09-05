@@ -15,6 +15,7 @@ $global-nav-font-color: $colors--dark-theme--text-muted;
 $global-nav-font-family: unquote($font-base-family);
 $global-nav-font-size-mobile: 0.8175rem;
 $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
+$global-nav-link-color: #3097ff;
 
 .global-nav {
   @include vf-b-placeholders;
@@ -281,9 +282,28 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     width: 1rem;
   }
 
+  .global-nav__others-col {
+    @media (min-width: $breakpoint-small) and (max-width: $breakpoint-large) {
+      border-bottom: 1px solid $global-nav-border-color;
+      margin-bottom: 1rem;
+    }
+  }
+
   .global-nav__resources-col {
-    border-left: 1px solid $global-nav-border-color;
-    padding-left: 1rem;
+    @media (min-width: $breakpoint-small) and (max-width: $breakpoint-large) {
+      .global-nav__list {
+        column-count: 2;
+      };
+    }
+
+    @media (min-width: $breakpoint-large) {
+      border-left: 1px solid $global-nav-border-color;
+      padding-left: 1rem;
+    }
+  }
+
+  .global-nav__link {
+    color: $global-nav-link-color;
   }
 
   .p-list--divided .p-list__item {

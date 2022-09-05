@@ -66,8 +66,8 @@ function createProductDropdown(products) {
     const items = item.links
       .map(link => {
         const itemMarkup = `<li class="p-inline-list__item">
-        <a class="p-link--inverted" href="${link.url}">
-          ${link.text}&nbsp;&rsaquo;
+        <a class="global-nav__link" href="${link.url}">
+          ${link.text}
         </a>
       </li>`;
 
@@ -83,7 +83,7 @@ function createProductDropdown(products) {
       let linkList = '';
 
       if (flagship.links) {
-        linkList = `<ul class="p-inline-list u-no-margin--bottom u-sv1">
+        linkList = `<ul class="p-inline-list--middot is-dark u-no-margin--bottom u-sv1">
           ${createLinkListItems(flagship)}
         </ul>`;
       }
@@ -146,7 +146,7 @@ function createProductDropdown(products) {
   const productResources = resources
     .map(resource => {
       const resourceMarkup = `<li class="global-nav__list-item">
-          <a class="p-link--inverted" href=${resource.url} title="Visit ${resource.title}">${resource.title}</a>
+          <a class="global-nav__link" href=${resource.url} title="Visit ${resource.title}">${resource.title}</a>
         </li>`;
       return resourceMarkup;
     })
@@ -155,7 +155,7 @@ function createProductDropdown(products) {
   const productAbouts = abouts
     .map(about => {
       const aboutMarkup = `<li class="global-nav__list-item">
-          <a class="p-link--inverted" href=${about.url}>${about.title}</a>
+          <a class="global-nav__link" href=${about.url}>${about.title}</a>
         </li>`;
       return aboutMarkup;
     })
@@ -168,19 +168,19 @@ function createProductDropdown(products) {
         </ul>
 
         <div class="global-nav__flex-container row u-no-padding">
-          <div class="global-nav__others-col col-8 col-medium-4">
+          <div class="global-nav__others-col col-8 col-medium-6">
             <span class="global-nav__muted-heading">Also from Canonical</span>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
           </div>
-          <div class="global-nav__resources-col col-2 col-medium-1">
+          <div class="global-nav__resources-col col-2 col-medium-4">
             <span class="global-nav__muted-heading">Resources</span>
             <ul class="global-nav__list">
               ${productResources}
             </ul>
           </div>
-          <div class="global-nav__about-col col-2 col-medium-1">
+          <div class="global-nav__about-col col-2 col-medium-2">
             <span class="global-nav__muted-heading">About</span>
             <ul class="global-nav__list">
               ${productAbouts}
