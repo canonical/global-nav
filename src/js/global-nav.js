@@ -79,39 +79,32 @@ function createProductDropdown(products) {
   }
 
   const productFlagships = flagships
-    .map((flagship, index, { length }) => {
+    .map(flagship => {
       let linkList = '';
 
       if (flagship.links) {
-        linkList = `<ul class="p-inline-list">
+        linkList = `<ul class="p-inline-list u-no-margin--bottom u-sv1">
           ${createLinkListItems(flagship)}
         </ul>`;
       }
       let flagshipLinkContent = `<span class="p-heading--4">${flagship.title}</span>`;
-      let divider = `<hr class="global-nav__divider u-no-margin--bottom" />`;
 
       if (flagship.logoUrl) {
         flagshipLinkContent = `<img class="global-nav__image" src=${flagship.logoUrl} alt="">${flagshipLinkContent}`;
       }
 
-      // don't render a divider if it's the last item
-      if (length - 1 === index) {
-        divider = '';
-      }
-
       const flagshipMarkup = `<li class="p-list__item">
           <div class="row u-no-padding">
-            <div class="col-4">
+            <div class="col-4 col-medium-2">
               <a class="p-link--inverted" href=${flagship.url}>
                 ${flagshipLinkContent}
               </a>
             </div>
-            <div class="col-8">
-              <p class="u-no-max-width">${flagship.description}</p>
+            <div class="col-8 col-medium-4">
+              <p class="u-no-max-width u-no-margin--bottom">${flagship.description}</p>
               ${linkList}
             </div>
           </div>
-          ${divider}
         </li>`;
 
       return flagshipMarkup;
@@ -170,24 +163,24 @@ function createProductDropdown(products) {
 
   const productDropdown = `<div class="global-nav__strip">
       <div class="global-nav__row is-bordered">
-        <ul class="p-list u-sv3">
+        <ul class="p-list--divided u-sv3">
           ${productFlagships}
         </ul>
 
         <div class="global-nav__flex-container row u-no-padding">
-          <div class="global-nav__others-col col-8">
+          <div class="global-nav__others-col col-8 col-medium-4">
             <span class="global-nav__muted-heading">Also from Canonical</span>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
           </div>
-          <div class="global-nav__resources-col col-2">
+          <div class="global-nav__resources-col col-2 col-medium-1">
             <span class="global-nav__muted-heading">Resources</span>
             <ul class="global-nav__list">
               ${productResources}
             </ul>
           </div>
-          <div class="global-nav__about-col col-2">
+          <div class="global-nav__about-col col-2 col-medium-1">
             <span class="global-nav__muted-heading">About</span>
             <ul class="global-nav__list">
               ${productAbouts}

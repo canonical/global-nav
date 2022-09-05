@@ -286,8 +286,14 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
     padding-left: 1rem;
   }
 
-  .global-nav__divider {
-    background: $global-nav-border-color;
+  .p-list--divided .p-list__item {
+    p {
+      padding-top: 0.2rem;
+    }
+
+    &::after {
+      border-color: $global-nav-border-color;
+    }
   }
 }
 
