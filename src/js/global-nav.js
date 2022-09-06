@@ -205,7 +205,7 @@ function addListeners(wrapper) {
   const dropdownContents = wrapper.querySelectorAll(
     '.global-nav__dropdown-content'
   );
-  const overlay = wrapper.querySelector('.global-nav__overlay');
+  const overlay = document.querySelector('.global-nav-overlay'); //eslint-disable-line
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
@@ -297,7 +297,7 @@ export const createNav = () => {
   const skipLink = createFromHTML(
     '<div class="skip-content" role="navigation"><a href="#main-content">Skip to main content</a></div'
   );
-  const overlay = createFromHTML('<div class="global-nav__overlay"></div>');
+  const overlay = createFromHTML('<div class="global-nav-overlay"></div>');
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide--mobile" id="all-canonical">
@@ -317,8 +317,8 @@ export const createNav = () => {
 
   // Attach to the DOM
   document.body.insertBefore(skipLink, document.body.firstElementChild); //eslint-disable-line
+  document.body.appendChild(overlay); //eslint-disable-line
   navItem.appendChild(navDropdown);
-  navItem.appendChild(overlay);
 
   if (container) {
     container.prepend(navItem);
