@@ -1,6 +1,6 @@
 {
   "name": "@canonical/global-nav",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
   "main": "dist/module.js",
   "iife": "dist/global-nav.js",
@@ -46,6 +46,6 @@
     "sass-lint": "1.13.1"
   },
   "dependencies": {
-    "vanilla-framework": "3.6.1"
+    "vanilla-framework": "3.7.1"
   }
 }
