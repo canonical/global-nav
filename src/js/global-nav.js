@@ -27,7 +27,7 @@ function createMobileDropdown(products) {
 
   const mobileAbouts = abouts.map(about => createListItem(about)).join('');
 
-  const mobileDropdown = `<li class="u-hide--medium u-hide--large">
+  const mobileDropdown = `<li id="all-canonical-mobile" class="u-hide">
     <ul class="p-navigation__items">
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
         <a href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</a>
@@ -196,7 +196,22 @@ function createProductDropdown(products) {
   return productDropdown;
 }
 
-function addListeners(wrapper) {
+function showAppropriateNavigation(breakpoint) {
+  /* eslint-disable */
+  const desktopNav = document.getElementById('all-canonical');
+  const mobileNav = document.getElementById('all-canonical-mobile');
+
+  if (window.innerWidth >= parseInt(breakpoint)) {
+    desktopNav.classList.remove('u-hide');
+    mobileNav.classList.add('u-hide');
+  } else {
+    desktopNav.classList.add('u-hide');
+    mobileNav.classList.remove('u-hide');
+  }
+  /* eslint-enable */
+}
+
+function addListeners(wrapper, breakpoint) {
   const primaryDropdownCTA = wrapper.querySelector('#all-canonical-link');
   const headerLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
@@ -282,9 +297,15 @@ function addListeners(wrapper) {
       primaryDropdownCTA.focus();
     }
   });
+
+  /* eslint-disable */
+  window.addEventListener('resize', () => {
+    showAppropriateNavigation(breakpoint);
+  });
+  /* eslint-enable */
 }
 
-export const createNav = () => {
+export const createNav = ({ breakpoint = '620px' } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -300,7 +321,7 @@ export const createNav = () => {
   const overlay = createFromHTML('<div class="global-nav-overlay"></div>');
 
   const navItem =
-    createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide--mobile" id="all-canonical">
+    createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide" id="all-canonical">
       <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</a>
     </li>`);
 
@@ -323,7 +344,8 @@ export const createNav = () => {
   if (container) {
     container.prepend(navItem);
     container.prepend(mobileDropdown);
+    showAppropriateNavigation(breakpoint);
     // Add event listeners
-    addListeners(container);
+    addListeners(container, breakpoint);
   }
 };
