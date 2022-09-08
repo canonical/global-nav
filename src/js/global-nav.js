@@ -201,7 +201,7 @@ function showAppropriateNavigation(breakpoint) {
   const desktopNav = document.getElementById('all-canonical');
   const mobileNav = document.getElementById('all-canonical-mobile');
 
-  if (window.innerWidth >= parseInt(breakpoint)) {
+  if (window.innerWidth >= breakpoint) {
     desktopNav.classList.remove('u-hide');
     mobileNav.classList.add('u-hide');
   } else {
@@ -299,13 +299,16 @@ function addListeners(wrapper, breakpoint) {
   });
 
   /* eslint-disable */
-  window.addEventListener('resize', () => {
-    showAppropriateNavigation(breakpoint);
-  });
+  window.addEventListener(
+    'resize',
+    debounce(() => {
+      showAppropriateNavigation(breakpoint);
+    })
+  );
   /* eslint-enable */
 }
 
-export const createNav = ({ breakpoint = '620px' } = {}) => {
+export const createNav = ({ breakpoint = 620 } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(

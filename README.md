@@ -51,13 +51,13 @@ The `createNav` function takes an object of options with the following property:
 
 If the `$breakpoint-navigation-threshold` Vanilla variable is overridden in your project, you will need to set this option on the global nav.
 
-For example, to set the `breakpoint` to `1036px`:
+For example, to set the `breakpoint` to `1036`:
 
 ```html
 <script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
 
 <script>
-  canonicalGlobalNav.createNav({ breakpoint: '1036px' });
+  canonicalGlobalNav.createNav({ breakpoint: 1036 });
 </script>
 ```
 
@@ -65,7 +65,7 @@ If you're importing;
 
 ```js
 import { createNav } from '@canonical/global-nav';
-createNav({ breakpoint: '1036px' });
+createNav({ breakpoint: 1036 });
 ```
 
 ## Building the Global nav
