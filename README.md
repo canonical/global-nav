@@ -43,6 +43,31 @@ createNav();
 
 3. You will then need to add the `.global-nav` class to a `ul.p-navigation__items` element within the navigation pattern. The module will look for this class and add the dropdown as the first item in the list.
 
+### Options
+
+The `createNav` function takes an object of options with the following property:
+
+- `breakpoint`: The point, in pixels, at which the navigation switches between desktop and mobile layouts. The default is `620px`, which is meant to reflect the default value of `$breakpoint-navigation-threshold` in Vanilla (see [Vanilla's breakpoint documentation](https://vanillaframework.io/docs/settings/breakpoint-settings)).
+
+If the `$breakpoint-navigation-threshold` Vanilla variable is overridden in your project, you will need to set this option on the global nav.
+
+For example, to set the `breakpoint` to `1036`:
+
+```html
+<script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
+
+<script>
+  canonicalGlobalNav.createNav({ breakpoint: 1036 });
+</script>
+```
+
+If you're importing;
+
+```js
+import { createNav } from '@canonical/global-nav';
+createNav({ breakpoint: 1036 });
+```
+
 ## Building the Global nav
 
 To build the JS into the `/dist` folder, run:
