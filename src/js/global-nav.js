@@ -217,12 +217,15 @@ function showAppropriateNavigation(breakpoint) {
   /* eslint-disable */
   const desktopNav = document.getElementById('all-canonical');
   const mobileNav = document.getElementById('all-canonical-mobile');
+  const overlay = document.getElementById('all-canonical-overlay');
 
   if (window.innerWidth >= breakpoint) {
     desktopNav.classList.remove('u-hide');
+    overlay.classList.remove('u-hide');
     mobileNav.classList.add('u-hide');
   } else {
     desktopNav.classList.add('u-hide');
+    overlay.classList.add('u-hide');
     mobileNav.classList.remove('u-hide');
   }
   /* eslint-enable */
@@ -338,7 +341,9 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   const skipLink = createFromHTML(
     '<div class="skip-content" role="navigation"><a href="#main-content">Skip to main content</a></div'
   );
-  const overlay = createFromHTML('<div class="global-nav-overlay"></div>');
+  const overlay = createFromHTML(
+    '<div id="all-canonical-overlay" class="global-nav-overlay"></div>'
+  );
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide" id="all-canonical">
