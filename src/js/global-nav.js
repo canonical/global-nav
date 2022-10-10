@@ -339,10 +339,10 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
 
   // Build global nav components
   const skipLink = createFromHTML(
-    '<div class="skip-content" role="navigation"><a href="#main-content">Skip to main content</a></div'
+    '<div class="skip-content" role="navigation" data-nosnippet><a href="#main-content">Skip to main content</a></div'
   );
   const overlay = createFromHTML(
-    '<div id="all-canonical-overlay" class="global-nav-overlay"></div>'
+    '<div id="all-canonical-overlay" class="global-nav-overlay" data-nosnippet></div>'
   );
 
   const navItem =
@@ -354,7 +354,7 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   const mobileDropdown = createFromHTML(mobileDropdownHTML);
 
   const navDropdown = createFromHTML(
-    `<div class="global-nav__dropdown">
+    `<div class="global-nav__dropdown" data-nosnippet>
       <div class="global-nav__dropdown-content u-hide" aria-hidden="true" id="canonical-products">
         ${createProductDropdown(canonicalProducts)}
       </div>
