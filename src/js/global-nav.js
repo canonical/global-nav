@@ -337,7 +337,7 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
-    'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: http://ubunt.eu/dev-jobs'
+    'Interested in what makes us tick? Then we are interested in you! See our jobs page for more info: https://canonical.com/careers/all?filter=Engineering'
   );
 
   const container = document.querySelector('.global-nav'); //eslint-disable-line
