@@ -236,11 +236,13 @@ function addListeners(wrapper, breakpoint) {
   const headerLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
-  const dropdownContainer = wrapper.querySelector('.global-nav__dropdown');
-  const dropdownContents = wrapper.querySelectorAll(
-    '.global-nav__dropdown-content'
+  /* eslint-disable */
+  const dropdownContainer = document.querySelector('.global-nav-dropdown');
+  const dropdownContents = document.querySelectorAll(
+    '.global-nav-dropdown__content'
   );
-  const overlay = document.querySelector('.global-nav-overlay'); //eslint-disable-line
+  const overlay = document.querySelector('.global-nav-overlay');
+  /* eslint-enable */
 
   function closeNav() {
     dropdownContainer.classList.remove('show-content');
@@ -251,20 +253,23 @@ function addListeners(wrapper, breakpoint) {
       link.setAttribute('aria-expanded', 'false');
     });
 
-    dropdownContents.forEach(menu => {
-      menu.setAttribute('aria-hidden', 'true');
-    });
+    // allow the parent container animation time to complete
+    setTimeout(() => {
+      dropdownContents.forEach(menu => {
+        menu.setAttribute('aria-hidden', 'true');
+      });
 
-    dropdownContents.forEach(menu => {
-      menu.classList.add('u-hide');
-    });
+      dropdownContents.forEach(menu => {
+        menu.classList.add('u-hide');
+      });
+    }, 250);
 
     overlay.classList.remove('show-overlay');
   }
 
   function openDropdown(headerLink) {
     const targetMenuId = headerLink.getAttribute('href');
-    const targetMenu = wrapper.querySelector(targetMenuId);
+    const targetMenu = document.body.querySelector(targetMenuId); //eslint-disable-line
 
     headerLink.classList.add('is-selected');
     headerLink.parentNode.classList.add('is-active');
@@ -354,8 +359,8 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   const mobileDropdown = createFromHTML(mobileDropdownHTML);
 
   const navDropdown = createFromHTML(
-    `<div class="global-nav__dropdown">
-      <div class="global-nav__dropdown-content u-hide" aria-hidden="true" id="canonical-products">
+    `<div class="global-nav-dropdown">
+      <div class="global-nav-dropdown__content u-hide" aria-hidden="true" id="canonical-products">
         ${createProductDropdown(canonicalProducts)}
       </div>
     </div>`
@@ -364,7 +369,7 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   // Attach to the DOM
   document.body.insertBefore(skipLink, document.body.firstElementChild); //eslint-disable-line
   document.body.appendChild(overlay); //eslint-disable-line
-  navItem.appendChild(navDropdown);
+  document.body.appendChild(navDropdown); //eslint-disable-line
 
   if (container) {
     container.prepend(navItem);

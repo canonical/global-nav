@@ -18,46 +18,8 @@ $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 $global-nav-link-color: #3097ff;
 
 .global-nav {
-  @include vf-b-placeholders;
-  @include vf-b-typography;
-  @include vf-u-hide;
-  @include vf-u-margin-collapse;
-  @include vf-u-padding-collapse;
-  color: $global-nav-font-color;
-  font-family: $global-nav-font-family;
-  font-weight: 300;
-  line-height: map-get($line-heights, default-text);
-  z-index: 100;
-
   * {
     box-sizing: border-box;
-  }
-
-  .global-nav__dropdown {
-    background-color: $global-nav-bg-color;
-    margin: -1px 0 0;
-    overflow: hidden;
-    width: 100%;
-    z-index: 98;
-
-    @media (min-width: $global-nav-breakpoint) {
-      left: 0;
-      position: absolute;
-      top: 3.5rem;
-      transform: translateY(-100%);
-
-      &.show-content {
-        border-top: 1px solid $global-nav-border-color;
-        height: auto;
-        transform: translateY(0);
-      }
-    }
-  }
-
-  .global-nav__dropdown-content {
-    margin: 0 auto;
-    max-width: 72rem;
-    padding-top: 0;
   }
 
   .global-nav__dropdown-toggle {
@@ -89,9 +51,7 @@ $global-nav-link-color: #3097ff;
         }
 
         @media (min-width: $breakpoint-navigation-threshold) {
-          right: calc(
-            #{$sph--small} + 1px
-          ); // 1px for the border on selects. this aligns it with any selects underneath
+          right: calc(#{$sph--small} + 1px); // 1px for the border on selects. this aligns it with any selects underneath
         }
       }
 
@@ -103,6 +63,43 @@ $global-nav-link-color: #3097ff;
         }
       }
     }
+  }
+}
+
+.global-nav-dropdown {
+  @include vf-b-placeholders;
+  @include vf-b-typography;
+  @include vf-u-hide;
+  @include vf-u-margin-collapse;
+  @include vf-u-padding-collapse;
+  background-color: $global-nav-bg-color;
+  color: $global-nav-font-color;
+  font-family: $global-nav-font-family;
+  font-weight: 300;
+  line-height: map-get($line-heights, default-text);  
+  overflow: hidden;
+  width: 100%;
+  z-index: 9;
+
+  @media (min-width: $global-nav-breakpoint) {
+    @include vf-animation(all, brisk, out);
+
+    left: 0;
+    position: absolute;
+    top: 3.5rem;
+    transform: translateY(-100%);
+
+    &.show-content {
+      border-top: 1px solid $global-nav-border-color;
+      height: auto;
+      transform: translateY(0);
+    }
+  }
+
+  .global-nav-dropdown__content {
+    margin: 0 auto;
+    max-width: 72rem;
+    padding-top: 0;
   }
 
   .global-nav__row {
