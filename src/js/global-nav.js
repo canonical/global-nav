@@ -216,15 +216,18 @@ function createProductDropdown(products) {
 function showAppropriateNavigation(breakpoint) {
   /* eslint-disable */
   const desktopNav = document.getElementById('all-canonical');
+  const desktopDropdown = document.getElementById('all-canonical-desktop');
   const mobileNav = document.getElementById('all-canonical-mobile');
   const overlay = document.getElementById('all-canonical-overlay');
 
   if (window.innerWidth >= breakpoint) {
     desktopNav.classList.remove('u-hide');
+    desktopDropdown.classList.remove('u-hide');
     overlay.classList.remove('u-hide');
     mobileNav.classList.add('u-hide');
   } else {
     desktopNav.classList.add('u-hide');
+    desktopDropdown.classList.add('u-hide');
     overlay.classList.add('u-hide');
     mobileNav.classList.remove('u-hide');
   }
@@ -233,10 +236,13 @@ function showAppropriateNavigation(breakpoint) {
 
 function addListeners(wrapper, breakpoint) {
   const primaryDropdownCTA = wrapper.querySelector('#all-canonical-link');
-  const headerLinks = wrapper.querySelectorAll(
+  const globalNavHeaderLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
   /* eslint-disable */
+  const externalNavDropdowns = document.querySelectorAll(
+    '.p-navigation__item--dropdown-toggle:not(.global-nav__dropdown-toggle) .p-navigation__link'
+  );
   const dropdownContainer = document.querySelector('.global-nav-dropdown');
   const dropdownContents = document.querySelectorAll(
     '.global-nav-dropdown__content'
@@ -244,16 +250,15 @@ function addListeners(wrapper, breakpoint) {
   const overlay = document.querySelector('.global-nav-overlay');
   /* eslint-enable */
 
-  function closeNav() {
+  function closeNav(delay = 250) {
     dropdownContainer.classList.remove('show-content');
 
-    headerLinks.forEach(link => {
+    globalNavHeaderLinks.forEach(link => {
       link.classList.remove('is-selected');
       link.parentNode.classList.remove('is-active');
       link.setAttribute('aria-expanded', 'false');
     });
 
-    // allow the parent container animation time to complete
     setTimeout(() => {
       dropdownContents.forEach(menu => {
         menu.setAttribute('aria-hidden', 'true');
@@ -262,7 +267,7 @@ function addListeners(wrapper, breakpoint) {
       dropdownContents.forEach(menu => {
         menu.classList.add('u-hide');
       });
-    }, 250);
+    }, delay);
 
     overlay.classList.remove('show-overlay');
   }
@@ -288,9 +293,13 @@ function addListeners(wrapper, breakpoint) {
     overlay.classList.add('show-overlay');
   }
 
-  headerLinks.forEach(headerLink => {
+  globalNavHeaderLinks.forEach(headerLink => {
     headerLink.addEventListener('click', e => {
       e.preventDefault();
+
+      externalNavDropdowns.forEach(link => {
+        link.parentNode.classList.remove('is-active');
+      });
 
       if (dropdownContainer.classList.contains('show-content')) {
         if (headerLink.classList.contains('is-selected')) {
@@ -298,7 +307,7 @@ function addListeners(wrapper, breakpoint) {
             closeNav();
           }
         } else {
-          headerLinks.forEach(link => {
+          globalNavHeaderLinks.forEach(link => {
             link.classList.remove('is-selected');
             link.parentNode.classList.remove('is-active');
             link.setAttribute('aria-expanded', 'false');
@@ -311,6 +320,12 @@ function addListeners(wrapper, breakpoint) {
       }
 
       e.stopPropagation();
+    });
+  });
+
+  externalNavDropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', () => {
+      closeNav(0);
     });
   });
 
@@ -359,7 +374,7 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   const mobileDropdown = createFromHTML(mobileDropdownHTML);
 
   const navDropdown = createFromHTML(
-    `<div class="global-nav-dropdown">
+    `<div id="all-canonical-desktop" class="global-nav-dropdown">
       <div class="global-nav-dropdown__content u-hide" aria-hidden="true" id="canonical-products">
         ${createProductDropdown(canonicalProducts)}
       </div>

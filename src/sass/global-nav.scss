@@ -47,12 +47,12 @@ $global-nav-link-color: #3097ff;
         width: map-get($icon-sizes, default);
 
         @media (min-width: $threshold-4-6-col) {
-          right: map-get($grid-margin-widths, default);
+          right: calc(#{$sph--small} + 1px);
         }
 
-        @media (min-width: $breakpoint-navigation-threshold) {
-          right: calc(#{$sph--small} + 1px); // 1px for the border on selects. this aligns it with any selects underneath
-        }
+        // @media (min-width: $breakpoint-navigation-threshold) {
+        //   right: calc(#{$sph--small} + 1px); // 1px for the border on selects. this aligns it with any selects underneath
+        // }
       }
 
       &.is-selected {
@@ -76,7 +76,7 @@ $global-nav-link-color: #3097ff;
   color: $global-nav-font-color;
   font-family: $global-nav-font-family;
   font-weight: 300;
-  line-height: map-get($line-heights, default-text);  
+  line-height: map-get($line-heights, default-text);
   overflow: hidden;
   width: 100%;
   z-index: 9;
@@ -318,6 +318,13 @@ $global-nav-link-color: #3097ff;
   &.show-overlay {
     opacity: 1;
     pointer-events: all;
+  }
+}
+
+// sass-lint:disable no-ids
+#all-canonical-mobile {
+  .global-nav__header-link-anchor::after {
+    right: map-get($grid-margin-widths, default);
   }
 }
 
