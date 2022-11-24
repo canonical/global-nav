@@ -6,7 +6,7 @@
     <title>Canonical global navigation demo</title>
     <meta name="description" content="Canonical global navigation demo" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-3.7.1.min.css" />
+    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-3.8.1.min.css" />
     <style type="text/css">
       body {
         display: block;
@@ -35,6 +35,20 @@
             </li>
             <li class="p-navigation__item">
               <a class="p-navigation__link" href="#">Services</a>
+            </li>
+            <li class="p-navigation__item--dropdown-toggle" id="link-3">
+              <button href="#link-3-menu" aria-controls="link-3-menu" class="p-navigation__link">LXCFS</button>
+              <ul class="p-navigation__dropdown" id="link-3-menu" aria-hidden="false">
+                <li>
+                  <a href="#" class="p-navigation__dropdown-item">Introduction</a>
+                </li>
+                <li>
+                  <a href="#" class="p-navigation__dropdown-item">News</a>
+                </li>
+                <li>
+                  <a href="#" class="p-navigation__dropdown-item">Getting started</a>
+                </li>
+              </ul>
             </li>
           </ul>
 
@@ -183,7 +197,55 @@
     </main>
     <script src="dist/global-nav.js"></script>
     <script>
-      canonicalGlobalNav.createNav();
+      function toggleDropdown(toggle, open) {
+        var parentElement = toggle.parentNode;
+        var dropdown = document.getElementById(toggle.getAttribute('aria-controls'));
+        dropdown.setAttribute('aria-hidden', !open);
+
+        if (open) {
+          parentElement.classList.add('is-active');
+        } else {
+          parentElement.classList.remove('is-active');
+        }
+      }
+
+      function closeAllDropdowns(toggles) {
+        toggles.forEach(function (toggle) {
+          toggleDropdown(toggle, false);
+        });
+      }
+
+      function handleClickOutside(toggles, containerClass) {
+        document.addEventListener('click', function (event) {
+          var target = event.target;
+
+          if (target.closest) {
+            if (!target.closest(containerClass)) {
+              closeAllDropdowns(toggles);
+            }
+          }
+        });
+      }
+
+      function initNavDropdowns(containerClass) {
+        var toggles = [].slice.call(document.querySelectorAll(containerClass + ' [aria-controls]'));
+
+        handleClickOutside(toggles, containerClass);
+
+        toggles.forEach(function (toggle) {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const shouldOpen = !toggle.parentNode.classList.contains('is-active');
+            closeAllDropdowns(toggles);
+            toggleDropdown(toggle, shouldOpen);
+          });
+        });
+      }
+
+      initNavDropdowns('.p-navigation__item--dropdown-toggle');
+
+      canonicalGlobalNav.createNav({ breakpoint: 1036 });
     </script>
   </body>
 </html>
