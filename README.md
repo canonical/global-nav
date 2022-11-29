@@ -123,7 +123,7 @@ Just because this was a bit of a pain, here is what I did.
 
 The package is versioned using [semantic versioning](https://semver.org/) and published to the NPM registry.
 
-To cut a new release run;
+To cut a new release run:
 
 ```bash
 npm version [patch|minor|major]
