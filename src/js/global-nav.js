@@ -248,6 +248,7 @@ function addListeners(wrapper, breakpoint) {
     '.global-nav-dropdown__content'
   );
   const overlay = document.querySelector('.global-nav-overlay');
+  const event = new Event('global-nav-opened');
   /* eslint-enable */
 
   function closeNav(delay = 250) {
@@ -279,6 +280,8 @@ function addListeners(wrapper, breakpoint) {
     headerLink.classList.add('is-selected');
     headerLink.parentNode.classList.add('is-active');
     headerLink.setAttribute('aria-expanded', 'true');
+
+    document.dispatchEvent(event); //eslint-disable-line
 
     dropdownContents.forEach(menu => {
       if (menu !== targetMenu) {
