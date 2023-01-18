@@ -47,12 +47,12 @@ $global-nav-link-color: #3097ff;
         width: map-get($icon-sizes, default);
 
         @media (min-width: $threshold-4-6-col) {
-          right: calc(#{$sph--small} + 1px);
+          right: map-get($grid-margin-widths, default);
         }
 
-        // @media (min-width: $breakpoint-navigation-threshold) {
-        //   right: calc(#{$sph--small} + 1px); // 1px for the border on selects. this aligns it with any selects underneath
-        // }
+        @media (min-width: $breakpoint-large) {
+          right: calc(#{$sph--small} + 1px);
+        }
       }
 
       &.is-selected {
