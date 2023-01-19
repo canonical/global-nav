@@ -88,12 +88,18 @@ $global-nav-link-color: #3097ff;
     position: absolute;
     top: 3.5rem;
     transform: translateY(-100%);
+    z-index: 9;
 
     &.show-content {
       border-top: 1px solid $global-nav-border-color;
       height: auto;
       transform: translateY(0);
     }
+  }
+
+  @media (max-width: $breakpoint-large) {
+    top: 3rem;
+    z-index: 10;
   }
 
   .global-nav-dropdown__content {
