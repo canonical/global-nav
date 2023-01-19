@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-3.10.0.min.css" />
+</head>
+<body>
+  <header id="navigation" class="p-navigation is-dark">
+    <div class="p-navigation__row">
+      <div class="p-navigation__banner">
+        <div class="p-navigation__tagged-logo">
+          <a class="p-navigation__link" href="#">
+            <div class="p-navigation__logo-tag">
+              <img class="p-navigation__logo-icon" src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="">
+            </div>
+            <span class="p-navigation__logo-title">Ubuntu</span>
+          </a>
+        </div>
+        <a href="#navigation" class="p-navigation__toggle--open" title="menu">Menu</a>
+        <a href="#navigation-closed" class="p-navigation__toggle--close" title="close menu">Close menu</a>
+      </div>
+      <nav class="p-navigation__nav" aria-label="Example sub navigation">
+        <ul class="p-navigation__items">
+          <li class="p-navigation__item--dropdown-toggle" id="link-2">
+            <a href="#link-2-menu" aria-controls="link-2-menu" class="p-navigation__link">LXD</a>
+            <ul class="p-navigation__dropdown" id="link-2-menu" aria-hidden="true">
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Introduction</a>
+              </li>
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">News</a>
+              </li>
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Getting started - Command line</a>
+              </li>
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Getting started - OpenStack</a>
+              </li>
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Getting started - OpenNebula</a>
+              </li>
+            </ul>
+          </li>
+          <li class="p-navigation__item--dropdown-toggle" id="link-3">
+            <a href="#link-3-menu" aria-controls="link-3-menu" class="p-navigation__link">LXCFS</a>
+            <ul class="p-navigation__dropdown" id="link-3-menu" aria-hidden="true">
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Introduction</a>
+              </li>
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">News</a>
+              </li>
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Getting started</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="p-navigation__items global-nav">
+          <li class="p-navigation__item--dropdown-toggle" id="link-4">
+            <a class="p-navigation__link" aria-controls="account-menu">
+              My account
+            </a>
+            <ul class="p-navigation__dropdown--right" id="account-menu" aria-hidden="true">
+              <li>
+                <a href="#" class="p-navigation__dropdown-item">Sign out</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <script src="./global-nav.js"></script>
+  <script>
+    function toggleDropdown(toggle, open) {
+      var parentElement = toggle.parentNode;
+      var dropdown = document.getElementById(toggle.getAttribute('aria-controls'));
+      dropdown.setAttribute('aria-hidden', !open);
+
+      if (open) {
+        parentElement.classList.add('is-active');
+      } else {
+        parentElement.classList.remove('is-active');
+      }
+    }
+
+    function closeAllDropdowns(toggles) {
+      toggles.forEach(function (toggle) {
+        toggleDropdown(toggle, false);
+      });
+    }
+
+    function handleClickOutside(toggles, containerClass) {
+      document.addEventListener('click', function (event) {
+        var target = event.target;
+
+        if (target.closest) {
+          if (!target.closest(containerClass)) {
+            closeAllDropdowns(toggles);
+          }
+        }
+      });
+    }
+
+    function initNavDropdowns(containerClass) {
+      var toggles = [].slice.call(document.querySelectorAll(containerClass + ' [aria-controls]'));
+
+      handleClickOutside(toggles, containerClass);
+
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          const shouldOpen = !toggle.parentNode.classList.contains('is-active');
+          closeAllDropdowns(toggles);
+          toggleDropdown(toggle, shouldOpen);
+        });
+      });
+    }
+
+    initNavDropdowns('.p-navigation__item--dropdown-toggle');
+
+    canonicalGlobalNav.createNav();
+  </script>
+</body>
+</html>
