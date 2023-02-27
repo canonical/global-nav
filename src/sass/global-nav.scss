@@ -53,10 +53,6 @@ $global-nav-link-color: #3097ff;
         @media (min-width: $threshold-4-6-col) {
           right: calc(#{$sph--small} + 1px);
         }
-
-        // @media (min-width: $breakpoint-navigation-threshold) {
-        //   right: calc(#{$sph--small} + 1px); // 1px for the border on selects. this aligns it with any selects underneath
-        // }
       }
 
       &.is-selected {
@@ -329,6 +325,10 @@ $global-nav-link-color: #3097ff;
 #all-canonical-mobile {
   .global-nav__header-link-anchor::after {
     right: map-get($grid-margin-widths, default);
+
+    @media (max-width: $global-nav-breakpoint) {
+      right: 1rem;
+    }
   }
 }
 
