@@ -3,5 +3,9 @@
   "rules": {
     "import/prefer-default-export": 0,
     "implicit-arrow-linebreak": "off"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
   }
 }

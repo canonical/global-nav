@@ -224,4 +224,177 @@ const canonicalProducts = {
   ],
 };
 
-export { canonicalProducts };
+// Nested sidebar structure for mobile
+/* Items will have the following structure:
+  
+  title: The display name of the item 
+
+  url: If it's a link then it will have a url
+
+  children: If it opens a nested menu then it will have children 
+
+  NOTE: items should not have both url and children properties.
+*/
+const canonicalProductsMobile = {
+  title: 'All Canonical',
+  isFirstLevel: true,
+  children: [
+    {
+      title: 'Canonical',
+      url: 'https://canonical.com/',
+    },
+    {
+      title: 'Ubuntu',
+      url: 'https://ubuntu.com/',
+    },
+    {
+      title: 'Snapcraft',
+      url: 'https://snapcraft.io/',
+    },
+    {
+      title: 'LXD',
+      url: 'https://linuxcontainers.org/',
+    },
+    {
+      title: 'MAAS',
+      url: 'https://maas.io/',
+    },
+    {
+      title: 'OpenStack',
+      url: 'https://ubuntu.com/openstack',
+    },
+    {
+      title: 'Kubernetes',
+      url: 'https://ubuntu.com/kubernetes',
+    },
+    {
+      title: 'Juju',
+      url: 'https://juju.is/',
+    },
+    {
+      title: 'Multipass',
+      url: 'https://multipass.run/',
+    },
+    {
+      title: 'Ubuntu Pro',
+      url: 'https://ubuntu.com/pro',
+    },
+    {
+      title: 'Also from Canonical',
+      children: [
+        {
+          title: 'Launchpad',
+          url: 'https://launchpad.net',
+        },
+        {
+          title: 'Ubuntu Image Service',
+          url: 'https://cloud-images.ubuntu.com/locator/',
+        },
+        {
+          title: 'Cloud-init',
+          url: 'https://cloud-init.io/',
+        },
+        {
+          title: 'Mir',
+          url: 'https://mir-server.io/',
+        },
+        {
+          title: 'Landscape',
+          url: 'https://landscape.canonical.com/',
+        },
+        {
+          title: 'Netplan',
+          url: 'http://www.netplan.io/',
+        },
+        {
+          title: 'Charmed Kubeflow',
+          url: 'https://charmed-kubeflow.io',
+        },
+        {
+          title: 'MicroK8s',
+          url: 'https://microk8s.io/',
+        },
+        {
+          title: 'MicroStack',
+          url: 'https://microstack.run/',
+        },
+      ],
+    },
+    {
+      title: 'Resources',
+      children: [
+        {
+          title: 'Webinars',
+          url: 'https://ubuntu.com/blog?category=webinars#posts-list',
+        },
+        {
+          title: 'Tutorials',
+          url: 'https://tutorials.ubuntu.com/',
+        },
+        {
+          title: 'Videos',
+          url: 'https://ubuntu.com/blog?category=videos#posts-list',
+        },
+        {
+          title: 'Case studies',
+          url: 'https://ubuntu.com/blog?category=case-studies#posts-list',
+        },
+        {
+          title: 'White papers',
+          url: 'https://ubuntu.com/blog?category=white-papers#posts-list',
+        },
+        {
+          title: 'Docs',
+          url: 'https://docs.ubuntu.com/',
+        },
+        {
+          title: 'Training',
+          url: 'https://ubuntu.com/cloud/training',
+        },
+        {
+          title: 'Blog',
+          url: 'https://ubuntu.com/blog',
+        },
+        {
+          title: 'Developer',
+          url: 'https://developer.ubuntu.com/',
+        },
+        {
+          title: 'Install',
+          url: 'https://ubuntu.com/download/cloud',
+        },
+        {
+          title: 'Download',
+          url: 'https://ubuntu.com/download',
+        },
+      ],
+    },
+    {
+      title: 'About',
+      children: [
+        {
+          title: 'Ubuntu',
+          url: 'https://ubuntu.com/',
+        },
+        {
+          title: 'Canonical',
+          url: 'https://www.canonical.com/',
+        },
+        {
+          title: 'Press centre',
+          url: 'https://ubuntu.com/blog/press-centre',
+        },
+        {
+          title: 'Partners',
+          url: 'https://partners.ubuntu.com/',
+        },
+        {
+          title: 'Contact',
+          url: 'https://ubuntu.com/about/contact-us',
+        },
+      ],
+    },
+  ],
+};
+
+export { canonicalProducts, canonicalProductsMobile };

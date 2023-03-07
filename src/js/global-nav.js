@@ -1,4 +1,4 @@
-import { canonicalProducts } from './product-details';
+import { canonicalProducts, canonicalProductsMobile } from './product-details';
 
 function debounce(func, wait, immediate) {
   let timeout;
@@ -17,63 +17,108 @@ function debounce(func, wait, immediate) {
   };
 }
 
+function camelize(str) {
+  // transform string to camelCase
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+    if (+match === 0) return ''; // check for white spaces
+    return index === 0 ? match.toLowerCase() : match.toUpperCase();
+  });
+}
+
 function createFromHTML(html) {
   const div = window.document.createElement('div'); //eslint-disable-line
   div.innerHTML = html;
   return div.childNodes[0];
 }
 
-function createMobileDropdown(products) {
-  const { flagships, others, resources, abouts } = products;
+function createMobileDropdown(allCanonicalDropdown) {
+  const sideNavs = [];
 
   function createListItem(obj) {
-    return `<li>
-        <a class="p-navigation__dropdown-item" href=${obj.url}>${obj.title}</a>
-      </li>`;
+    const objId = camelize(obj.title);
+
+    const link = `
+      <li
+        class="global-nav-mobile__side-list--item${
+          obj.children ? ' global-nav-mobile__side-toggle' : ''
+        }" 
+        ${obj.children ? `data-for='global-nav-mobile__side-${objId}'` : ''}
+      >
+       <a class="p-link--inverted" href=${obj.url || '#'}>
+          ${obj.title}
+        </a>
+      </li>
+    `;
+
+    return link.trim();
   }
 
-  const mobileFlagships = flagships
-    .map(flagship => createListItem(flagship))
-    .join('');
+  function createNavSlide(obj, id, index) {
+    const objCopy = { ...obj };
 
-  const mobileOthers = others.map(other => createListItem(other)).join('');
+    if (objCopy.children) {
+      const navLinks = [];
+      obj.children.forEach(child => {
+        navLinks.push(createListItem(child));
 
-  const mobileResources = resources
-    .map(resource => createListItem(resource))
-    .join('');
+        if (child.children) {
+          const childId = camelize(child.title);
+          const childNavSlide = createNavSlide(child, childId, index + 1);
 
-  const mobileAbouts = abouts.map(about => createListItem(about)).join('');
+          sideNavs.push(childNavSlide);
+        }
+      });
 
-  const mobileDropdown = `<li id="all-canonical-mobile" class="u-hide">
-    <ul class="p-navigation__items">
-      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</a>
-        <ul id="products" class="p-navigation__dropdown">
-          ${mobileFlagships}
-        </ul>
-      </li>
-      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</a>
-        <ul id="also-from-canonical" class="p-navigation__dropdown">
-          ${mobileOthers}
-        </ul>
-      </li>
-      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#resources" class="p-navigation__link global-nav__header-link-anchor">Resources</a>
-        <ul id="resources" class="p-navigation__dropdown">
-          ${mobileResources}
-        </ul>
-      </li>
-      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#about" class="p-navigation__link global-nav__header-link-anchor">About</a>
-        <ul id="about" class="p-navigation__dropdown u-no-margin--bottom">
-          ${mobileAbouts}
-        </ul>
-      </li>
-    </ul>
-  </li>`;
+      objCopy.navLinks = navLinks;
+    }
 
-  return mobileDropdown;
+    const navSide = `
+      <div class="global-nav-mobile__side" data-level="${index}" id="global-nav-mobile__side-${id}">
+        <a 
+          class="global-nav-mobile__side-back"
+          data-parent='global-nav-mobile__side-${id}'
+        >
+          Back
+        </a>
+        ${
+          objCopy.navLinks
+            ? `<ul class="global-nav-mobile__side-list">
+                ${objCopy.navLinks.join('')}
+              </ul>`
+            : ''
+        }
+      </div>
+    `;
+
+    return navSide.trim();
+  }
+
+  const sideNavId = camelize(allCanonicalDropdown.title);
+  const allCanonicalDropdownSlide = createNavSlide(
+    allCanonicalDropdown,
+    sideNavId,
+    1
+  );
+
+  sideNavs.push(allCanonicalDropdownSlide);
+
+  const mobileDropdown = `
+    <li id="all-canonical-mobile" class="u-hide">
+      <ul class="p-navigation__items global-nav-mobile">
+        <li 
+          class="p-navigation__item global-nav-mobile__side-toggle" 
+          data-for="global-nav-mobile__side-allCanonical"
+        >
+          <a class="p-navigation__link p-link--inverted">
+            All Canonical
+          </a>
+        </li>
+        ${sideNavs.join('')}
+      </ul>
+    </li>
+  `;
+
+  return mobileDropdown.trim();
 }
 
 function createProductDropdown(products) {
@@ -239,6 +284,13 @@ function addListeners(wrapper, breakpoint) {
   const globalNavHeaderLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
+  const mobileDropdownItems = wrapper.querySelectorAll(
+    '.global-nav-mobile__side-toggle'
+  );
+  const mobileNavSidesBackLinks = wrapper.querySelectorAll(
+    '.global-nav-mobile__side-back'
+  );
+  const mobileNavSides = wrapper.querySelectorAll('.global-nav-mobile__side');
   /* eslint-disable */
   const externalNavDropdowns = document.querySelectorAll(
     '.p-navigation__item--dropdown-toggle:not(.global-nav__dropdown-toggle) .p-navigation__link'
@@ -258,6 +310,15 @@ function addListeners(wrapper, breakpoint) {
       link.classList.remove('is-selected');
       link.parentNode.classList.remove('is-active');
       link.setAttribute('aria-expanded', 'false');
+    });
+
+    mobileDropdownItems.forEach(link => {
+      link.classList.remove('is-selected');
+      link.setAttribute('aria-expanded', 'false');
+    });
+
+    mobileNavSides.forEach(side => {
+      side.classList.remove('is-active');
     });
 
     setTimeout(() => {
@@ -296,6 +357,17 @@ function addListeners(wrapper, breakpoint) {
     overlay.classList.add('show-overlay');
   }
 
+  function openMobileSidenav(sidenavItem) {
+    const targetSidenavId = sidenavItem.getAttribute('data-for');
+    const targetSidenav = wrapper.querySelector(`#${targetSidenavId}`);
+
+    document.body.style.overflow = 'hidden';
+
+    sidenavItem.classList.add('is-selected');
+
+    targetSidenav.classList.add('is-active');
+  }
+
   globalNavHeaderLinks.forEach(headerLink => {
     headerLink.addEventListener('click', e => {
       e.preventDefault();
@@ -321,6 +393,50 @@ function addListeners(wrapper, breakpoint) {
         dropdownContainer.classList.add('show-content');
         openDropdown(headerLink);
       }
+
+      e.stopPropagation();
+    });
+  });
+
+  mobileDropdownItems.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      externalNavDropdowns.forEach(externalLink => {
+        externalLink.parentNode.classList.remove('is-active');
+      });
+
+      link.classList.add('is-selected');
+      link.setAttribute('aria-expanded', 'true');
+
+      openMobileSidenav(link);
+
+      e.stopPropagation();
+    });
+  });
+
+  mobileNavSidesBackLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      const sidenav = link.parentNode;
+
+      const level = sidenav.getAttribute('data-level');
+
+      if (level === '1') {
+        document.body.removeAttribute('style');
+      }
+
+      sidenav.classList.remove('is-active');
+
+      mobileDropdownItems.forEach(mobileLink => {
+        if (
+          mobileLink.getAttribute('data-for') === sidenav.getAttribute('id')
+        ) {
+          mobileLink.classList.remove('is-selected');
+          mobileLink.setAttribute('aria-expanded', 'false');
+        }
+      });
 
       e.stopPropagation();
     });
@@ -373,7 +489,7 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
       <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</a>
     </li>`);
 
-  const mobileDropdownHTML = createMobileDropdown(canonicalProducts);
+  const mobileDropdownHTML = createMobileDropdown(canonicalProductsMobile);
   const mobileDropdown = createFromHTML(mobileDropdownHTML);
 
   const navDropdown = createFromHTML(

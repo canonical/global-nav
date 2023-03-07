@@ -16,6 +16,28 @@ $global-nav-font-family: unquote($font-base-family);
 $global-nav-font-size-mobile: 0.8175rem;
 $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 $global-nav-link-color: #3097ff;
+$dropdown-border: 1px solid $colors--dark-theme--border-low-contrast;
+
+%global-nav-chevron-indicator {
+  @include vf-icon-chevron;
+
+  .is-dark & {
+    @include vf-icon-chevron($color-mid-dark);
+  }
+
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  height: $spv--large;
+  pointer-events: none;
+  position: absolute;
+  right: map-get($grid-margin-widths, small);
+  text-indent: calc(100% + 10rem);
+  top: calc(#{$spv--large} + #{map-get($nudges, x-small)});
+  width: map-get($icon-sizes, default);
+}
 
 .global-nav {
   * {
@@ -31,24 +53,7 @@ $global-nav-link-color: #3097ff;
 
     .global-nav__header-link-anchor {
       &::after {
-        @include vf-icon-chevron;
-
-        .is-dark & {
-          @include vf-icon-chevron($colors--dark-theme--text-default);
-        }
-
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        content: '';
-        display: block;
-        height: $spv--large;
-        pointer-events: none;
-        position: absolute;
-        right: map-get($grid-margin-widths, small);
-        text-indent: calc(100% + 10rem);
-        top: calc(#{$spv--large} + #{map-get($nudges, x-small)});
-        width: map-get($icon-sizes, default);
+        @extend %global-nav-chevron-indicator;
 
         @media (min-width: $threshold-4-6-col) {
           right: calc(#{$sph--small} + 1px);
@@ -330,6 +335,14 @@ $global-nav-link-color: #3097ff;
       right: 1rem;
     }
   }
+
+  .global-nav-mobile__dropdown-toggle {
+    ::after {
+      @extend %global-nav-chevron-indicator;
+
+      transform: rotate(-90deg);
+    }
+  }
 }
 
 @media (max-width: $global-nav-breakpoint) {
@@ -354,5 +367,150 @@ $global-nav-link-color: #3097ff;
     position: relative;
     top: 0;
     z-index: 999999;
+  }
+}
+
+// New sidepane navigation
+.global-nav-mobile {
+  display: none;
+  padding: 0;
+
+  @media (max-width: $global-nav-breakpoint) {
+    display: block;
+  }
+
+  [hidden='true'] {
+    display: none;
+  }
+
+  &__side {
+    @include vf-animation(transform, brisk, out);
+
+    background-color: #2d2d2d;
+    bottom: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0 0 1rem 2rem;
+    position: fixed;
+    top: 0;
+    transform: translateX(100%);
+    width: 100%;
+
+    &[data-level='1'] {
+      z-index: 101;
+    }
+
+    &[data-level='2'] {
+      z-index: 102;
+    }
+
+    &[data-level='3'] {
+      z-index: 103;
+    }
+
+    &.is-active {
+      @include vf-animation(transform, brisk, out);
+
+      transform: translateX(0);
+    }
+
+    &-back {
+      border-bottom: 1px solid $global-nav-border-color;
+      color: $color-light;
+      display: block;
+      padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+      position: relative;
+
+      @media (min-width: $breakpoint-small) {
+        padding-left: 3rem;
+      }
+
+      &:hover {
+        background-color: $colors--dark-theme--background-hover;
+        text-decoration: none;
+      }
+
+      &::before {
+        @extend %global-nav-chevron-indicator;
+
+        left: 0;
+        top: 1rem !important;
+        transform: rotate(90deg);
+
+        @media (min-width: $breakpoint-small) {
+          left: 1.25rem;
+        }
+      }
+    }
+
+    &-toggle {
+      ::after {
+        @extend %global-nav-chevron-indicator;
+
+        top: 1rem !important;
+        transform: rotate(-90deg);
+      }
+
+      &.is-selected {
+        background-color: rgba(255, 255, 255, 0.1);
+
+        &::after {
+          transform: rotate(90deg);
+        }
+
+        a {
+          color: $color-x-light;
+        }
+      }
+    }
+
+    &-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    &-list--item {
+      border-bottom: $dropdown-border;
+      line-height: 1.5rem;
+      margin: 0;
+      padding: 0.75rem 0;
+      position: relative;
+
+      @media (min-width: $breakpoint-small) {
+        margin: 0 1rem;
+      }
+
+      a {
+        display: block;
+
+        // &:not(:first-child) {
+        //   display: inline-block;
+        //   margin: 0.5rem 0.5rem 0.75rem;
+        // }
+
+        &:hover {
+          background-color: rgba(170, 170, 170, 0.1);
+          text-decoration: none;
+        }
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    .p-muted-heading {
+      @extend .p-muted-heading;
+
+      padding-left: 1rem;
+
+      @media (min-width: $breakpoint-small) {
+        padding-left: 1.5rem;
+      }
+
+      @media (min-width: $global-nav-breakpoint) {
+        padding-left: 0.5rem;
+      }
+    }
   }
 }
