@@ -513,3 +513,21 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
     addListeners(container, breakpoint);
   }
 };
+
+export const closeNav = () => {
+  const container = document.querySelector('.global-nav');
+
+  const mobileDropdownItems = container.querySelectorAll(
+    '.global-nav-mobile__side-toggle'
+  );
+  const mobileNavSides = container.querySelectorAll('.global-nav-mobile__side');
+
+  mobileDropdownItems.forEach(link => {
+    link.classList.remove('is-selected');
+    link.setAttribute('aria-expanded', 'false');
+  });
+
+  mobileNavSides.forEach(sidenav => {
+    sidenav.classList.remove('is-active');
+  });
+};
