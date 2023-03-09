@@ -31,7 +31,7 @@ $global-nav-link-color: #3097ff;
 
     .global-nav__header-link-anchor {
       &::after {
-        @include vf-icon-chevron();
+        @include vf-icon-chevron;
 
         .is-dark & {
           @include vf-icon-chevron($colors--dark-theme--text-default);
