@@ -426,7 +426,7 @@ $dropdown-border: 1px solid $colors--dark-theme--border-low-contrast;
       color: $color-light;
       display: block;
       margin: 0;
-      padding: 0.75rem 0 0.75rem calc(#{$sp-xxx-large} + 1.5rem);
+      padding: 0.75rem 0 0.75rem calc(#{$sp-xxx-large} + 1rem);
       position: relative;
       text-align: left;
       width: 100%;
@@ -443,7 +443,7 @@ $dropdown-border: 1px solid $colors--dark-theme--border-low-contrast;
       &::before {
         @extend %global-nav-chevron-indicator;
 
-        left: $sp-xxx-large;
+        left: $sp-xx-large;
         top: 1rem !important;
         transform: rotate(90deg);
       }
@@ -459,17 +459,9 @@ $dropdown-border: 1px solid $colors--dark-theme--border-low-contrast;
       &::after {
         @extend %global-nav-chevron-indicator;
 
-        right: $sp-large;
+        right: $sp-medium;
         top: 1rem !important;
         transform: rotate(-90deg);
-      }
-
-      &.is-selected {
-        background-color: rgba(255, 255, 255, 0.1);
-
-        a {
-          color: $color-x-light;
-        }
       }
     }
 
@@ -499,26 +491,22 @@ $dropdown-border: 1px solid $colors--dark-theme--border-low-contrast;
           margin-left: $sp-xx-large;
           position: absolute;
           right: 0;
-          top: 1px;
+          top: 0;
 
           @media (min-width: $breakpoint-small) {
             margin-left: $sp-xxx-large;
           }
         }
+      }
 
-        &:hover {
-          background-color: rgba(170, 170, 170, 0.1);
-          text-decoration: none;
-        }
-
-        &:focus {
-          &::before {
-            display: none;
-          }
-        }
+      &:hover {
+        background-color: $colors--dark-theme--background-hover;
+        text-decoration: none;
       }
 
       &.is-selected {
+        background-color: rgba(170, 170, 170, 0.1);
+
         &::before {
           background-color: #fff;
           bottom: 0;
@@ -529,6 +517,12 @@ $dropdown-border: 1px solid $colors--dark-theme--border-low-contrast;
           top: 0;
           width: 0.1875rem;
           z-index: 1;
+        }
+
+        > a {
+          &::before {
+            display: none;
+          }
         }
       }
     }
