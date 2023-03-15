@@ -32,21 +32,26 @@ function createFromHTML(html) {
 }
 
 function createMobileDropdown(allCanonicalDropdown) {
-  const sideNavs = [];
-
-  function createListItem(obj) {
+  function createListItem(obj, slide = '') {
     const objId = camelize(obj.title);
 
     const link = `
       <li
         class="global-nav-mobile__side-list--item${
           obj.children ? ' global-nav-mobile__side-toggle' : ''
-        }" 
-        ${obj.children ? `data-for='global-nav-mobile__side-${objId}'` : ''}
+        }"
       >
-       <a class="p-link--inverted" href=${obj.url || '#'}>
+       <a
+        class="p-link--inverted" href=${obj.url || '#'}
+        ${
+          obj.children
+            ? ` aria-controls='global-nav-mobile__side-${objId}'`
+            : ''
+        } 
+        >
           ${obj.title}
         </a>
+        ${slide}
       </li>
     `;
 
@@ -59,13 +64,13 @@ function createMobileDropdown(allCanonicalDropdown) {
     if (objCopy.children) {
       const navLinks = [];
       obj.children.forEach(child => {
-        navLinks.push(createListItem(child));
-
         if (child.children) {
           const childId = camelize(child.title);
           const childNavSlide = createNavSlide(child, childId, index + 1);
 
-          sideNavs.push(childNavSlide);
+          navLinks.push(createListItem(child, childNavSlide));
+        } else {
+          navLinks.push(createListItem(child));
         }
       });
 
@@ -73,21 +78,29 @@ function createMobileDropdown(allCanonicalDropdown) {
     }
 
     const navSide = `
-      <div class="global-nav-mobile__side" data-level="${index}" id="global-nav-mobile__side-${id}">
-        <a 
-          class="global-nav-mobile__side-back"
-          data-parent='global-nav-mobile__side-${id}'
-        >
-          Back
-        </a>
+      <ul
+        class="global-nav-mobile__side u-hide"
+        data-level="${index}" 
+        id="global-nav-mobile__side-${id}"
+      >
+        <li>
+          <button 
+            class="global-nav-mobile__side-back"
+            aria-controls='global-nav-mobile__side-${id}'
+          >
+            Back
+          </button>
+        </li>
         ${
           objCopy.navLinks
-            ? `<ul class="global-nav-mobile__side-list">
-                ${objCopy.navLinks.join('')}
-              </ul>`
+            ? `<li class="global-nav-mobile__side-list">
+                <ul>
+                  ${objCopy.navLinks.join('')}
+                </ul>
+              </li>`
             : ''
         }
-      </div>
+      </ul>
     `;
 
     return navSide.trim();
@@ -100,21 +113,17 @@ function createMobileDropdown(allCanonicalDropdown) {
     1
   );
 
-  sideNavs.push(allCanonicalDropdownSlide);
-
   const mobileDropdown = `
-    <li id="all-canonical-mobile" class="u-hide">
-      <ul class="p-navigation__items global-nav-mobile">
-        <li 
-          class="p-navigation__item global-nav-mobile__side-toggle" 
-          data-for="global-nav-mobile__side-allCanonical"
-        >
-          <a class="p-navigation__link p-link--inverted">
-            All Canonical
-          </a>
-        </li>
-        ${sideNavs.join('')}
-      </ul>
+    <li 
+      id="all-canonical-mobile" 
+      class="p-navigation__item global-nav-mobile__side-toggle u-hide"
+    >
+      <button class="p-navigation__link" aria-controls="global-nav-mobile__side-allCanonical">
+        All Canonical
+      </button>
+      <div class="global-nav-mobile">
+        ${allCanonicalDropdownSlide}
+      </div>
     </li>
   `;
 
@@ -285,7 +294,7 @@ function addListeners(wrapper, breakpoint) {
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
   const mobileDropdownItems = wrapper.querySelectorAll(
-    '.global-nav-mobile__side-toggle'
+    '.global-nav-mobile__side-toggle > [aria-controls]'
   );
   const mobileNavSidesBackLinks = wrapper.querySelectorAll(
     '.global-nav-mobile__side-back'
@@ -313,8 +322,8 @@ function addListeners(wrapper, breakpoint) {
     });
 
     mobileDropdownItems.forEach(link => {
-      link.classList.remove('is-selected');
-      link.setAttribute('aria-expanded', 'false');
+      link.parentNode.classList.remove('is-selected');
+      link.parentNode.setAttribute('aria-expanded', 'false');
     });
 
     mobileNavSides.forEach(side => {
@@ -328,6 +337,14 @@ function addListeners(wrapper, breakpoint) {
 
       dropdownContents.forEach(menu => {
         menu.classList.add('u-hide');
+      });
+
+      mobileNavSides.forEach(side => {
+        side.setAttribute('aria-hidden', 'true');
+      });
+
+      mobileNavSides.forEach(side => {
+        side.classList.add('u-hide');
       });
     }, delay);
 
@@ -358,14 +375,17 @@ function addListeners(wrapper, breakpoint) {
   }
 
   function openMobileSidenav(sidenavItem) {
-    const targetSidenavId = sidenavItem.getAttribute('data-for');
+    const targetSidenavId = sidenavItem.getAttribute('aria-controls');
     const targetSidenav = wrapper.querySelector(`#${targetSidenavId}`);
 
     document.body.style.overflow = 'hidden';
 
-    sidenavItem.classList.add('is-selected');
+    targetSidenav.classList.remove('u-hide');
+    targetSidenav.setAttribute('aria-hidden', 'false');
 
-    targetSidenav.classList.add('is-active');
+    setTimeout(() => {
+      targetSidenav.classList.add('is-active');
+    }, 150);
   }
 
   globalNavHeaderLinks.forEach(headerLink => {
@@ -406,8 +426,8 @@ function addListeners(wrapper, breakpoint) {
         externalLink.parentNode.classList.remove('is-active');
       });
 
-      link.classList.add('is-selected');
-      link.setAttribute('aria-expanded', 'true');
+      link.parentNode.classList.add('is-selected');
+      link.parentNode.setAttribute('aria-expanded', 'true');
 
       openMobileSidenav(link);
 
@@ -419,24 +439,31 @@ function addListeners(wrapper, breakpoint) {
     link.addEventListener('click', e => {
       e.preventDefault();
 
-      const sidenav = link.parentNode;
+      const parentId = link.getAttribute('aria-controls');
+
+      const sidenav = wrapper.querySelector(`#${parentId}`);
 
       const level = sidenav.getAttribute('data-level');
 
       if (level === '1') {
-        document.body.removeAttribute('style');
+        document.body.overflow = 'hidden';
       }
 
       sidenav.classList.remove('is-active');
 
       mobileDropdownItems.forEach(mobileLink => {
         if (
-          mobileLink.getAttribute('data-for') === sidenav.getAttribute('id')
+          mobileLink.getAttribute('aria-controls') ===
+          sidenav.getAttribute('id')
         ) {
-          mobileLink.classList.remove('is-selected');
-          mobileLink.setAttribute('aria-expanded', 'false');
+          mobileLink.parentNode.classList.remove('is-selected');
+          mobileLink.parentNode.setAttribute('aria-expanded', 'false');
         }
       });
+
+      setTimeout(() => {
+        sidenav.classList.add('u-hide');
+      }, 150);
 
       e.stopPropagation();
     });
