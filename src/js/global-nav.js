@@ -35,30 +35,40 @@ function createMobileDropdown(allCanonicalDropdown) {
   function createListItem(obj, slide = '') {
     const objId = camelize(obj.title);
 
-    const link = `
-      <li
-        class="global-nav-mobile__side-list--item${
-          obj.children ? ' global-nav-mobile__side-toggle' : ''
-        }"
-      >
-       <a
-        class="p-link--inverted" href=${obj.url || '#'}
-        ${
-          obj.children
-            ? ` aria-controls='global-nav-mobile__side-${objId}'`
-            : ''
-        } 
+    let link;
+
+    if (obj.children) {
+      link = `
+        <li
+          class="p-navigation__item--dropdown-toggle"
+          id="${objId}"
         >
-          ${obj.title}
-        </a>
-        ${slide}
-      </li>
-    `;
+          <button
+            class="p-navigation__link"
+            aria-controls="${objId}-menu"
+          >
+            ${obj.title}
+          </button>
+          ${slide}
+        </li>
+      `;
+    } else {
+      link = `
+        <li>
+          <a
+            class="p-navigation__dropdown-item"
+            href=${obj.url}
+          >
+            ${obj.title}
+          </a>
+        </li>
+      `;
+    }
 
     return link.trim();
   }
 
-  function createNavSlide(obj, id, index) {
+  function createNavSlide(obj, id) {
     const objCopy = { ...obj };
 
     if (objCopy.children) {
@@ -66,7 +76,7 @@ function createMobileDropdown(allCanonicalDropdown) {
       obj.children.forEach(child => {
         if (child.children) {
           const childId = camelize(child.title);
-          const childNavSlide = createNavSlide(child, childId, index + 1);
+          const childNavSlide = createNavSlide(child, childId);
 
           navLinks.push(createListItem(child, childNavSlide));
         } else {
@@ -79,51 +89,39 @@ function createMobileDropdown(allCanonicalDropdown) {
 
     const navSide = `
       <ul
-        class="global-nav-mobile__side u-hide"
-        data-level="${index}" 
-        id="global-nav-mobile__side-${id}"
+        class="p-navigation__dropdown"
+        id="${id}-menu"
       >
-        <li>
+        <li class="p-navigation__item--dropdown-close">
           <button 
-            class="global-nav-mobile__side-back"
-            aria-controls='global-nav-mobile__side-${id}'
+            class="p-navigation__link"
+            aria-controls="${id}-menu"
           >
             Back
           </button>
         </li>
-        ${
-          objCopy.navLinks
-            ? `<li class="global-nav-mobile__side-list">
-                <ul>
-                  ${objCopy.navLinks.join('')}
-                </ul>
-              </li>`
-            : ''
-        }
+        ${objCopy.navLinks ? `${objCopy.navLinks.join('')}` : ''}
       </ul>
     `;
 
     return navSide.trim();
   }
 
-  const sideNavId = camelize(allCanonicalDropdown.title);
+  const sideNavId = 'all-canonical-mobile';
   const allCanonicalDropdownSlide = createNavSlide(
     allCanonicalDropdown,
-    sideNavId,
-    1
+    sideNavId
   );
 
   const mobileDropdown = `
     <li 
-      id="all-canonical-mobile" 
-      class="p-navigation__item global-nav-mobile__side-toggle u-hide"
+      id="${sideNavId}" 
+      class="p-navigation__item--dropdown-toggle u-hide"
     >
-      <button class="p-navigation__link" aria-controls="global-nav-mobile__side-allCanonical">
+      <button aria-controls="${sideNavId}-menu" class="p-navigation__link">
         All Canonical
       </button>
-      <div class="global-nav-mobile">
-        ${allCanonicalDropdownSlide}
-      </div>
+      ${allCanonicalDropdownSlide}
     </li>
   `;
 
@@ -293,13 +291,6 @@ function addListeners(wrapper, breakpoint) {
   const globalNavHeaderLinks = wrapper.querySelectorAll(
     '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
   );
-  const mobileDropdownItems = wrapper.querySelectorAll(
-    '.global-nav-mobile__side-toggle > [aria-controls]'
-  );
-  const mobileNavSidesBackLinks = wrapper.querySelectorAll(
-    '.global-nav-mobile__side-back'
-  );
-  const mobileNavSides = wrapper.querySelectorAll('.global-nav-mobile__side');
   /* eslint-disable */
   const externalNavDropdowns = document.querySelectorAll(
     '.p-navigation__item--dropdown-toggle:not(.global-nav__dropdown-toggle) .p-navigation__link'
@@ -321,15 +312,6 @@ function addListeners(wrapper, breakpoint) {
       link.setAttribute('aria-expanded', 'false');
     });
 
-    mobileDropdownItems.forEach(link => {
-      link.parentNode.classList.remove('is-selected');
-      link.parentNode.setAttribute('aria-expanded', 'false');
-    });
-
-    mobileNavSides.forEach(side => {
-      side.classList.remove('is-active');
-    });
-
     setTimeout(() => {
       dropdownContents.forEach(menu => {
         menu.setAttribute('aria-hidden', 'true');
@@ -337,14 +319,6 @@ function addListeners(wrapper, breakpoint) {
 
       dropdownContents.forEach(menu => {
         menu.classList.add('u-hide');
-      });
-
-      mobileNavSides.forEach(side => {
-        side.setAttribute('aria-hidden', 'true');
-      });
-
-      mobileNavSides.forEach(side => {
-        side.classList.add('u-hide');
       });
     }, delay);
 
@@ -374,20 +348,6 @@ function addListeners(wrapper, breakpoint) {
     overlay.classList.add('show-overlay');
   }
 
-  function openMobileSidenav(sidenavItem) {
-    const targetSidenavId = sidenavItem.getAttribute('aria-controls');
-    const targetSidenav = wrapper.querySelector(`#${targetSidenavId}`);
-
-    document.body.style.overflow = 'hidden';
-
-    targetSidenav.classList.remove('u-hide');
-    targetSidenav.setAttribute('aria-hidden', 'false');
-
-    setTimeout(() => {
-      targetSidenav.classList.add('is-active');
-    }, 150);
-  }
-
   globalNavHeaderLinks.forEach(headerLink => {
     headerLink.addEventListener('click', e => {
       e.preventDefault();
@@ -413,57 +373,6 @@ function addListeners(wrapper, breakpoint) {
         dropdownContainer.classList.add('show-content');
         openDropdown(headerLink);
       }
-
-      e.stopPropagation();
-    });
-  });
-
-  mobileDropdownItems.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-
-      externalNavDropdowns.forEach(externalLink => {
-        externalLink.parentNode.classList.remove('is-active');
-      });
-
-      link.parentNode.classList.add('is-selected');
-      link.parentNode.setAttribute('aria-expanded', 'true');
-
-      openMobileSidenav(link);
-
-      e.stopPropagation();
-    });
-  });
-
-  mobileNavSidesBackLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-
-      const parentId = link.getAttribute('aria-controls');
-
-      const sidenav = wrapper.querySelector(`#${parentId}`);
-
-      const level = sidenav.getAttribute('data-level');
-
-      if (level === '1') {
-        document.body.overflow = 'hidden';
-      }
-
-      sidenav.classList.remove('is-active');
-
-      mobileDropdownItems.forEach(mobileLink => {
-        if (
-          mobileLink.getAttribute('aria-controls') ===
-          sidenav.getAttribute('id')
-        ) {
-          mobileLink.parentNode.classList.remove('is-selected');
-          mobileLink.parentNode.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      setTimeout(() => {
-        sidenav.classList.add('u-hide');
-      }, 150);
 
       e.stopPropagation();
     });
@@ -539,22 +448,4 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
     // Add event listeners
     addListeners(container, breakpoint);
   }
-};
-
-export const closeNav = () => {
-  const container = document.querySelector('.global-nav');
-
-  const mobileDropdownItems = container.querySelectorAll(
-    '.global-nav-mobile__side-toggle'
-  );
-  const mobileNavSides = container.querySelectorAll('.global-nav-mobile__side');
-
-  mobileDropdownItems.forEach(link => {
-    link.classList.remove('is-selected');
-    link.setAttribute('aria-expanded', 'false');
-  });
-
-  mobileNavSides.forEach(sidenav => {
-    sidenav.classList.remove('is-active');
-  });
 };

@@ -6,7 +6,6 @@
     <title>Canonical global navigation demo</title>
     <meta name="description" content="Canonical global navigation demo" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-3.8.2.min.css" />
     <style type="text/css">
       body {
         display: block;
@@ -17,21 +16,32 @@
     </style>
   </head>
   <body>
-    <header id="navigation" class="p-navigation is-dark">
+    <header id="navigation" class="p-navigation is-dark is-sliding">
       <div class="p-navigation__row">
         <div class="p-navigation__banner">
           <div class="p-navigation__tagged-logo">
             <a class="p-navigation__link" href="#">
               <div class="p-navigation__logo-tag">
-                <img class="p-navigation__logo-icon" src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="">
+                <img
+                  class="p-navigation__logo-icon"
+                  src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg"
+                  alt=""
+                />
               </div>
               <span class="p-navigation__logo-title">Canonical</span>
             </a>
           </div>
-          <a href="#navigation" class="p-navigation__toggle--open" title="menu">Menu</a>
-          <a href="#navigation-closed" class="p-navigation__toggle--close" title="close menu">Close menu</a>
+          <ul class="p-navigation__items">
+            <li class="p-navigation__item">
+              <button class="js-menu-button p-navigation__link">Menu</button>
+            </li>
+          </ul>
         </div>
-        <nav class="p-navigation__nav" aria-label="Example main navigation">
+        <nav
+          class="p-navigation__nav"
+          id="main-nav"
+          aria-label="Example main navigation"
+        >
           <ul class="p-navigation__items">
             <li class="p-navigation__item is-selected">
               <a class="p-navigation__link" href="#">Partners</a>
@@ -40,21 +50,43 @@
               <a class="p-navigation__link" href="#">Services</a>
             </li>
             <li class="p-navigation__item--dropdown-toggle" id="link-3">
-              <button href="#link-3-menu" aria-controls="link-3-menu" class="p-navigation__link">LXCFS</button>
-              <ul class="p-navigation__dropdown" id="link-3-menu" aria-hidden="false">
+              <button
+                href="#link-3-menu"
+                aria-controls="link-3-menu"
+                class="p-navigation__link"
+              >
+                LXCFS
+              </button>
+              <ul
+                class="p-navigation__dropdown"
+                id="link-3-menu"
+                aria-hidden="true"
+              >
+                <li class="p-navigation__item--dropdown-close" id="link-3-back">
+                  <button
+                    href="#link-3-menu"
+                    aria-controls="link-3-menu"
+                    class="p-navigation__link"
+                  >
+                    Back
+                  </button>
+                </li>
                 <li>
-                  <a href="#" class="p-navigation__dropdown-item">Introduction</a>
+                  <a href="#" class="p-navigation__dropdown-item"
+                    >Introduction</a
+                  >
                 </li>
                 <li>
                   <a href="#" class="p-navigation__dropdown-item">News</a>
                 </li>
                 <li>
-                  <a href="#" class="p-navigation__dropdown-item">Getting started</a>
+                  <a href="#" class="p-navigation__dropdown-item"
+                    >Getting started</a
+                  >
                 </li>
               </ul>
             </li>
           </ul>
-
           <ul class="p-navigation__items global-nav">
             <li class="p-navigation__item">
               <a class="p-navigation__link" href="#">Sign in</a>
@@ -73,13 +105,14 @@
         </p>
         <div id="lipsum">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non mi
-            justo. Mauris nisi neque, posuere sed consequat vel, aliquet id nulla.
-            Aliquam nec velit elit. Nam eu sapien nisl. Morbi mattis viverra leo a
-            lobortis. Aenean at nisl lobortis, tristique odio ac, porta massa.
-            Curabitur vehicula malesuada turpis in varius. Pellentesque leo neque,
-            vehicula sed porttitor eu, hendrerit vel lacus. Suspendisse suscipit
-            ultricies erat id facilisis. Ut hendrerit vitae ex nec convallis.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non
+            mi justo. Mauris nisi neque, posuere sed consequat vel, aliquet id
+            nulla. Aliquam nec velit elit. Nam eu sapien nisl. Morbi mattis
+            viverra leo a lobortis. Aenean at nisl lobortis, tristique odio ac,
+            porta massa. Curabitur vehicula malesuada turpis in varius.
+            Pellentesque leo neque, vehicula sed porttitor eu, hendrerit vel
+            lacus. Suspendisse suscipit ultricies erat id facilisis. Ut
+            hendrerit vitae ex nec convallis.
           </p>
           <p>
             Nunc scelerisque, mi vitae fringilla euismod, arcu nisl dignissim
@@ -97,103 +130,103 @@
           <p>
             Nullam blandit purus et nulla vehicula, sit amet convallis erat
             ullamcorper. Orci varius natoque penatibus et magnis dis parturient
-            montes, nascetur ridiculus mus. Vestibulum dignissim placerat velit in
-            mollis. Quisque sed magna nisi. Praesent varius congue felis sit amet
-            scelerisque. Phasellus purus lorem, porta sit amet eleifend et,
+            montes, nascetur ridiculus mus. Vestibulum dignissim placerat velit
+            in mollis. Quisque sed magna nisi. Praesent varius congue felis sit
+            amet scelerisque. Phasellus purus lorem, porta sit amet eleifend et,
             dapibus imperdiet erat. Nunc dictum nibh quis convallis imperdiet.
             Praesent ut diam eget eros auctor sollicitudin nec id urna. In ante
             nisl, facilisis vitae mauris in, faucibus fringilla justo. Nunc
             rhoncus purus et tellus imperdiet finibus.
           </p>
           <p>
-            Quisque ullamcorper eros mauris, non eleifend leo sagittis nec. Aenean
-            ut ex id lorem sagittis dapibus. Pellentesque consequat sapien erat,
-            quis cursus augue ultrices in. Mauris nec venenatis nisi. Integer
-            gravida semper elit sagittis finibus. Vestibulum convallis odio et leo
-            imperdiet, non molestie eros posuere. Quisque egestas nulla a libero
-            pretium, nec pulvinar mauris vestibulum. Pellentesque vehicula dolor
-            nulla, eu feugiat dolor tempor congue. Duis id tincidunt quam. In hac
-            habitasse platea dictumst. Mauris tempus tortor eget sapien ultrices
-            egestas. Nulla facilisi. Nulla hendrerit quis ante a viverra. Maecenas
-            eu egestas libero.
+            Quisque ullamcorper eros mauris, non eleifend leo sagittis nec.
+            Aenean ut ex id lorem sagittis dapibus. Pellentesque consequat
+            sapien erat, quis cursus augue ultrices in. Mauris nec venenatis
+            nisi. Integer gravida semper elit sagittis finibus. Vestibulum
+            convallis odio et leo imperdiet, non molestie eros posuere. Quisque
+            egestas nulla a libero pretium, nec pulvinar mauris vestibulum.
+            Pellentesque vehicula dolor nulla, eu feugiat dolor tempor congue.
+            Duis id tincidunt quam. In hac habitasse platea dictumst. Mauris
+            tempus tortor eget sapien ultrices egestas. Nulla facilisi. Nulla
+            hendrerit quis ante a viverra. Maecenas eu egestas libero.
           </p>
           <p>
             Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
-            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
-            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
-            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
-            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
-            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
-            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
-            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
-            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
-            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
-            amet viverra ante.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed
+            varius fermentum metus, id placerat eros hendrerit ullamcorper.
+            Suspendisse porta felis odio, eu sollicitudin dui tristique ut. Ut
+            ullamcorper leo nec sodales tempus. Nunc porttitor et libero in
+            dignissim. Proin euismod eleifend erat. Vivamus nec aliquam ex. Ut
+            aliquet venenatis diam, vitae sollicitudin ligula suscipit vel.
+            Suspendisse et justo sapien. Etiam eleifend mauris non orci
+            fringilla vulputate. Ut imperdiet magna faucibus, sagittis ex eu,
+            sagittis tellus. Vestibulum faucibus vestibulum arcu non dictum.
+            Nullam quis volutpat arcu, sit amet viverra ante.
           </p>
           <p>
             Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
-            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
-            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
-            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
-            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
-            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
-            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
-            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
-            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
-            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
-            amet viverra ante.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed
+            varius fermentum metus, id placerat eros hendrerit ullamcorper.
+            Suspendisse porta felis odio, eu sollicitudin dui tristique ut. Ut
+            ullamcorper leo nec sodales tempus. Nunc porttitor et libero in
+            dignissim. Proin euismod eleifend erat. Vivamus nec aliquam ex. Ut
+            aliquet venenatis diam, vitae sollicitudin ligula suscipit vel.
+            Suspendisse et justo sapien. Etiam eleifend mauris non orci
+            fringilla vulputate. Ut imperdiet magna faucibus, sagittis ex eu,
+            sagittis tellus. Vestibulum faucibus vestibulum arcu non dictum.
+            Nullam quis volutpat arcu, sit amet viverra ante.
           </p>
           <p>
             Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
-            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
-            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
-            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
-            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
-            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
-            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
-            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
-            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
-            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
-            amet viverra ante.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed
+            varius fermentum metus, id placerat eros hendrerit ullamcorper.
+            Suspendisse porta felis odio, eu sollicitudin dui tristique ut. Ut
+            ullamcorper leo nec sodales tempus. Nunc porttitor et libero in
+            dignissim. Proin euismod eleifend erat. Vivamus nec aliquam ex. Ut
+            aliquet venenatis diam, vitae sollicitudin ligula suscipit vel.
+            Suspendisse et justo sapien. Etiam eleifend mauris non orci
+            fringilla vulputate. Ut imperdiet magna faucibus, sagittis ex eu,
+            sagittis tellus. Vestibulum faucibus vestibulum arcu non dictum.
+            Nullam quis volutpat arcu, sit amet viverra ante.
           </p>
           <p>
             Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
-            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
-            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
-            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
-            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
-            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
-            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
-            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
-            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
-            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
-            amet viverra ante.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed
+            varius fermentum metus, id placerat eros hendrerit ullamcorper.
+            Suspendisse porta felis odio, eu sollicitudin dui tristique ut. Ut
+            ullamcorper leo nec sodales tempus. Nunc porttitor et libero in
+            dignissim. Proin euismod eleifend erat. Vivamus nec aliquam ex. Ut
+            aliquet venenatis diam, vitae sollicitudin ligula suscipit vel.
+            Suspendisse et justo sapien. Etiam eleifend mauris non orci
+            fringilla vulputate. Ut imperdiet magna faucibus, sagittis ex eu,
+            sagittis tellus. Vestibulum faucibus vestibulum arcu non dictum.
+            Nullam quis volutpat arcu, sit amet viverra ante.
           </p>
           <p>
             Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
-            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
-            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
-            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
-            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
-            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
-            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
-            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
-            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
-            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
-            amet viverra ante.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed
+            varius fermentum metus, id placerat eros hendrerit ullamcorper.
+            Suspendisse porta felis odio, eu sollicitudin dui tristique ut. Ut
+            ullamcorper leo nec sodales tempus. Nunc porttitor et libero in
+            dignissim. Proin euismod eleifend erat. Vivamus nec aliquam ex. Ut
+            aliquet venenatis diam, vitae sollicitudin ligula suscipit vel.
+            Suspendisse et justo sapien. Etiam eleifend mauris non orci
+            fringilla vulputate. Ut imperdiet magna faucibus, sagittis ex eu,
+            sagittis tellus. Vestibulum faucibus vestibulum arcu non dictum.
+            Nullam quis volutpat arcu, sit amet viverra ante.
           </p>
           <p>
             Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
-            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
-            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
-            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
-            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
-            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
-            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
-            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
-            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
-            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
-            amet viverra ante.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed
+            varius fermentum metus, id placerat eros hendrerit ullamcorper.
+            Suspendisse porta felis odio, eu sollicitudin dui tristique ut. Ut
+            ullamcorper leo nec sodales tempus. Nunc porttitor et libero in
+            dignissim. Proin euismod eleifend erat. Vivamus nec aliquam ex. Ut
+            aliquet venenatis diam, vitae sollicitudin ligula suscipit vel.
+            Suspendisse et justo sapien. Etiam eleifend mauris non orci
+            fringilla vulputate. Ut imperdiet magna faucibus, sagittis ex eu,
+            sagittis tellus. Vestibulum faucibus vestibulum arcu non dictum.
+            Nullam quis volutpat arcu, sit amet viverra ante.
           </p>
         </div>
       </div>
@@ -201,55 +234,245 @@
     <script src="dist/global-nav.js"></script>
     <script>
       function toggleDropdown(toggle, open) {
-        var parentElement = toggle.parentNode;
-        var dropdown = document.getElementById(toggle.getAttribute('aria-controls'));
+        let parentElement;
+
+        if (
+          toggle.parentNode.classList.contains(
+            'p-navigation__item--dropdown-close'
+          )
+        ) {
+          parentElement = toggle.parentNode.parentNode.parentNode;
+        } else {
+          parentElement = toggle.parentNode;
+        }
+
+        const dropdown = document.getElementById(
+          toggle.getAttribute('aria-controls')
+        );
+
         dropdown.setAttribute('aria-hidden', !open);
 
         if (open) {
           parentElement.classList.add('is-active');
+
+          dropdown.classList.remove('is-dropdown-collapsed');
+          dropdown.classList.add('is-dropdown-expanded');
         } else {
           parentElement.classList.remove('is-active');
+
+          dropdown.classList.remove('is-dropdown-expanded');
+          dropdown.classList.add('is-dropdown-collapsed');
         }
       }
 
-      function closeAllDropdowns(toggles) {
+      function closeAllDropdowns(toggles, exceptions) {
         toggles.forEach(function (toggle) {
-          toggleDropdown(toggle, false);
+          if (exceptions) {
+            // if the dropdown is in one of the exceptions, skip it
+            if (
+              !exceptions[toggle.parentNode.id] &&
+              !toggle.parentNode.classList.contains(
+                'p-navigation__item--dropdown-close'
+              )
+            ) {
+              toggleDropdown(toggle, false);
+            }
+          } else {
+            toggleDropdown(toggle, false);
+          }
         });
-        canonicalGlobalNav.closeNav();
       }
 
-      function handleClickOutside(toggles, containerClass) {
+      function handleClickOutside(toggles, toggleClasses) {
         document.addEventListener('click', function (event) {
-          var target = event.target;
+          const target = event.target;
 
           if (target.closest) {
-            if (!target.closest(containerClass)) {
+            if (!target.closest(toggleClasses)) {
               closeAllDropdowns(toggles);
             }
           }
         });
       }
 
-      function initNavDropdowns(containerClass) {
-        var toggles = [].slice.call(document.querySelectorAll(containerClass + ' [aria-controls]'));
+      function handleClickToggle(toggle, toggles, toggleClasses) {
+        let shouldOpen;
 
-        handleClickOutside(toggles, containerClass);
+        if (
+          !toggle.parentNode.classList.contains(
+            'p-navigation__item--dropdown-close'
+          )
+        ) {
+          const parents = {};
+          let element = toggle.parentNode;
 
-        toggles.forEach(function (toggle) {
-          toggle.addEventListener('click', function (e) {
-            e.preventDefault();
+          const classNames = [
+            'p-navigation__item--dropdown-toggle',
+            'is-active',
+          ];
 
-            const shouldOpen = !toggle.parentNode.classList.contains('is-active');
-            closeAllDropdowns(toggles);
-            toggleDropdown(toggle, shouldOpen);
-          });
-        });
+          // get all parents that are active, and exclude them from being closed when a new dropdown is opened
+          while (
+            element.parentNode &&
+            element.parentNode.nodeName.toLowerCase() != 'body'
+          ) {
+            element = element.parentNode;
+
+            if (
+              classNames.every(className =>
+                element.classList.contains(className)
+              )
+            ) {
+              parents[element.id] = element;
+            }
+          }
+
+          shouldOpen = !toggle.parentNode.classList.contains('is-active');
+
+          // close all dropdowns except the ones that are parents of the clicked toggle
+          closeAllDropdowns(toggles, parents);
+        } else {
+          shouldOpen = false; // close the dropdown when clicking on the back button
+        }
+
+        const dropdown = document.getElementById(
+          toggle.getAttribute('aria-controls')
+        );
+
+        // show dropdown when opening it (places it in the tab order)
+        if (shouldOpen) {
+          dropdown.classList.remove('is-dropdown-hidden');
+        }
+
+        toggleDropdown(toggle, shouldOpen);
       }
 
-      initNavDropdowns('.p-navigation__item--dropdown-toggle');
+      function toggleMenu(menuButton, navigation, toggles) {
+        if (navigation.classList.contains('has-menu-open')) {
+          menuButton.textContent = 'Menu';
+          navigation.classList.remove('has-menu-open');
+          closeAllDropdowns(toggles);
+        } else {
+          menuButton.textContent = 'Close menu';
+          navigation.classList.add('has-menu-open');
+          closeAllDropdowns(toggles);
+        }
+      }
+
+      // throttle util (for window resize event)
+      var throttle = function (fn, delay) {
+        var timer = null;
+        return function () {
+          var context = this,
+            args = arguments;
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            fn.apply(context, args);
+          }, delay);
+        };
+      };
+
+      function initNavDropdowns() {
+        const toggleClasses = [
+          '.p-navigation__item--dropdown-toggle',
+          '.p-navigation__item--dropdown-close',
+        ];
+
+        const navigation = document.querySelector('.p-navigation');
+        const dropdowns = [].slice.call(
+          navigation.querySelectorAll(
+            '.p-navigation__dropdown, .p-navigation__dropdown--right'
+          )
+        );
+        const toggles = [].slice.call(
+          navigation.querySelectorAll(
+            toggleClasses
+              .map(className => className + ' [aria-controls]')
+              .join(', ')
+          )
+        );
+
+        const menuButton = navigation.querySelector('.js-menu-button');
+
+        if (menuButton) {
+          menuButton.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            toggleMenu(menuButton, navigation, toggles);
+          });
+        }
+
+        handleClickOutside(toggles, toggleClasses);
+
+        dropdowns.forEach(function (dropdown) {
+          // hide inactive dropdowns (takes them out of the tab order)
+          if (!dropdown.parentNode.classList.contains('is-active')) {
+            dropdown.classList.add('is-dropdown-hidden');
+          }
+
+          dropdown.addEventListener(
+            'animationend',
+            function (e) {
+              e.stopPropagation();
+
+              // hide inactive dropdown when animation has finished (takes them out of the tab order)
+              if (!dropdown.parentNode.classList.contains('is-active')) {
+                dropdown.classList.add('is-dropdown-hidden');
+
+                // focus toggle button
+                const toggleButton = dropdown.parentNode.querySelector(
+                  '.p-navigation__link'
+                );
+
+                // focus on parent toggle button after closing a dropdown
+                // also helps scroll to the right position when the dropdown is longer than the viewport
+                if (toggleButton) {
+                  toggleButton.focus();
+                }
+              } else {
+                // focus on back button after opening a dropdown
+                // also helps scroll to the right position when the dropdown is longer than the viewport
+                const backButton = dropdown.querySelector(
+                  '.p-navigation__item--dropdown-close > .p-navigation__link'
+                );
+
+                if (backButton) {
+                  backButton.focus();
+                }
+              }
+            },
+            false
+          );
+        });
+
+        toggles.forEach(function (toggle) {
+          toggle.addEventListener('click', async function (e) {
+            e.preventDefault();
+
+            handleClickToggle(toggle, toggles, toggleClasses);
+          });
+        });
+
+        // remove expanded/collapsed class names to avoid unexpected animations
+        window.addEventListener(
+          'resize',
+          throttle(function () {
+            dropdowns.forEach(dropdown => {
+              dropdown.setAttribute('aria-expanded', false);
+
+              dropdown.classList.remove('is-dropdown-expanded');
+              dropdown.classList.remove('is-dropdown-collapsed');
+              dropdown.classList.add('is-dropdown-hidden');
+
+              dropdown.parentNode.classList.remove('is-active');
+            });
+          }, 10)
+        );
+      }
 
       canonicalGlobalNav.createNav({ breakpoint: 1036 });
+
+      initNavDropdowns();
     </script>
   </body>
 </html>
