@@ -98,7 +98,7 @@ $global-nav-link-color: #3097ff;
 
   .global-nav-dropdown__content {
     margin: 0 auto;
-    max-width: 72rem;
+    max-width: $grid-max-width;
     padding-top: 0;
   }
 
