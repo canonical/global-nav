@@ -1,6 +1,6 @@
 {
   "name": "@canonical/global-nav",
-  "version": "3.2.3",
+  "version": "3.3.3",
   "description": "A script and stylesheet that displays the Canonical global nav across the top of a site",
   "main": "dist/module.js",
   "iife": "dist/global-nav.js",
