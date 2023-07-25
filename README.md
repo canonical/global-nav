@@ -49,6 +49,8 @@ The `createNav` function takes an object of options with the following property:
 
 - `breakpoint`: The point, in pixels, at which the navigation switches between desktop and mobile layouts. The default is `620px`, which is meant to reflect the default value of `$breakpoint-navigation-threshold` in Vanilla (see [Vanilla's breakpoint documentation](https://vanillaframework.io/docs/settings/breakpoint-settings)).
 
+- `mobileContainerSelector` and `desktopContainerSelector`: Selectors (can be 'id' or 'class') of where to attach the mobile and desktop views of the global-nav. This will also circumvent the default eventListeners being attached as they are dependent on the default structure, so custom JS will be nessacary. Also in this case, the class `global-nav` should still be used to indicate the position of the 'All Canonical' tab button. If ony one is used it will render the default global nav.
+
 If the `$breakpoint-navigation-threshold` Vanilla variable is overridden in your project, you will need to set this option on the global nav.
 
 For example, to set the `breakpoint` to `1036`:
@@ -57,7 +59,7 @@ For example, to set the `breakpoint` to `1036`:
 <script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
 
 <script>
-  canonicalGlobalNav.createNav({ breakpoint: 1036 });
+  canonicalGlobalNav.createNav({ breakpoint: 1036, mobileContainerSelector: "global-nav-mobile", desktopContainerSelector: "global-nav-desktop" });
 </script>
 ```
 

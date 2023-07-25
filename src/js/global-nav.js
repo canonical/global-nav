@@ -351,7 +351,7 @@ function addListeners(wrapper, breakpoint) {
   /* eslint-enable */
 }
 
-export const createNav = ({ breakpoint = 620 } = {}) => {
+export const createNav = ({ breakpoint = 620, mobileContainerSelector, desktopContainerSelector } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -359,6 +359,8 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   );
 
   const container = document.querySelector('.global-nav'); //eslint-disable-line
+  const mobileContainer = document.querySelector(mobileContainerSelector); //eslint-disable-line
+  const desktopContainer = document.querySelector(desktopContainerSelector); //eslint-disable-line
 
   // Build global nav components
   const skipLink = createFromHTML(
@@ -387,6 +389,16 @@ export const createNav = ({ breakpoint = 620 } = {}) => {
   // Attach to the DOM
   document.body.insertBefore(skipLink, document.body.firstElementChild); //eslint-disable-line
   document.body.appendChild(overlay); //eslint-disable-line
+
+  if (mobileContainer && desktopContainer) {
+    const mobileDropdownList = mobileDropdown.querySelector("ul.p-navigation__items");
+    const globalNavButton = navItem.querySelector("a");
+    desktopContainer.appendChild(navDropdown);
+    mobileContainer.prepend(mobileDropdownList);
+    container.prepend(globalNavButton);
+    return;
+  }
+
   document.body.appendChild(navDropdown); //eslint-disable-line
 
   if (container) {
