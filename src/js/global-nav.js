@@ -112,12 +112,12 @@ function createProductDropdown(products) {
 
       const flagshipMarkup = `<li class="p-list__item">
           <div class="row u-no-padding">
-            <div class="col-4 col-medium-2">
+            <div class="col-3 col-medium-2">
               <a class="p-link--inverted" href=${flagship.url}>
                 ${flagshipLinkContent}
               </a>
             </div>
-            <div class="col-8 col-medium-4">
+            <div class="col-9 col-medium-4">
               <p class="u-no-max-width u-no-margin--bottom">${flagship.description}</p>
               ${linkList}
             </div>
@@ -392,6 +392,7 @@ export const createNav = ({ breakpoint = 620, mobileContainerSelector, desktopCo
 
   if (mobileContainer && desktopContainer) {
     const mobileDropdownList = mobileDropdown.querySelector("ul.p-navigation__items");
+    mobileDropdownList.classList.add("u-hide");
     const globalNavButton = navItem.querySelector("a");
     desktopContainer.appendChild(navDropdown);
     mobileContainer.prepend(mobileDropdownList);

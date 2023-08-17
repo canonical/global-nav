@@ -16,6 +16,7 @@ $global-nav-font-family: unquote($font-base-family);
 $global-nav-font-size-mobile: 0.8175rem;
 $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 $global-nav-link-color: #3097ff;
+$grid-max-width: 80rem;
 
 .global-nav {
   * {
@@ -33,10 +34,6 @@ $global-nav-link-color: #3097ff;
       &::after {
         @include vf-icon-chevron;
 
-        .is-dark & {
-          @include vf-icon-chevron($colors--dark-theme--text-default);
-        }
-
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -49,6 +46,10 @@ $global-nav-link-color: #3097ff;
         text-indent: calc(100% + 10rem);
         top: calc(#{$spv--large} + #{map-get($nudges, x-small)});
         width: map-get($icon-sizes, default);
+
+        .is-dark & {
+          @include vf-icon-chevron($colors--dark-theme--text-default);
+        }
 
         @media (min-width: $threshold-4-6-col) {
           right: calc(#{$sph--small} + 1px);
@@ -117,6 +118,10 @@ $global-nav-link-color: #3097ff;
       height: 1px;
       margin-top: 2rem;
       width: 100%;
+    }
+
+    .p-list--divided .p-list__item:not(:first-child) {
+      box-shadow: inset 0 1px 0 0 hsla(0, 0%, 100%, .1);
     }
   }
 
