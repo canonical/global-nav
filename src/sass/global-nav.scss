@@ -120,7 +120,7 @@ $grid-max-width: 80rem;
       width: 100%;
     }
 
-    .p-list--divided .p-list__item {
+    .p-list--divided .p-list__item:not(:first-child) {
       box-shadow: inset 0px 1px 0px 0px hsla(0,0%,100%,.1);
     }
   }
