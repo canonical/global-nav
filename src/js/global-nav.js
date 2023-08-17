@@ -392,6 +392,7 @@ export const createNav = ({ breakpoint = 620, mobileContainerSelector, desktopCo
 
   if (mobileContainer && desktopContainer) {
     const mobileDropdownList = mobileDropdown.querySelector("ul.p-navigation__items");
+    mobileDropdownList.classList.add("u-hide");
     const globalNavButton = navItem.querySelector("a");
     desktopContainer.appendChild(navDropdown);
     mobileContainer.prepend(mobileDropdownList);
