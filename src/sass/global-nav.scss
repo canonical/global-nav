@@ -34,10 +34,6 @@ $grid-max-width: 80rem;
       &::after {
         @include vf-icon-chevron;
 
-        .is-dark & {
-          @include vf-icon-chevron($colors--dark-theme--text-default);
-        }
-
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -50,6 +46,10 @@ $grid-max-width: 80rem;
         text-indent: calc(100% + 10rem);
         top: calc(#{$spv--large} + #{map-get($nudges, x-small)});
         width: map-get($icon-sizes, default);
+
+        .is-dark & {
+          @include vf-icon-chevron($colors--dark-theme--text-default);
+        }
 
         @media (min-width: $threshold-4-6-col) {
           right: calc(#{$sph--small} + 1px);
