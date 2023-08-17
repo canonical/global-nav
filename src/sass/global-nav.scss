@@ -16,6 +16,7 @@ $global-nav-font-family: unquote($font-base-family);
 $global-nav-font-size-mobile: 0.8175rem;
 $global-nav-overlay-color: rgba(17, 17, 17, 0.4);
 $global-nav-link-color: #3097ff;
+$grid-max-width: 1440px;
 
 .global-nav {
   * {
@@ -117,6 +118,10 @@ $global-nav-link-color: #3097ff;
       height: 1px;
       margin-top: 2rem;
       width: 100%;
+    }
+
+    .p-list--divided .p-list__item {
+      box-shadow: inset 0px 1px 0px 0px hsla(0,0%,100%,.1);
     }
   }
 
