@@ -121,7 +121,7 @@ $grid-max-width: 80rem;
     }
 
     .p-list--divided .p-list__item:not(:first-child) {
-      box-shadow: inset 0px 1px 0px 0px hsla(0,0%,100%,.1);
+      box-shadow: inset 0 1px 0 0 hsla(0, 0%, 100%, .1);
     }
   }
 
