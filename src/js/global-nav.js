@@ -24,7 +24,7 @@ function createFromHTML(html) {
 }
 
 function createMobileDropdown(products) {
-  const { flagships, others, abouts } = products;
+  const { flagships, others, resources, abouts } = products;
 
   function createListItem(obj) {
     return `<li>
@@ -37,6 +37,10 @@ function createMobileDropdown(products) {
     .join('');
 
   const mobileOthers = others.map(other => createListItem(other)).join('');
+
+  const mobileResources = resources
+    .map(resource => createListItem(resource))
+    .join('');
 
   const mobileAbouts = abouts.map(about => createListItem(about)).join('');
 
@@ -55,6 +59,12 @@ function createMobileDropdown(products) {
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
+        <a href="#resources" class="p-navigation__link global-nav__header-link-anchor">Resources</a>
+        <ul id="resources" class="p-navigation__dropdown">
+          ${mobileResources}
+        </ul>
+      </li>
+      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
         <a href="#about" class="p-navigation__link global-nav__header-link-anchor">About</a>
         <ul id="about" class="p-navigation__dropdown u-no-margin--bottom">
           ${mobileAbouts}
@@ -67,7 +77,7 @@ function createMobileDropdown(products) {
 }
 
 function createProductDropdown(products) {
-  const { flagships, others, abouts } = products;
+  const { flagships, others, resources, abouts } = products;
 
   function createLinkListItems(item) {
     const items = item.links
@@ -150,6 +160,15 @@ function createProductDropdown(products) {
     })
     .join('');
 
+  const productResources = resources
+    .map(resource => {
+      const resourceMarkup = `<li class="global-nav__list-item">
+          <a class="global-nav__link" href=${resource.url} title="Visit ${resource.title}">${resource.title}</a>
+        </li>`;
+      return resourceMarkup;
+    })
+    .join('');
+
   const productAbouts = abouts
     .map(about => {
       const aboutMarkup = `<li class="global-nav__list-item">
@@ -168,14 +187,20 @@ function createProductDropdown(products) {
         <hr class="p-divider" />
 
         <div class="global-nav__flex-container row u-no-padding">
-          <div class="global-nav__others-col col-9 col-medium-6">
+          <div class="global-nav__others-col col-8 col-medium-6">
             <span class="global-nav__muted-heading">Also from Canonical</span>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
           </div>
           <hr class="p-divider u-hide--large" />
-          <div class="global-nav__about-col col-3 col-medium-2">
+          <div class="global-nav__resources-col col-2 col-medium-4">
+            <span class="global-nav__muted-heading">Resources</span>
+            <ul class="global-nav__list">
+              ${productResources}
+            </ul>
+          </div>
+          <div class="global-nav__about-col col-2 col-medium-2">
             <span class="global-nav__muted-heading">About</span>
             <ul class="global-nav__list">
               ${productAbouts}
