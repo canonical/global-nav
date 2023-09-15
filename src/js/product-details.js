@@ -163,7 +163,7 @@ const canonicalProducts = {
     },
     {
       title: 'Contact us',
-      url: 'https://ubuntu.com/contact-us',
+      url: 'https://canonical.com/contact-us',
     },
   ],
 };
