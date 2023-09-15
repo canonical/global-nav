@@ -132,57 +132,7 @@ const canonicalProducts = {
         'Deploy a fully functional cloud in minutes.',
     },
   ],
-  resources: [
-    {
-      title: 'Webinars',
-      url: 'https://ubuntu.com/blog?category=webinars#posts-list',
-    },
-    {
-      title: 'Tutorials',
-      url: 'https://ubuntu.com/tutorials',
-    },
-    {
-      title: 'Videos',
-      url: 'https://ubuntu.com/blog?category=videos#posts-list',
-    },
-    {
-      title: 'Case studies',
-      url: 'https://ubuntu.com/blog?category=case-studies#posts-list',
-    },
-    {
-      title: 'White papers',
-      url: 'https://ubuntu.com/blog?category=white-papers#posts-list',
-    },
-    {
-      title: 'Docs',
-      url: 'https://docs.ubuntu.com/',
-    },
-    {
-      title: 'Training',
-      url: 'https://ubuntu.com/training',
-    },
-    {
-      title: 'Blog',
-      url: 'https://ubuntu.com/blog',
-    },
-    {
-      title: 'Developer',
-      url: 'https://ubuntu.com/desktop/developers',
-    },
-    {
-      title: 'Install',
-      url: 'https://ubuntu.com/download/cloud',
-    },
-    {
-      title: 'Download',
-      url: 'https://ubuntu.com/download',
-    },
-  ],
   abouts: [
-    {
-      title: 'Ubuntu',
-      url: 'https://ubuntu.com/',
-    },
     {
       title: 'Canonical',
       url: 'https://canonical.com/',
@@ -192,12 +142,28 @@ const canonicalProducts = {
       url: 'https://canonical.com/press-centre',
     },
     {
+      title: 'Careers',
+      url: 'https://canonical.com/careers',
+    },
+    {
+      title: 'Blog',
+      url: 'https://canonical.com/blog',
+    },
+    {
+      title: 'Documentation',
+      url: 'https://docs.ubuntu.com/',
+    },
+    {
+      title: 'Resources',
+      url: 'https://ubuntu.com/engage',
+    },
+    {
       title: 'Partners',
       url: 'https://canonical.com/partners',
     },
     {
-      title: 'Contact',
-      url: 'https://ubuntu.com/contact-us',
+      title: 'Contact us',
+      url: 'https://canonical.com/contact-us',
     },
   ],
 };
