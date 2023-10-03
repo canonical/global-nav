@@ -43,19 +43,19 @@ function createMobileDropdown(products) {
   const mobileDropdown = `<li id="all-canonical-mobile" class="u-hide">
     <ul class="p-navigation__items">
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</a>
+        <button href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</button>
         <ul id="products" class="p-navigation__dropdown">
           ${mobileFlagships}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</a>
+        <button href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</button>
         <ul id="also-from-canonical" class="p-navigation__dropdown">
           ${mobileOthers}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <a href="#about" class="p-navigation__link global-nav__header-link-anchor">About</a>
+        <button href="#about" class="p-navigation__link global-nav__header-link-anchor">About</button>
         <ul id="about" class="p-navigation__dropdown u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
@@ -347,7 +347,7 @@ export const createNav = ({ breakpoint = 620, mobileContainerSelector, desktopCo
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide" id="all-canonical">
-      <a href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</a>
+      <button href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</button>
     </li>`);
 
   const mobileDropdownHTML = createMobileDropdown(canonicalProducts);
@@ -368,7 +368,7 @@ export const createNav = ({ breakpoint = 620, mobileContainerSelector, desktopCo
   if (mobileContainer && desktopContainer) {
     const mobileDropdownList = mobileDropdown.querySelector("ul.p-navigation__items");
     mobileDropdownList.classList.add("u-hide");
-    const globalNavButton = navItem.querySelector("a");
+    const globalNavButton = navItem.querySelector("button");
     desktopContainer.appendChild(navDropdown);
     mobileContainer.prepend(mobileDropdownList);
     container.prepend(globalNavButton);
