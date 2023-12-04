@@ -274,7 +274,6 @@ function addListeners(wrapper, breakpoint) {
   globalNavHeaderLinks.forEach(headerLink => {
     headerLink.addEventListener('click', e => {
       e.preventDefault();
-
       externalNavDropdowns.forEach(link => {
         link.parentNode.classList.remove('is-active');
       });
@@ -326,7 +325,7 @@ function addListeners(wrapper, breakpoint) {
   /* eslint-enable */
 }
 
-export const createNav = ({ breakpoint = 620, mobileContainerSelector, desktopContainerSelector } = {}) => {
+export const createNav = ({ breakpoint = 1036, mobileContainerSelector, desktopContainerSelector } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(

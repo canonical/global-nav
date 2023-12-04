@@ -100,13 +100,13 @@ $box-shadow-color: hsla(0, 0%, 100%, .1);
 
   .global-nav-dropdown__content {
     margin: 0 auto;
-    max-width: $grid-max-width;
     padding-top: 0;
   }
 
   .global-nav__row {
     margin: 0 auto;
     padding: 0 1.5rem;
+    max-width: $grid-max-width;
 
     @media (max-width: $global-nav-breakpoint) {
       padding: 0 1rem;
