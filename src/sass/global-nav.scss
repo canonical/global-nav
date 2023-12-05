@@ -105,8 +105,8 @@ $box-shadow-color: hsla(0, 0%, 100%, .1);
 
   .global-nav__row {
     margin: 0 auto;
-    padding: 0 1.5rem;
     max-width: $grid-max-width;
+    padding: 0 1.5rem;
 
     @media (max-width: $global-nav-breakpoint) {
       padding: 0 1rem;
