@@ -353,7 +353,7 @@ export const createNav = ({ breakpoint = 1036, mobileContainerSelector, desktopC
   const mobileDropdown = createFromHTML(mobileDropdownHTML);
 
   const navDropdown = createFromHTML(
-    `<div id="all-canonical-desktop" class="global-nav-dropdown">
+    `<div id="all-canonical-desktop" class="global-nav-dropdown is-dark">
       <div class="global-nav-dropdown__content u-hide" aria-hidden="true" id="canonical-products">
         ${createProductDropdown(canonicalProducts)}
       </div>
