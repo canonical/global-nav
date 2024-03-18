@@ -93,32 +93,27 @@ const canonicalProducts = {
     {
       title: 'Ubuntu on public clouds',
       url: 'https://ubuntu.com/download/cloud',
-      description:
-        'Optimised Ubuntu for public clouds.',
+      description: 'Optimised Ubuntu for public clouds.',
     },
     {
       title: 'Multipass',
       url: 'https://multipass.run/',
-      description:
-        'Spin up Ubuntu VMs on Windows, Mac and Linux.',
+      description: 'Spin up Ubuntu VMs on Windows, Mac and Linux.',
     },
     {
       title: 'Cloud-init',
       url: 'https://cloud-init.io/',
-      description:
-        'Control and customise your cloud instances.',
+      description: 'Control and customise your cloud instances.',
     },
     {
       title: 'Landscape',
       url: 'https://ubuntu.com/landscape',
-      description:
-        'Systems management and security patching for Ubuntu.',
+      description: 'Systems management and security patching for Ubuntu.',
     },
     {
       title: 'Netplan',
       url: 'http://www.netplan.io/',
-      description:
-        'Simplify and standardise complex network configuration.',
+      description: 'Simplify and standardise complex network configuration.',
     },
     {
       title: 'Charmed Kubeflow',
@@ -128,8 +123,7 @@ const canonicalProducts = {
     {
       title: 'MicroCloud',
       url: 'https://microcloud.is/',
-      description:
-        'Deploy a fully functional cloud in minutes.',
+      description: 'Deploy a fully functional cloud in minutes.',
     },
   ],
   abouts: [

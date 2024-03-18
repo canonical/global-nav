@@ -325,7 +325,11 @@ function addListeners(wrapper, breakpoint) {
   /* eslint-enable */
 }
 
-export const createNav = ({ breakpoint = 1036, mobileContainerSelector, desktopContainerSelector } = {}) => {
+export const createNav = ({
+  breakpoint = 1036,
+  mobileContainerSelector,
+  desktopContainerSelector,
+} = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
   console.log(
@@ -365,9 +369,11 @@ export const createNav = ({ breakpoint = 1036, mobileContainerSelector, desktopC
   document.body.appendChild(overlay); //eslint-disable-line
 
   if (mobileContainer && desktopContainer) {
-    const mobileDropdownList = mobileDropdown.querySelector("ul.p-navigation__items");
-    mobileDropdownList.classList.add("u-hide");
-    const globalNavButton = navItem.querySelector("button");
+    const mobileDropdownList = mobileDropdown.querySelector(
+      'ul.p-navigation__items'
+    );
+    mobileDropdownList.classList.add('u-hide');
+    const globalNavButton = navItem.querySelector('button');
     desktopContainer.appendChild(navDropdown);
     mobileContainer.prepend(mobileDropdownList);
     container.prepend(globalNavButton);
