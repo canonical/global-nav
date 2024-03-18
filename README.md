@@ -59,7 +59,11 @@ For example, to set the `breakpoint` to `1036`:
 <script src="/node_modules/@canonical/global-nav/dist/index.js"></script>
 
 <script>
-  canonicalGlobalNav.createNav({ breakpoint: 1036, mobileContainerSelector: "global-nav-mobile", desktopContainerSelector: "global-nav-desktop" });
+  canonicalGlobalNav.createNav({
+    breakpoint: 1036,
+    mobileContainerSelector: 'global-nav-mobile',
+    desktopContainerSelector: 'global-nav-desktop',
+  });
 </script>
 ```
 
@@ -121,6 +125,12 @@ Just because this was a bit of a pain, here is what I did.
 5. [Encode the svg](https://meyerweb.com/eric/tools/dencoder/)
 6. Add this with `data:image/svg+xml,` in the right place in product-details.js
 
+### Vanilla updates
+
+This project uses the [Vanilla framework](https://vanillaframework.io/) as a dependency in two ways: the SCSS files are imported directly to build the styles of the global-nav itself (via the `vanilla-framework` npm package, as defined in dependencied in [package.json](https://github.com/canonical/global-nav/blob/main/package.json)) and for styling the demo page (via direct link in the [index.html](https://github.com/canonical/global-nav/blob/main/index.html) file).
+
+When updating Vanilla to latest version **both dependencies** should be updated.
+
 ### Release process
 
 The package is versioned using [semantic versioning](https://semver.org/) and published to the NPM registry.
@@ -136,4 +146,3 @@ This will trigger the `prepublishonly` script which will ensure requisite artefa
 Code licensed LGPLv3 by Canonical Ltd.
 
 With ♥ from Canonical
- 
