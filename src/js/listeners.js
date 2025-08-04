@@ -145,21 +145,17 @@ function useDesktopListeners() {
 /**
  * IMPORTANT!
  *
- * These listeners also affect the desktop navigation links of each project
- * navigation. Even if they are part of different projects they can use the same vanilla
- * classes, so they will be picked up by the different selectors that the listeners
- * use.
- *
- * The desktop global-nav has a different semantic structure, so it is unaffected.
+ * These listeners also affect the desktop and mobile navigation links.
+ * They work on both global-nav and the custom navigation of each project.
  *
  * closeDesktopGlobalNav is the function that handles the closing of the all-canonical-link
  * overlay (which is different than the rest of dropdowns).
  */
-function useListenersMobile(closeDesktopGlobalNav) {
-  const mobileLinks = getNavElements()
+function useListenersNavElements(closeDesktopGlobalNav) {
+  const navLinks = getNavElements()
     .filter((element) => element.id !== 'all-canonical-link');
 
-  mobileLinks.forEach(link => {
+  navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
 
@@ -194,7 +190,7 @@ function useListenersMobile(closeDesktopGlobalNav) {
 
 export function addListeners(breakpoint) {
   const { closeDesktopGlobalNav } = useDesktopListeners();
-  useListenersMobile(closeDesktopGlobalNav);
+  useListenersNavElements(closeDesktopGlobalNav);
   handleClickOutside();
 
   /* eslint-disable */
