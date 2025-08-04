@@ -1,4 +1,4 @@
-import { debounce } from "./utils";
+import { debounce, showAppropriateNavigation } from "./utils";
 
 // global-nav links INCLUDING the desktop link to open the global-nav
 let globalNavLinks = [];
@@ -42,13 +42,7 @@ function closeOtherNavElements(element) {
     .forEach(link => {
       link.parentNode.classList.remove('is-active');
       link.parentNode.classList.remove('is-selected');
-
-      // the all-canonical-link is a special case because there's much more setup to be done
-      if (link.id === 'all-canonical-link') {
-        // todo
-      } else {
-        hideDropdown(link);
-      }
+      hideDropdown(link);
     });
 }
 
@@ -150,12 +144,14 @@ function useDesktopListeners() {
 
 /**
  * IMPORTANT!
+ *
  * These listeners also affect the desktop navigation links of each project
  * navigation. Even if they are part of different projects they can use the same vanilla
  * classes, so they will be picked up by the different selectors that the listeners
  * use.
- * The desktop global-nav is a different structure, so it is unaffected.
- * 
+ *
+ * The desktop global-nav has a different semantic structure, so it is unaffected.
+ *
  * closeDesktopGlobalNav is the function that handles the closing of the all-canonical-link
  * overlay (which is different than the rest of dropdowns).
  */
@@ -170,7 +166,7 @@ function useListenersMobile(closeDesktopGlobalNav) {
       // remove is-active from any other dropdown in the navigation that might be open
       closeOtherNavElements(link);
       // make sure to close the all-canonical-link
-      closeDesktopGlobalNav();
+      closeDesktopGlobalNav(0);
 
       const linkContainer = link.parentNode;
       if (linkContainer.classList.contains('is-selected')) {
@@ -181,8 +177,14 @@ function useListenersMobile(closeDesktopGlobalNav) {
       } else {
         linkContainer.classList.add('is-active');
         linkContainer.classList.add('is-selected');
-        linkContainer.querySelector('.p-navigation__dropdown')
-          .setAttribute('aria-hidden', 'false');
+        let dropdownContainerTarget = linkContainer.querySelector('.p-navigation__dropdown');
+        if (link.classList.contains('js-back-button')) {
+          // if it's a back button then the dropdown container is up the tree
+          dropdownContainerTarget = linkContainer.closest('.p-navigation__dropdown');
+        }
+        if (dropdownContainerTarget) {
+          dropdownContainerTarget.setAttribute('aria-hidden', 'false');
+        }
       }
 
       e.stopPropagation();

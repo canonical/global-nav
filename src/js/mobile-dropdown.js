@@ -26,8 +26,9 @@ export function createMobileDropdown(products, isSliding) {
     mobileAbouts.unshift(createBackItem('about'));
   }
 
-  return `<li id="all-canonical-mobile" class="u-hide">
-    <ul class="p-navigation__items">
+  // for sliding navigation we can't have the same wrapping elements
+  return `<${isSliding ? 'div' : 'li'} id="all-canonical-mobile" class="u-hide">
+    ${isSliding ? '' : '<ul class="p-navigation__items">'}
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
         <button href="#products" class="p-navigation__link global-nav__header-link-anchor" aria-controls="products">
           Products
@@ -52,6 +53,6 @@ export function createMobileDropdown(products, isSliding) {
           ${mobileAbouts.join('')}
         </ul>
       </li>
-    </ul>
-  </li>`;
+    ${isSliding ? '' : '</ul>'}
+  </${isSliding ? 'div' : 'ul'}>`;
 }
