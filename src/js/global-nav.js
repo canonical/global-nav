@@ -5,7 +5,6 @@ import { createProductDropdown } from './product-dropdown';
 import { createFromHTML, showAppropriateNavigation } from './utils';
 import { addListeners } from './listeners';
 
-
 export const createNav = ({
   breakpoint = 1036,
   mobileContainerSelector,

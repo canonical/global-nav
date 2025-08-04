@@ -9,7 +9,7 @@ function createBackItem(id) {
       <button href=${`#${id}`} aria-controls=${id} class="p-navigation__link js-back-button">
         Back
       </button>
-    </li>`
+    </li>`;
 }
 
 export function createMobileDropdown(products, isSliding) {
@@ -33,7 +33,9 @@ export function createMobileDropdown(products, isSliding) {
         <button href="#products" class="p-navigation__link global-nav__header-link-anchor" aria-controls="products">
           Products
         </button>
-        <ul id="products" class="p-navigation__dropdown" ${isSliding ? 'aria-hidden="true"' : ''}>
+        <ul id="products" class="p-navigation__dropdown" ${
+          isSliding ? 'aria-hidden="true"' : ''
+        }>
           ${mobileFlagships.join('')}
         </ul>
       </li>
@@ -41,7 +43,9 @@ export function createMobileDropdown(products, isSliding) {
         <button href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor" aria-controls="also-from-canonical">
           Also from Canonical
         </button>
-        <ul id="also-from-canonical" class="p-navigation__dropdown" ${isSliding ? 'aria-hidden="true"' : ''}>
+        <ul id="also-from-canonical" class="p-navigation__dropdown" ${
+          isSliding ? 'aria-hidden="true"' : ''
+        }>
           ${mobileOthers.join('')}
         </ul>
       </li>
@@ -49,7 +53,9 @@ export function createMobileDropdown(products, isSliding) {
         <button href="#about" class="p-navigation__link global-nav__header-link-anchor" aria-controls="about">
           About
         </button>
-        <ul id="about" class="p-navigation__dropdown ${isSliding ? 'aria-hidden="true"' : ''} u-no-margin--bottom">
+        <ul id="about" class="p-navigation__dropdown ${
+          isSliding ? 'aria-hidden="true"' : ''
+        } u-no-margin--bottom">
           ${mobileAbouts.join('')}
         </ul>
       </li>

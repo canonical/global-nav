@@ -1,4 +1,4 @@
-import { debounce, showAppropriateNavigation } from "./utils";
+import { debounce, showAppropriateNavigation } from './utils';
 
 // global-nav links INCLUDING the desktop link to open the global-nav
 let globalNavLinks = [];
@@ -9,15 +9,19 @@ let navElements = [];
 
 function getNavElements() {
   if (navElements.length === 0) {
-    // eslint-disable-next-line no-undef
-    globalNavLinks = [...document.querySelectorAll(
-      '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
-    )];
-    // eslint-disable-next-line no-undef
-    externalNavLinks = [...document.querySelectorAll(
-      '.p-navigation__item--dropdown-toggle:not(.global-nav__dropdown-toggle) .p-navigation__link'
-    )];
-    navElements = [...globalNavLinks, ...externalNavLinks]
+    globalNavLinks = [
+      // eslint-disable-next-line no-undef
+      ...document.querySelectorAll(
+        '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
+      ),
+    ];
+    externalNavLinks = [
+      // eslint-disable-next-line no-undef
+      ...document.querySelectorAll(
+        '.p-navigation__item--dropdown-toggle:not(.global-nav__dropdown-toggle) .p-navigation__link'
+      ),
+    ];
+    navElements = [...globalNavLinks, ...externalNavLinks];
   }
   return navElements;
 }
@@ -49,7 +53,7 @@ function closeOtherNavElements(element) {
 function handleClickOutside() {
   // eslint-disable-next-line no-undef
   document.addEventListener('click', event => {
-    const {target} = event;
+    const { target } = event;
     // if it wasn't a click in the navigation menu, then we close all dropdowns
     if (!target.closest('.p-navigation__item--dropdown-toggle')) {
       closeOtherNavElements(null);
@@ -61,7 +65,9 @@ function useDesktopListeners() {
   /* eslint-disable */
   const primaryDropdownCTA = document.getElementById('all-canonical-link');
   const dropdownContainer = document.querySelector('.global-nav-dropdown');
-  const dropdownContents = document.querySelectorAll('.global-nav-dropdown__content');
+  const dropdownContents = document.querySelectorAll(
+    '.global-nav-dropdown__content'
+  );
   const overlay = document.querySelector('.global-nav-overlay');
   const event = new Event('global-nav-opened');
   /* eslint-enable */
@@ -152,8 +158,9 @@ function useDesktopListeners() {
  * overlay (which is different than the rest of dropdowns).
  */
 function useListenersNavElements(closeDesktopGlobalNav) {
-  const navLinks = getNavElements()
-    .filter((element) => element.id !== 'all-canonical-link');
+  const navLinks = getNavElements().filter(
+    element => element.id !== 'all-canonical-link'
+  );
 
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
@@ -168,15 +175,20 @@ function useListenersNavElements(closeDesktopGlobalNav) {
       if (linkContainer.classList.contains('is-selected')) {
         linkContainer.classList.remove('is-active');
         linkContainer.classList.remove('is-selected');
-        linkContainer.querySelector('.p-navigation__dropdown')
+        linkContainer
+          .querySelector('.p-navigation__dropdown')
           .setAttribute('aria-hidden', 'true');
       } else {
         linkContainer.classList.add('is-active');
         linkContainer.classList.add('is-selected');
-        let dropdownContainerTarget = linkContainer.querySelector('.p-navigation__dropdown');
+        let dropdownContainerTarget = linkContainer.querySelector(
+          '.p-navigation__dropdown'
+        );
         if (link.classList.contains('js-back-button')) {
           // if it's a back button then the dropdown container is up the tree
-          dropdownContainerTarget = linkContainer.closest('.p-navigation__dropdown');
+          dropdownContainerTarget = linkContainer.closest(
+            '.p-navigation__dropdown'
+          );
         }
         if (dropdownContainerTarget) {
           dropdownContainerTarget.setAttribute('aria-hidden', 'false');
