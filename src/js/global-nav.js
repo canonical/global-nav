@@ -1,9 +1,9 @@
 import { canonicalProducts } from './product-details';
-import { initNavigationSliding } from './sliding-nav';
+import { initNavigationSliding } from './sliding/sliding-nav';
+import { initNavigationSimple } from './simple/simple-nav';
 import { createMobileDropdown } from './mobile-dropdown';
 import { createProductDropdown } from './product-dropdown';
 import { createFromHTML, showAppropriateNavigation } from './utils';
-import { addListeners } from './listeners';
 
 export const createNav = ({
   breakpoint = 1036,
@@ -69,10 +69,11 @@ export const createNav = ({
     container.prepend(navItem);
     container.prepend(mobileDropdown);
     showAppropriateNavigation(breakpoint);
-    addListeners(breakpoint);
   }
 
   if (isSliding) {
     initNavigationSliding(breakpoint);
+  } else {
+    initNavigationSimple(breakpoint);
   }
 };
