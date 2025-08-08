@@ -5019,10 +5019,10 @@ util@^0.10.3:
   dependencies:
     inherits "2.0.3"
 
-vanilla-framework@4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-4.9.0.tgz#7566b42a22c2394ea1d7ea843d24ec305446cb3e"
-  integrity sha512-iTmvqWlsX0ic69VZ1sR9NPQtYRR9+iM679HZCl7SDQhMQSsEeJEQ6Ejjen3JN5a7YxiYmeIhxaLlmC4rExRT1w==
+vanilla-framework@4.29.0:
+  version "4.29.0"
+  resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-4.29.0.tgz#710ee48901d49f1df41abe51cd472a47754a6e07"
+  integrity sha512-406WW2C1hkmW187R43YW/jIyYRylUVK9qcV95NEzj8tSzX+iWoCR6KF61v6nHOIggNRHNs+FaqlDSlartWfE3g==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
