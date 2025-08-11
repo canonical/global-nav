@@ -53,7 +53,7 @@ export function createMobileDropdown(products, isSliding) {
         <button href="#about" class="p-navigation__link global-nav__header-link-anchor" aria-controls="about">
           About
         </button>
-        <ul id="about" class="p-navigation__dropdown ${
+        <ul id="about" class="p-navigation__dropdown" ${
           isSliding ? 'aria-hidden="true"' : ''
         } u-no-margin--bottom">
           ${mobileAbouts.join('')}

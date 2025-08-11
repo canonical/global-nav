@@ -10,6 +10,7 @@ export const createNav = ({
   mobileContainerSelector,
   desktopContainerSelector,
   isSliding = false,
+  closeMenuAnimationDuration,
 } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
@@ -72,7 +73,7 @@ export const createNav = ({
   }
 
   if (isSliding) {
-    initNavigationSliding(breakpoint);
+    initNavigationSliding(breakpoint, closeMenuAnimationDuration);
   } else {
     initNavigationSimple(breakpoint);
   }

@@ -105,8 +105,8 @@ const expandDropdown = (
 
 export const setUpListeners = (
   breakpoint,
-  animationDuration,
-  closeDesktopGlobalNav
+  closeDesktopGlobalNav,
+  closeMenuAnimationDuration,
 ) => {
   /* eslint-disable */
   const navigation = document.querySelector(
@@ -129,7 +129,7 @@ export const setUpListeners = (
   const dropdownNavLists = document.querySelectorAll('.p-navigation__dropdown');
   /* eslint-enable */
 
-  const resetToggles = excludedToggle => {
+  const resetToggles = (excludedToggle, animated = false) => {
     toggles.forEach(toggle => {
       // eslint-disable-next-line no-undef
       const target = document.getElementById(
@@ -138,14 +138,21 @@ export const setUpListeners = (
       if (!target || target === excludedToggle) {
         return;
       }
-      collapseDropdown(toggle, target, true);
+      collapseDropdown(toggle, target, animated);
     });
   };
 
   const closeAllDropdowns = () => {
-    resetToggles();
-    navigation.classList.remove('has-menu-open');
-    menuButton.innerHTML = 'Menu';
+    navigation.classList.add('menu-closing');
+
+    const closeMenuHandler = () => {
+      navigation.classList.remove('has-menu-open');
+      navigation.classList.remove('menu-closing');
+      resetToggles();
+    };
+
+    // the time is aproximately the time of the sliding animation
+    setTimeout(closeMenuHandler, closeMenuAnimationDuration);
   };
 
   const unfocusAllLinks = () => {
@@ -175,6 +182,7 @@ export const setUpListeners = (
 
     if (navigation.classList.contains('has-menu-open')) {
       closeAllDropdowns();
+      menuButton.innerHTML = 'Menu';
       // reshow scroll bar
       // eslint-disable-next-line no-undef
       document.body.style.overflow = 'visible';
@@ -260,9 +268,6 @@ export const setUpListeners = (
 
   const addListeners = () => {
     menuButton.addEventListener('click', handleMenuButtonClick);
-    // when clicking outside navigation, close all dropdowns
-    // eslint-disable-next-line no-undef
-    document.addEventListener('click', handleClickOutsideNavigation);
     toggles.forEach(toggle => {
       const handler = e => handleToggle(e, toggle);
       toggleHandlerFunctions.push(handler);
@@ -284,7 +289,6 @@ export const setUpListeners = (
   const removeListeners = () => {
     menuButton.removeEventListener('click', handleMenuButtonClick);
     // eslint-disable-next-line no-undef
-    document.removeEventListener('click', handleClickOutsideNavigation);
     toggles.forEach(toggle => {
       const handler = toggleHandlerFunctions.shift();
       toggle.removeEventListener('click', handler);
@@ -326,8 +330,11 @@ export const setUpListeners = (
     /* eslint-enable */
   };
 
+  // when clicking outside navigation, close all dropdowns
+  // eslint-disable-next-line no-undef
+  document.addEventListener('click', handleClickOutsideNavigation);
+
   return {
-    handleClickOutsideNavigation,
     addListeners,
     useResizeListener,
   };
