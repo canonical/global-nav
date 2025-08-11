@@ -196,7 +196,7 @@ export function useNavElementsListeners(closeDesktopGlobalNav) {
       closeOtherNavElements(link);
       // make sure to close the all-canonical-link
       closeDesktopGlobalNav(0);
-      const isActive = link.parentNode.classList.contains('is-selected')
+      const isActive = link.parentNode.classList.contains('is-selected');
       toggleLinkNavClasses(link, isActive);
 
       e.stopPropagation();

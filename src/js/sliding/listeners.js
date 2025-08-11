@@ -106,7 +106,7 @@ const expandDropdown = (
 export const setUpListeners = (
   breakpoint,
   closeDesktopGlobalNav,
-  closeMenuAnimationDuration,
+  closeMenuAnimationDuration
 ) => {
   /* eslint-disable */
   const navigation = document.querySelector(
