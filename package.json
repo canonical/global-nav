@@ -46,6 +46,6 @@
     "sass-lint": "1.13.1"
   },
   "dependencies": {
-    "vanilla-framework": "4.9.0"
+    "vanilla-framework": "4.26.1"
   }
 }

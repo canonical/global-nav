@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Canonical global navigation demo</title>
+    <meta name="description" content="Canonical global navigation demo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.9.0.min.css" />
+    <style type="text/css">
+      body {
+        display: block;
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+
+      @media (width < 1036px) {
+        #navigation.p-navigation--sliding .p-navigation__nav {
+          display: block;
+          position: absolute;
+          min-width: 100%;
+          margin-top: 3.5rem;
+          transform: translateX(110%);
+          transition: transform 0.333s cubic-bezier(.215,.61,.355,1);
+        }
+
+        #navigation.p-navigation--sliding.has-menu-open .p-navigation__nav {
+          transform: translateX(0%);
+        }
+
+        #navigation.p-navigation--sliding.menu-closing .p-navigation__nav {
+          transform: translateX(110%);
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__items--section {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      @media (min-width: 1036px) {
+        #navigation.p-navigation--sliding.has-menu-open {
+          box-shadow: none;
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__items {
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__items--section {
+          display: flex;
+          margin: 0;
+          padding: 0;
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__item--dropdown-toggle {
+          position: relative;
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__dropdown--container {
+          clip-path: rect(0 105% 105% 0);
+          display: block;
+          min-width: 100%;
+          position: absolute;
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__dropdown--container > .p-navigation__dropdown {
+          display: block;
+          transition: transform 0.333s cubic-bezier(.215,.61,.355,1);
+          position: static;
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__dropdown--container > .p-navigation__dropdown[aria-hidden="true"] {
+          transform: translateY(-110%);
+        }
+
+        #navigation.p-navigation--sliding .p-navigation__dropdown--container > .p-navigation__dropdown[aria-hidden="false"] {
+          transform: translateY(0%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="navigation" class="p-navigation--sliding is-dark">
+      <div class="p-navigation__row">
+        <div class="p-navigation__banner">
+          <div class="p-navigation__logo">
+            <a class="p-navigation__item" href="#">
+              <img class="p-navigation__image" src="https://assets.ubuntu.com/v1/3c7954dd-logo-canonical-white.svg" alt="Canonical" width="95">
+            </a>
+          </div>
+          <a href="#navigation" class="p-navigation__toggle--open" title="menu">Menu</a>
+        </div>
+        <nav class="p-navigation__nav" aria-label="Example main navigation">
+          <div class="p-navigation__items">
+            <ul class="p-navigation__items--section" role="menu">
+              <li class="p-navigation__item">
+                <a class="p-navigation__link" href="/">Simple Nav</a>
+              </li>
+              <li class="p-navigation__item">
+                <a class="p-navigation__link" href="#">Partners</a>
+              </li>
+              <li class="p-navigation__item">
+                <a class="p-navigation__link" href="#">Services</a>
+              </li>
+              <li class="p-navigation__item--dropdown-toggle" id="link-3">
+                <button href="#link-3-menu" aria-controls="link-3-menu" class="p-navigation__link">LXCFS</button>
+                <div class="p-navigation__dropdown--container">
+                  <ul class="p-navigation__dropdown" id="link-3-menu" aria-hidden="true">
+                    <li class="p-navigation__item--dropdown-close">
+                      <button href="#link-3-menu" aria-controls="link-3-menu" class="p-navigation__link js-back-button">
+                        Back
+                      </button>
+                    </li>
+                    <li>
+                      <a href="#" class="p-navigation__dropdown-item">Introduction</a>
+                    </li>
+                    <li>
+                      <a href="#" class="p-navigation__dropdown-item">News</a>
+                    </li>
+                    <li>
+                      <a href="#" class="p-navigation__dropdown-item">Getting started</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+
+            <ul class="p-navigation__items--section global-nav">
+              <li class="p-navigation__item">
+                <a class="p-navigation__link" href="#">Sign in</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+      <div class="u-fixed-width">
+        <h1>Page content</h1>
+        <button>Focus test</button>
+        <p>
+          This is the demo of the global navigation project for Canonical's
+          websites.
+        </p>
+        <div id="lipsum">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non mi
+            justo. Mauris nisi neque, posuere sed consequat vel, aliquet id nulla.
+            Aliquam nec velit elit. Nam eu sapien nisl. Morbi mattis viverra leo a
+            lobortis. Aenean at nisl lobortis, tristique odio ac, porta massa.
+            Curabitur vehicula malesuada turpis in varius. Pellentesque leo neque,
+            vehicula sed porttitor eu, hendrerit vel lacus. Suspendisse suscipit
+            ultricies erat id facilisis. Ut hendrerit vitae ex nec convallis.
+          </p>
+          <p>
+            Nunc scelerisque, mi vitae fringilla euismod, arcu nisl dignissim
+            neque, nec accumsan ante risus ut ipsum. Pellentesque vulputate odio
+            turpis. Nunc sed semper dui, ut tempor nulla. Nullam consectetur
+            fermentum ligula eu eleifend. Morbi ullamcorper gravida mauris. Cras
+            sed massa eu ante convallis pulvinar. Pellentesque interdum
+            sollicitudin elit, et efficitur purus varius vitae. Morbi euismod
+            faucibus sapien id laoreet. Quisque euismod est bibendum lorem
+            ultricies, nec facilisis nibh lobortis. Fusce in tempor justo, ut
+            mollis orci. Sed sem purus, tristique a magna sit amet, sollicitudin
+            lobortis ipsum. Proin mauris eros, pretium at magna ac, rhoncus
+            tristique nulla.
+          </p>
+          <p>
+            Nullam blandit purus et nulla vehicula, sit amet convallis erat
+            ullamcorper. Orci varius natoque penatibus et magnis dis parturient
+            montes, nascetur ridiculus mus. Vestibulum dignissim placerat velit in
+            mollis. Quisque sed magna nisi. Praesent varius congue felis sit amet
+            scelerisque. Phasellus purus lorem, porta sit amet eleifend et,
+            dapibus imperdiet erat. Nunc dictum nibh quis convallis imperdiet.
+            Praesent ut diam eget eros auctor sollicitudin nec id urna. In ante
+            nisl, facilisis vitae mauris in, faucibus fringilla justo. Nunc
+            rhoncus purus et tellus imperdiet finibus.
+          </p>
+          <p>
+            Quisque ullamcorper eros mauris, non eleifend leo sagittis nec. Aenean
+            ut ex id lorem sagittis dapibus. Pellentesque consequat sapien erat,
+            quis cursus augue ultrices in. Mauris nec venenatis nisi. Integer
+            gravida semper elit sagittis finibus. Vestibulum convallis odio et leo
+            imperdiet, non molestie eros posuere. Quisque egestas nulla a libero
+            pretium, nec pulvinar mauris vestibulum. Pellentesque vehicula dolor
+            nulla, eu feugiat dolor tempor congue. Duis id tincidunt quam. In hac
+            habitasse platea dictumst. Mauris tempus tortor eget sapien ultrices
+            egestas. Nulla facilisi. Nulla hendrerit quis ante a viverra. Maecenas
+            eu egestas libero.
+          </p>
+          <p>
+            Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
+            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
+            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
+            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
+            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
+            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
+            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
+            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
+            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
+            amet viverra ante.
+          </p>
+          <p>
+            Curabitur ut lacus vitae massa congue sagittis vitae blandit magna.
+            Fusce pharetra arcu risus, a tempor tortor convallis vitae. Sed varius
+            fermentum metus, id placerat eros hendrerit ullamcorper. Suspendisse
+            porta felis odio, eu sollicitudin dui tristique ut. Ut ullamcorper leo
+            nec sodales tempus. Nunc porttitor et libero in dignissim. Proin
+            euismod eleifend erat. Vivamus nec aliquam ex. Ut aliquet venenatis
+            diam, vitae sollicitudin ligula suscipit vel. Suspendisse et justo
+            sapien. Etiam eleifend mauris non orci fringilla vulputate. Ut
+            imperdiet magna faucibus, sagittis ex eu, sagittis tellus. Vestibulum
+            faucibus vestibulum arcu non dictum. Nullam quis volutpat arcu, sit
+            amet viverra ante.
+          </p>
+        </div>
+      </div>
+    </main>
+    <script src="/dist/global-nav.js"></script>
+    <script>
+      canonicalGlobalNav.createNav({ isSliding: true, closeMenuAnimationDuration: 200 });
+    </script>
+  </body>
+</html>
