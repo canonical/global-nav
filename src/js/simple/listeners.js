@@ -1,4 +1,4 @@
-import { debounce, showAppropriateNavigation } from './utils';
+import { debounce, showAppropriateNavigation } from '../utils';
 
 // global-nav links INCLUDING the desktop link to open the global-nav
 let globalNavLinks = [];
@@ -50,7 +50,7 @@ function closeOtherNavElements(element) {
     });
 }
 
-function handleClickOutside() {
+export function useClickOutsideListener() {
   // eslint-disable-next-line no-undef
   document.addEventListener('click', event => {
     const { target } = event;
@@ -61,7 +61,7 @@ function handleClickOutside() {
   });
 }
 
-function useDesktopListeners() {
+export function useDesktopListeners() {
   /* eslint-disable */
   const primaryDropdownCTA = document.getElementById('all-canonical-link');
   const dropdownContainer = document.querySelector('.global-nav-dropdown');
@@ -148,6 +148,32 @@ function useDesktopListeners() {
   return { closeDesktopGlobalNav: closeNav };
 }
 
+export function toggleLinkNavClasses(link, isActive) {
+  const linkContainer = link.parentNode;
+  if (isActive) {
+    linkContainer.classList.remove('is-active');
+    linkContainer.classList.remove('is-selected');
+    linkContainer
+      .querySelector('.p-navigation__dropdown')
+      .setAttribute('aria-hidden', 'true');
+  } else {
+    linkContainer.classList.add('is-active');
+    linkContainer.classList.add('is-selected');
+    let dropdownContainerTarget = linkContainer.querySelector(
+      '.p-navigation__dropdown'
+    );
+    if (link.classList.contains('js-back-button')) {
+      // if it's a back button then the dropdown container is up the tree
+      dropdownContainerTarget = linkContainer.closest(
+        '.p-navigation__dropdown'
+      );
+    }
+    if (dropdownContainerTarget) {
+      dropdownContainerTarget.setAttribute('aria-hidden', 'false');
+    }
+  }
+}
+
 /**
  * IMPORTANT!
  *
@@ -157,7 +183,7 @@ function useDesktopListeners() {
  * closeDesktopGlobalNav is the function that handles the closing of the all-canonical-link
  * overlay (which is different than the rest of dropdowns).
  */
-function useListenersNavElements(closeDesktopGlobalNav) {
+export function useNavElementsListeners(closeDesktopGlobalNav) {
   const navLinks = getNavElements().filter(
     element => element.id !== 'all-canonical-link'
   );
@@ -170,41 +196,15 @@ function useListenersNavElements(closeDesktopGlobalNav) {
       closeOtherNavElements(link);
       // make sure to close the all-canonical-link
       closeDesktopGlobalNav(0);
-
-      const linkContainer = link.parentNode;
-      if (linkContainer.classList.contains('is-selected')) {
-        linkContainer.classList.remove('is-active');
-        linkContainer.classList.remove('is-selected');
-        linkContainer
-          .querySelector('.p-navigation__dropdown')
-          .setAttribute('aria-hidden', 'true');
-      } else {
-        linkContainer.classList.add('is-active');
-        linkContainer.classList.add('is-selected');
-        let dropdownContainerTarget = linkContainer.querySelector(
-          '.p-navigation__dropdown'
-        );
-        if (link.classList.contains('js-back-button')) {
-          // if it's a back button then the dropdown container is up the tree
-          dropdownContainerTarget = linkContainer.closest(
-            '.p-navigation__dropdown'
-          );
-        }
-        if (dropdownContainerTarget) {
-          dropdownContainerTarget.setAttribute('aria-hidden', 'false');
-        }
-      }
+      const isActive = link.parentNode.classList.contains('is-selected');
+      toggleLinkNavClasses(link, isActive);
 
       e.stopPropagation();
     });
   });
 }
 
-export function addListeners(breakpoint) {
-  const { closeDesktopGlobalNav } = useDesktopListeners();
-  useListenersNavElements(closeDesktopGlobalNav);
-  handleClickOutside();
-
+export function useResizeListener(breakpoint) {
   /* eslint-disable */
   window.addEventListener(
     'resize',
