@@ -1,5 +1,3 @@
-import { debounce } from '../utils';
-
 const ANIMATION_SNAP_DURATION = 100;
 
 const setActiveDropdown = (dropdownToggleButton, isActive = true) => {
