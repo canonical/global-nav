@@ -102,7 +102,6 @@ const expandDropdown = (
 };
 
 export const setUpListeners = (
-  breakpoint,
   closeDesktopGlobalNav,
   closeMenuAnimationDuration
 ) => {
@@ -281,7 +280,5 @@ export const setUpListeners = (
   // eslint-disable-next-line no-undef
   document.addEventListener('click', handleClickOutsideNavigation);
 
-  return {
-    addListeners,
-  };
+  return addListeners;
 };

@@ -18,11 +18,9 @@ export const initNavigationSliding = (
   const { closeDesktopGlobalNav } = useDesktopListeners();
   desktopResizeListener(breakpoint);
 
-  const { addListeners, useResizeListener } = setUpListeners(
-    breakpoint,
+  const addListeners = setUpListeners(
     closeDesktopGlobalNav,
     closeMenuAnimationDuration || DEFAULT_CLOSE_MENU_ANIMATION_DURATION
   );
   addListeners();
-  useResizeListener();
 };
