@@ -70,16 +70,24 @@ const collapseDropdown = (
   animated = false,
   animationDuration = ANIMATION_SNAP_DURATION
 ) => {
-  const closeHandler = () => {
-    targetDropdown.setAttribute('aria-hidden', 'true');
-    setActiveDropdown(dropdownToggleButton, false);
+  const dropdownToggleEl = dropdownToggleButton.closest(
+    '.p-navigation__item--dropdown-toggle'
+  );
+
+  const endAnimation = () => {
+    dropdownToggleEl.classList.toggle('js-animation-playing', false);
   };
 
-  if (animated) {
-    setTimeout(closeHandler, animationDuration);
-  } else {
-    closeHandler();
+  if (animated && dropdownToggleEl) {
+    dropdownToggleEl.classList.toggle('js-animation-playing', true);
+    setTimeout(endAnimation, animationDuration);
   }
+
+  // once the js-animation-playing has been set then we start the animation
+  window.requestAnimationFrame(() => {
+    targetDropdown.setAttribute('aria-hidden', 'true');
+    setActiveDropdown(dropdownToggleButton, false);
+  });
 };
 
 const expandDropdown = (
@@ -88,22 +96,31 @@ const expandDropdown = (
   animated = false,
   animationDuration = ANIMATION_SNAP_DURATION
 ) => {
-  const expandHandler = () => {
+  const dropdownToggleEl = dropdownToggleButton.closest(
+    '.p-navigation__item--dropdown-toggle'
+  );
+
+  const endAnimation = () => {
+    dropdownToggleEl.classList.toggle('js-animation-playing', false);
+  };
+
+  if (animated && dropdownToggleEl) {
+    dropdownToggleEl.classList.toggle('js-animation-playing', true);
+    setTimeout(endAnimation, animationDuration);
+  }
+
+  // once the js-animation-playing has been set then we start the animation
+  window.requestAnimationFrame(() => {
     setActiveDropdown(dropdownToggleButton);
     targetDropdown.setAttribute('aria-hidden', 'false');
     setFocusable(targetDropdown);
-  };
-
-  if (animated) {
-    setTimeout(expandHandler, animationDuration);
-  } else {
-    expandHandler();
-  }
+  });
 };
 
 export const setUpListeners = (
   closeDesktopGlobalNav,
-  closeMenuAnimationDuration
+  closeMenuAnimationDuration = ANIMATION_SNAP_DURATION,
+  dropdownAnimationDuration = ANIMATION_SNAP_DURATION
 ) => {
   /* eslint-disable */
   const navigation = document.querySelector(
@@ -135,7 +152,7 @@ export const setUpListeners = (
       if (!target || target === excludedToggle) {
         return;
       }
-      collapseDropdown(toggle, target, animated);
+      collapseDropdown(toggle, target, animated, dropdownAnimationDuration);
     });
   };
 
@@ -145,8 +162,8 @@ export const setUpListeners = (
     const closeMenuHandler = () => {
       navigation.classList.remove('has-menu-open');
       navigation.classList.remove('menu-closing');
-      resetToggles();
     };
+    resetToggles(null, true);
 
     // the time is aproximately the time of the sliding animation
     setTimeout(closeMenuHandler, closeMenuAnimationDuration);
@@ -230,10 +247,10 @@ export const setUpListeners = (
 
       if (target.getAttribute('aria-hidden') === 'true') {
         unfocusAllLinks();
-        expandDropdown(toggle, target, true);
+        expandDropdown(toggle, target, true, dropdownAnimationDuration);
         navigation.classList.add('has-menu-open');
       } else {
-        collapseDropdown(toggle, target, true);
+        collapseDropdown(toggle, target, true, dropdownAnimationDuration);
         if (!isNested) {
           navigation.classList.remove('has-menu-open');
         }
