@@ -14,7 +14,7 @@ const DEFAULT_ANIMATION_DURATION = 100;
 export const initNavigationSliding = (
   breakpoint,
   closeMenuAnimationDuration,
-  dropdownAnimationDuration,
+  dropdownAnimationDuration
 ) => {
   const { closeDesktopGlobalNav } = useDesktopListeners();
   desktopResizeListener(breakpoint);
@@ -22,7 +22,7 @@ export const initNavigationSliding = (
   const addListeners = setUpListeners(
     closeDesktopGlobalNav,
     closeMenuAnimationDuration || DEFAULT_ANIMATION_DURATION,
-    dropdownAnimationDuration || DEFAULT_ANIMATION_DURATION,
+    dropdownAnimationDuration || DEFAULT_ANIMATION_DURATION
   );
   addListeners();
 };

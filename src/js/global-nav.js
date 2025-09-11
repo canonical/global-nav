@@ -77,7 +77,7 @@ export const createNav = ({
     initNavigationSliding(
       breakpoint,
       closeMenuAnimationDuration,
-      dropdownAnimationDuration,
+      dropdownAnimationDuration
     );
   } else {
     initNavigationSimple(breakpoint);

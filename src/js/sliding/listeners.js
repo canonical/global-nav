@@ -120,7 +120,7 @@ const expandDropdown = (
 export const setUpListeners = (
   closeDesktopGlobalNav,
   closeMenuAnimationDuration = ANIMATION_SNAP_DURATION,
-  dropdownAnimationDuration = ANIMATION_SNAP_DURATION,
+  dropdownAnimationDuration = ANIMATION_SNAP_DURATION
 ) => {
   /* eslint-disable */
   const navigation = document.querySelector(
