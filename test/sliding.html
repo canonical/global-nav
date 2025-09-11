@@ -64,9 +64,17 @@
 
         #navigation.p-navigation--sliding .p-navigation__dropdown--container {
           clip-path: rect(0 105% 105% 0);
-          display: block;
+          display: none;
           min-width: 100%;
           position: absolute;
+        }
+
+        #navigation.p-navigation--sliding .js-animation-playing .p-navigation__dropdown--container {
+          display: block;
+        }
+
+        #navigation.p-navigation--sliding .is-active .p-navigation__dropdown--container {
+          display: block;
         }
 
         #navigation.p-navigation--sliding
@@ -260,6 +268,7 @@
       canonicalGlobalNav.createNav({
         isSliding: true,
         closeMenuAnimationDuration: 200,
+        dropdownAnimationDuration: 333,
       });
     </script>
   </body>

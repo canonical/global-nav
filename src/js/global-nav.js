@@ -11,6 +11,7 @@ export const createNav = ({
   desktopContainerSelector,
   isSliding = false,
   closeMenuAnimationDuration,
+  dropdownAnimationDuration,
 } = {}) => {
   // Recruitment call to action
   // eslint-disable-next-line no-console
@@ -73,7 +74,11 @@ export const createNav = ({
   }
 
   if (isSliding) {
-    initNavigationSliding(breakpoint, closeMenuAnimationDuration);
+    initNavigationSliding(
+      breakpoint,
+      closeMenuAnimationDuration,
+      dropdownAnimationDuration,
+    );
   } else {
     initNavigationSimple(breakpoint);
   }
