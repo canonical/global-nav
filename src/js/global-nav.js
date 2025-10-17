@@ -326,6 +326,27 @@ function addListeners(wrapper, breakpoint) {
 }
 
 
+function showAppropriateNavigation(breakpoint) {
+  /* eslint-disable */
+  const desktopNav = document.getElementById('all-canonical');
+  const desktopDropdown = document.getElementById('all-canonical-desktop');
+  const mobileNav = document.getElementById('all-canonical-mobile');
+  const overlay = document.getElementById('all-canonical-overlay');
+
+  if (window.innerWidth >= breakpoint) {
+    desktopNav.classList.remove('u-hide');
+    desktopDropdown.classList.remove('u-hide');
+    overlay.classList.remove('u-hide');
+    mobileNav.classList.add('u-hide');
+  } else {
+    desktopNav.classList.add('u-hide');
+    desktopDropdown.classList.add('u-hide');
+    overlay.classList.add('u-hide');
+    mobileNav.classList.remove('u-hide');
+  }
+  /* eslint-enable */
+}
+
 export const createNav = ({
   breakpoint = 1036,
   mobileContainerSelector,
@@ -340,6 +361,7 @@ export const createNav = ({
   const container = document.querySelector('.global-nav'); //eslint-disable-line
   const mobileContainer = document.querySelector(mobileContainerSelector); //eslint-disable-line
   const desktopContainer = document.querySelector(desktopContainerSelector); //eslint-disable-line
+  const isSliding = !!document.querySelector('.p-navigation--sliding, .p-navigation--reduced'); //eslint-disable-line
 
   // Build global nav components
   const skipLink = createFromHTML(
@@ -388,6 +410,6 @@ export const createNav = ({
     container.prepend(mobileDropdown);
     showAppropriateNavigation(breakpoint);
     // Add event listeners
-    addListeners(container, breakpoint);
+    addListeners(container, breakpoint)
   }
 };
