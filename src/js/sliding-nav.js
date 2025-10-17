@@ -1,4 +1,4 @@
-import { debounce } from '../utils';
+import { debounce } from './utils';
 
 const ANIMATION_SNAP_DURATION = 100;
 
@@ -9,7 +9,6 @@ const setActiveDropdown = (dropdownToggleButton, isActive = true) => {
   );
   if (dropdownToggleEl) {
     dropdownToggleEl.classList.toggle('is-active', isActive);
-    dropdownToggleEl.classList.toggle('is-selected', isActive);
   }
 
   // set active state of the parent dropdown panel (to fade it out of view)
@@ -103,11 +102,7 @@ const expandDropdown = (
   }
 };
 
-export const setUpListeners = (
-  breakpoint,
-  closeDesktopGlobalNav,
-  closeMenuAnimationDuration
-) => {
+export const initNavigationSliding = breakpoint => {
   /* eslint-disable */
   const navigation = document.querySelector(
     '.p-navigation--sliding, .p-navigation--reduced'
@@ -116,43 +111,32 @@ export const setUpListeners = (
     '.p-navigation__banner .p-navigation__toggle--open'
   );
 
-  // all-canonical-link has it's own toggle listener coming from simple-nav
-  // and initialized in sliding-nav.js
-  const toggles = [
-    ...document.querySelectorAll(
-      '.p-navigation__nav .p-navigation__link[aria-controls]:not(.js-back-button)'
-    ),
-  ].filter(element => element.id !== 'all-canonical-link');
+  const toggles = document.querySelectorAll(
+    '.p-navigation__nav .p-navigation__link[aria-controls]:not(.js-back-button)'
+  );
   const topNavLists = document.querySelectorAll(
     '.p-navigation__nav > .p-navigation__items'
   );
   const dropdownNavLists = document.querySelectorAll('.p-navigation__dropdown');
   /* eslint-enable */
 
-  const resetToggles = (excludedToggle, animated = false) => {
+  const resetToggles = () => {
     toggles.forEach(toggle => {
       // eslint-disable-next-line no-undef
       const target = document.getElementById(
         toggle.getAttribute('aria-controls')
       );
-      if (!target || target === excludedToggle) {
+      if (!target) {
         return;
       }
-      collapseDropdown(toggle, target, animated);
+      collapseDropdown(toggle, target);
     });
   };
 
   const closeAllDropdowns = () => {
-    navigation.classList.add('menu-closing');
-
-    const closeMenuHandler = () => {
-      navigation.classList.remove('has-menu-open');
-      navigation.classList.remove('menu-closing');
-      resetToggles();
-    };
-
-    // the time is aproximately the time of the sliding animation
-    setTimeout(closeMenuHandler, closeMenuAnimationDuration);
+    resetToggles();
+    navigation.classList.remove('has-menu-open');
+    menuButton.innerHTML = 'Menu';
   };
 
   const unfocusAllLinks = () => {
@@ -182,7 +166,6 @@ export const setUpListeners = (
 
     if (navigation.classList.contains('has-menu-open')) {
       closeAllDropdowns();
-      menuButton.innerHTML = 'Menu';
       // reshow scroll bar
       // eslint-disable-next-line no-undef
       document.body.style.overflow = 'visible';
@@ -209,7 +192,6 @@ export const setUpListeners = (
         )
       ) {
         closeAllDropdowns();
-        closeDesktopGlobalNav();
       }
     }
   };
@@ -229,13 +211,15 @@ export const setUpListeners = (
       if (!isNested) {
         resetToggles(target);
       }
-      if (toggle.getAttribute('id') !== 'all-canonical-link') {
-        closeDesktopGlobalNav();
-      }
 
       if (target.getAttribute('aria-hidden') === 'true') {
+        // only animate the dropdown if menu is not open, otherwise just switch the visible one
         unfocusAllLinks();
-        expandDropdown(toggle, target, true);
+        expandDropdown(
+          toggle,
+          target,
+          !navigation.classList.contains('has-menu-open')
+        );
         navigation.classList.add('has-menu-open');
       } else {
         collapseDropdown(toggle, target, true);
@@ -244,8 +228,6 @@ export const setUpListeners = (
         }
       }
     }
-
-    e.stopPropagation();
   };
 
   const dropdownNavListsHandlers = [];
@@ -268,6 +250,9 @@ export const setUpListeners = (
 
   const addListeners = () => {
     menuButton.addEventListener('click', handleMenuButtonClick);
+    // when clicking outside navigation, close all dropdowns
+    // eslint-disable-next-line no-undef
+    document.addEventListener('click', handleClickOutsideNavigation);
     toggles.forEach(toggle => {
       const handler = e => handleToggle(e, toggle);
       toggleHandlerFunctions.push(handler);
@@ -289,6 +274,7 @@ export const setUpListeners = (
   const removeListeners = () => {
     menuButton.removeEventListener('click', handleMenuButtonClick);
     // eslint-disable-next-line no-undef
+    document.removeEventListener('click', handleClickOutsideNavigation);
     toggles.forEach(toggle => {
       const handler = toggleHandlerFunctions.shift();
       toggle.removeEventListener('click', handler);
@@ -304,38 +290,33 @@ export const setUpListeners = (
     });
   };
 
-  const useResizeListener = () => {
-    // hide side navigation drawer when screen is resized horizontally
-    /* eslint-disable */
-    let previousWidth = window.innerWidth;
-    window.addEventListener(
-      'resize',
-      debounce(() => {
-        const currentWidth = window.innerWidth;
-        if (currentWidth !== previousWidth) {
-          closeAllDropdowns();
-          previousWidth = currentWidth;
-        }
-        if (currentWidth >= breakpoint) {
-          // deactivate sliding navigation listeners because we are in desktop mode
-          removeListeners();
-          // make sure we display the scroll bar if it was hidden
-          document.body.style.overflow = 'visible';
-        } else {
-          // activate sliding navigation listeners
-          addListeners();
-        }
-      }, 10)
-    );
-    /* eslint-enable */
-  };
+  // hide side navigation drawer when screen is resized horizontally
+  /* eslint-disable */
+  let previousWidth = window.innerWidth;
+  window.addEventListener(
+    'resize',
+    debounce(() => {
+      const currentWidth = window.innerWidth;
+      if (currentWidth !== previousWidth) {
+        closeAllDropdowns();
+        previousWidth = currentWidth;
+      }
+      if (currentWidth >= breakpoint) {
+        // deactivate sliding navigation listeners because we are in desktop mode
+        removeListeners();
+        // make sure we display the scroll bar if it was hidden
+        document.body.style.overflow = 'visible';
+      } else {
+        // activate sliding navigation listeners
+        addListeners();
+      }
+    }, 10)
+  );
+  /* eslint-enable */
 
-  // when clicking outside navigation, close all dropdowns
+  // init listeners if we are in mobile view
   // eslint-disable-next-line no-undef
-  document.addEventListener('click', handleClickOutsideNavigation);
-
-  return {
-    addListeners,
-    useResizeListener,
-  };
+  if (window.innerWidth < breakpoint) {
+    addListeners();
+  }
 };
