@@ -1,3 +1,5 @@
+import { debounce } from '../utils';
+
 const ANIMATION_SNAP_DURATION = 100;
 
 const setActiveDropdown = (dropdownToggleButton, isActive = true) => {
@@ -102,6 +104,7 @@ const expandDropdown = (
 };
 
 export const setUpListeners = (
+  breakpoint,
   closeDesktopGlobalNav,
   closeMenuAnimationDuration
 ) => {
@@ -211,6 +214,8 @@ export const setUpListeners = (
     }
   };
 
+  // needed to be able to remove the listeners
+  const toggleHandlerFunctions = [];
   const handleToggle = (e, toggle) => {
     e.preventDefault();
 
@@ -243,6 +248,7 @@ export const setUpListeners = (
     e.stopPropagation();
   };
 
+  const dropdownNavListsHandlers = [];
   const handleDropdownNavList = (e, dropdown) => {
     if (
       e.shiftKey &&
@@ -255,6 +261,7 @@ export const setUpListeners = (
     }
   };
 
+  const goBackOneLevelHandlers = [];
   const handleGoBackOneLevel = (e, backButton) => {
     goBackOneLevel(e, backButton);
   };
@@ -263,22 +270,72 @@ export const setUpListeners = (
     menuButton.addEventListener('click', handleMenuButtonClick);
     toggles.forEach(toggle => {
       const handler = e => handleToggle(e, toggle);
+      toggleHandlerFunctions.push(handler);
       toggle.addEventListener('click', handler);
     });
     dropdownNavLists.forEach(dropdown => {
       const handler = e => handleDropdownNavList(e, dropdown);
+      dropdownNavListsHandlers.push(handler);
       dropdown.children[1].addEventListener('keydown', handler);
     });
     // eslint-disable-next-line no-undef
     document.querySelectorAll('.js-back-button').forEach(backButton => {
       const handler = e => handleGoBackOneLevel(e, backButton);
+      goBackOneLevelHandlers.push(handler);
       backButton.addEventListener('click', handler);
     });
+  };
+
+  const removeListeners = () => {
+    menuButton.removeEventListener('click', handleMenuButtonClick);
+    // eslint-disable-next-line no-undef
+    toggles.forEach(toggle => {
+      const handler = toggleHandlerFunctions.shift();
+      toggle.removeEventListener('click', handler);
+    });
+    dropdownNavLists.forEach(dropdown => {
+      const handler = dropdownNavListsHandlers.shift();
+      dropdown.children[1].removeEventListener('keydown', handler);
+    });
+    // eslint-disable-next-line no-undef
+    document.querySelectorAll('.js-back-button').forEach(backButton => {
+      const handler = goBackOneLevelHandlers.shift();
+      backButton.removeEventListener('click', handler);
+    });
+  };
+
+  const useResizeListener = () => {
+    // hide side navigation drawer when screen is resized horizontally
+    /* eslint-disable */
+    let previousWidth = window.innerWidth;
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        const currentWidth = window.innerWidth;
+        if (currentWidth !== previousWidth) {
+          closeAllDropdowns();
+          previousWidth = currentWidth;
+        }
+        if (currentWidth >= breakpoint) {
+          // deactivate sliding navigation listeners because we are in desktop mode
+          removeListeners();
+          // make sure we display the scroll bar if it was hidden
+          document.body.style.overflow = 'visible';
+        } else {
+          // activate sliding navigation listeners
+          addListeners();
+        }
+      }, 10)
+    );
+    /* eslint-enable */
   };
 
   // when clicking outside navigation, close all dropdowns
   // eslint-disable-next-line no-undef
   document.addEventListener('click', handleClickOutsideNavigation);
 
-  return addListeners;
+  return {
+    addListeners,
+    useResizeListener,
+  };
 };
