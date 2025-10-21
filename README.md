@@ -4,6 +4,15 @@ This project contains the JavaScript and styles to add an "All Canonical" naviga
 
 The dropdown contains a list of Canonical eco-system websites, giving a user the ability to jump around the core sites easily.
 
+## Important - Do not use 3.7.x versions
+
+Changes regarding sliding navigations for dropdown menus were introduced to global-nav in versions 3.7.x,
+unaware of the fact that this project only should contain code for the "All Canonical" link displayed in the
+navigation of most of our websites.
+
+All those changes have been reverted in version 3.8.0, which contains the same code of version 3.6.4 
+(the release before 3.7.0).
+
 ## Usage
 
 Use a node package manager to install this component and then link the JS file into the head of your site, with optional settings.
