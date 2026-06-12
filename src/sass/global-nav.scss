@@ -176,6 +176,11 @@ $box-shadow-color: hsla(0, 0%, 100%, 0.1);
       padding: 1rem 0;
       width: 100%;
     }
+
+    .global-nav__join-desc {
+      color: $colors--dark-theme--text-default;
+      padding-top: 0.45rem;
+    }
   }
 
   .global-nav__matrix-image {
@@ -217,11 +222,6 @@ $box-shadow-color: hsla(0, 0%, 100%, 0.1);
     @media (max-width: $global-nav-breakpoint) {
       display: none;
     }
-  }
-
-  .global-nav__about-col {
-    border-left: 1px solid $global-nav-border-color;
-    padding-left: 1rem;
   }
 
   .global-nav__list {
