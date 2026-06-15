@@ -52,7 +52,7 @@ function createMobileDropdown(products) {
         <button href="#join-canonical" class="p-navigation__link global-nav__header-link-anchor">Join Canonical</button>
         <ul id="join-canonical" class="p-navigation__dropdown">
           <li class="p-navigation__dropdown-item">
-          <p>Be a part of the team that builds the products.</p>
+          <p>Be part of the team that builds the products.</p>
             <div class="p-cta-block">
               <a href="https://canonical.com/careers" class="p-button--positive">Search open roles</a>
             </div>
@@ -172,9 +172,11 @@ function createProductDropdown(products) {
 
   const productDropdown = `<div class="global-nav__strip">
       <div class="global-nav__row is-bordered">
-        <ul class="p-list--divided u-sv3">
-          ${productFlagships}
-        </ul>
+        <div class="p-section--shallow">
+          <ul class="p-list--divided u-no-margin">
+            ${productFlagships}
+          </ul>
+        </div>
 
         <hr class="p-divider" />
 
@@ -183,7 +185,7 @@ function createProductDropdown(products) {
             <span class="global-nav__muted-heading">Join Canonical</span>
             <div class="global-nav__matrix">
               <div class="global-nav__matrix-item u-no-padding--bottom">
-                <p class="global-nav__join-desc">Be a part of the team that builds the products.</p>
+                <p class="global-nav__join-desc">Be part of the team that builds the products.</p>
               </div>
             </div>
             <div class="p-cta-block">
