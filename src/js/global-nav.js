@@ -43,13 +43,13 @@ function createMobileDropdown(products) {
   const mobileDropdown = `<li id="all-canonical-mobile" class="u-hide">
     <ul class="p-navigation__items">
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</button>
+        <button href="#products" class="p-navigation__link">Products</button>
         <ul id="products" class="p-navigation__dropdown">
           ${mobileFlagships}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#join-canonical" class="p-navigation__link global-nav__header-link-anchor">Join Canonical</button>
+        <button href="#join-canonical" class="p-navigation__link">Join Canonical</button>
         <ul id="join-canonical" class="p-navigation__dropdown">
           <li class="p-navigation__dropdown-item">
           <p>Be part of the team that builds the products.</p>
@@ -60,13 +60,13 @@ function createMobileDropdown(products) {
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</button>
+        <button href="#also-from-canonical" class="p-navigation__link">Also from Canonical</button>
         <ul id="also-from-canonical" class="p-navigation__dropdown">
           ${mobileOthers}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#about" class="p-navigation__link global-nav__header-link-anchor">About</button>
+        <button href="#about" class="p-navigation__link">About</button>
         <ul id="about" class="p-navigation__dropdown u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
@@ -241,7 +241,7 @@ function showAppropriateNavigation(breakpoint) {
 function addListeners(wrapper, breakpoint) {
   const primaryDropdownCTA = wrapper.querySelector('#all-canonical-link');
   const globalNavHeaderLinks = wrapper.querySelectorAll(
-    '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
+    '.global-nav__dropdown-toggle'
   );
   /* eslint-disable */
   const externalNavDropdowns = document.querySelectorAll(
@@ -379,7 +379,7 @@ export const createNav = ({
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide" id="all-canonical">
-      <button href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</button>
+      <button href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link" id="all-canonical-link" aria-expanded="false">All Canonical</button>
     </li>`);
 
   const mobileDropdownHTML = createMobileDropdown(canonicalProducts);

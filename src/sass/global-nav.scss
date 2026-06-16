@@ -30,41 +30,6 @@ $box-shadow-color: hsla(0, 0%, 100%, 0.1);
     &::after {
       display: none;
     }
-
-    .global-nav__header-link-anchor {
-      &::after {
-        @include vf-icon-chevron;
-
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        content: '';
-        display: block;
-        height: $spv--large;
-        pointer-events: none;
-        position: absolute;
-        right: map-get($grid-margin-widths, small);
-        text-indent: calc(100% + 10rem);
-        top: calc(#{$spv--large} + #{map-get($nudges, x-small)});
-        width: map-get($icon-sizes, default);
-
-        .is-dark & {
-          @include vf-icon-chevron($colors--dark-theme--text-default);
-        }
-
-        @media (min-width: $threshold-4-6-col) {
-          right: calc(#{$sph--small} + 1px);
-        }
-      }
-
-      &.is-selected {
-        background-color: $colors--dark-theme--background-hover;
-
-        &::after {
-          transform: rotate(180deg);
-        }
-      }
-    }
   }
 }
 
@@ -329,17 +294,6 @@ $box-shadow-color: hsla(0, 0%, 100%, 0.1);
   &.show-overlay {
     opacity: 1;
     pointer-events: all;
-  }
-}
-
-// sass-lint:disable no-ids
-#all-canonical-mobile {
-  .global-nav__header-link-anchor::after {
-    right: map-get($grid-margin-widths, default);
-
-    @media (max-width: $global-nav-breakpoint) {
-      right: 1rem;
-    }
   }
 }
 
