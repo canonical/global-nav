@@ -43,19 +43,30 @@ function createMobileDropdown(products) {
   const mobileDropdown = `<li id="all-canonical-mobile" class="u-hide">
     <ul class="p-navigation__items">
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#products" class="p-navigation__link global-nav__header-link-anchor">Products</button>
+        <button href="#products" class="p-navigation__link">Products</button>
         <ul id="products" class="p-navigation__dropdown">
           ${mobileFlagships}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#also-from-canonical" class="p-navigation__link global-nav__header-link-anchor">Also from Canonical</button>
+        <button href="#join-canonical" class="p-navigation__link">Join Canonical</button>
+        <ul id="join-canonical" class="p-navigation__dropdown">
+          <li class="p-navigation__dropdown-item">
+          <p>Be part of the team that builds the products.</p>
+            <div class="p-cta-block">
+              <a href="https://canonical.com/careers" class="p-button--positive">Search open roles</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
+        <button href="#also-from-canonical" class="p-navigation__link">Also from Canonical</button>
         <ul id="also-from-canonical" class="p-navigation__dropdown">
           ${mobileOthers}
         </ul>
       </li>
       <li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle">
-        <button href="#about" class="p-navigation__link global-nav__header-link-anchor">About</button>
+        <button href="#about" class="p-navigation__link">About</button>
         <ul id="about" class="p-navigation__dropdown u-no-margin--bottom">
           ${mobileAbouts}
         </ul>
@@ -152,7 +163,7 @@ function createProductDropdown(products) {
 
   const productAbouts = abouts
     .map(about => {
-      const aboutMarkup = `<li class="global-nav__list-item">
+      const aboutMarkup = `<li class="p-inline-list__item">
           <a class="global-nav__link" href=${about.url}>${about.title}</a>
         </li>`;
       return aboutMarkup;
@@ -161,23 +172,41 @@ function createProductDropdown(products) {
 
   const productDropdown = `<div class="global-nav__strip">
       <div class="global-nav__row is-bordered">
-        <ul class="p-list--divided u-sv3">
-          ${productFlagships}
-        </ul>
+        <div class="p-section--shallow">
+          <ul class="p-list--divided u-no-margin">
+            ${productFlagships}
+          </ul>
+        </div>
 
         <hr class="p-divider" />
 
-        <div class="global-nav__flex-container row u-no-padding">
+        <div class="global-nav__flex-container row p-section--shallow u-no-padding--left">
+          <div class="col-3 col-medium-2">
+            <span class="global-nav__muted-heading">Join Canonical</span>
+            <div class="global-nav__matrix">
+              <div class="global-nav__matrix-item u-no-padding--bottom">
+                <p class="global-nav__join-desc">Be part of the team that builds the products.</p>
+              </div>
+            </div>
+            <div class="p-cta-block">
+              <a href="https://canonical.com/careers" class="p-button--positive">Search open roles</a>
+            </div>
+          </div>
+          <hr class="p-divider u-hide--large" />
           <div class="global-nav__others-col col-9 col-medium-6">
             <span class="global-nav__muted-heading">Also from Canonical</span>
             <div class="global-nav__matrix">
               ${productOthers}
             </div>
           </div>
-          <hr class="p-divider u-hide--large" />
+        </div>
+        <hr class="p-divider" />
+        <div class="global-nav__flex-container row p-section--shallow u-no-padding--left">
           <div class="global-nav__about-col col-3 col-medium-2">
             <span class="global-nav__muted-heading">About</span>
-            <ul class="global-nav__list">
+          </div>
+          <div class="global-nav__others-col col-9 col-medium-6">
+            <ul class="p-inline-list">
               ${productAbouts}
             </ul>
           </div>
@@ -212,7 +241,7 @@ function showAppropriateNavigation(breakpoint) {
 function addListeners(wrapper, breakpoint) {
   const primaryDropdownCTA = wrapper.querySelector('#all-canonical-link');
   const globalNavHeaderLinks = wrapper.querySelectorAll(
-    '.global-nav__dropdown-toggle .global-nav__header-link-anchor'
+    '.global-nav__dropdown-toggle'
   );
   /* eslint-disable */
   const externalNavDropdowns = document.querySelectorAll(
@@ -350,7 +379,7 @@ export const createNav = ({
 
   const navItem =
     createFromHTML(`<li class="p-navigation__item--dropdown-toggle global-nav__dropdown-toggle u-hide" id="all-canonical">
-      <button href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link global-nav__header-link-anchor" id="all-canonical-link" aria-expanded="false">All Canonical</button>
+      <button href="#canonical-products" aria-controls="canonical-products" class="p-navigation__link" id="all-canonical-link" aria-expanded="false">All Canonical</button>
     </li>`);
 
   const mobileDropdownHTML = createMobileDropdown(canonicalProducts);

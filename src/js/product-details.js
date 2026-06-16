@@ -12,7 +12,7 @@ const canonicalProducts = {
       logoUrl:
         'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20fill%3D%27none%27%20viewBox%3D%270%200%2016%2016%27%3E%3Cpath%20fill-rule%3D%27evenodd%27%20clip-rule%3D%27evenodd%27%20d%3D%27M13.864%202.244a2.244%202.244%200%201%201-4.489-.002%202.244%202.244%200%200%201%204.489.002ZM4.49%207.17A2.244%202.244%200%201%201%200%207.169a2.244%202.244%200%200%201%204.489.001Zm2.83%205.787a5.484%205.484%200%200%201-3.738-2.848%203.226%203.226%200%200%201-1.924.239%207.328%207.328%200%200%200%205.269%204.413c.522.11%201.063.165%201.594.165a3.241%203.241%200%200%201-.66-1.877l-.07-.011c-.153-.024-.312-.049-.47-.08Zm6.03.01a2.244%202.244%200%201%201-4.488-.002%202.244%202.244%200%200%201%204.488.002Zm.89-.825a7.35%207.35%200%200%200%20.367-8.626A3.215%203.215%200%200%201%2013.34%205a5.557%205.557%200%200%201%20.523%203.736%205.544%205.544%200%200%201-.697%201.74%203.184%203.184%200%200%201%201.072%201.666ZM2.15%203.942a1.007%201.007%200%200%201-.08.005A7.402%207.402%200%200%201%209.044.238a3.173%203.173%200%200%200-.614%201.319c-.027.165-.055.33-.064.503a5.508%205.508%200%200%200-4.417%202.363%203.352%203.352%200%200%200-1.026-.412%203.343%203.343%200%200%200-.678-.073c-.033%200-.064.002-.094.004Z%27%20fill%3D%27%23E95420%27%2F%3E%3C%2Fsvg%3E',
       description:
-        "The world's favourite Linux OS for servers, desktops and IoT.",
+        "The world's favorite Linux OS for servers, desktops and IoT.",
     },
     {
       title: 'Ubuntu Pro',
@@ -93,7 +93,7 @@ const canonicalProducts = {
     {
       title: 'Ubuntu on public clouds',
       url: 'https://ubuntu.com/download/cloud',
-      description: 'Optimised Ubuntu for public clouds.',
+      description: 'Optimized Ubuntu for public clouds.',
     },
     {
       title: 'Multipass',
@@ -103,7 +103,7 @@ const canonicalProducts = {
     {
       title: 'Cloud-init',
       url: 'https://cloud-init.io/',
-      description: 'Control and customise your cloud instances.',
+      description: 'Control and customize your cloud instances.',
     },
     {
       title: 'Landscape',
@@ -113,7 +113,7 @@ const canonicalProducts = {
     {
       title: 'Netplan',
       url: 'http://www.netplan.io/',
-      description: 'Simplify and standardise complex network configuration.',
+      description: 'Simplify and standardize complex network configuration.',
     },
     {
       title: 'Charmed Kubeflow',
@@ -132,7 +132,7 @@ const canonicalProducts = {
       url: 'https://canonical.com/',
     },
     {
-      title: 'Press centre',
+      title: 'Press center',
       url: 'https://canonical.com/press-centre',
     },
     {
