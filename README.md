@@ -52,6 +52,36 @@ createNav();
 
 3. You will then need to add the `.global-nav` class to a `ul.p-navigation__items` element within the navigation pattern. The module will look for this class and add the dropdown as the first item in the list.
 
+### Fonts
+
+From version 4.0.0 the injected styles no longer include the Ubuntu font. The nav uses `"Ubuntu variable"` but expects the page to load it.
+
+- **If your site uses Vanilla**, you already have it: Vanilla's base styles include the font.
+- **If your site hosts the font itself**, nothing changes: the nav uses your `@font-face` rules.
+- **Otherwise**, add these rules to your site's CSS:
+
+```css
+@font-face {
+  font-family: 'Ubuntu variable';
+  font-stretch: 100%;
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('https://assets.ubuntu.com/v1/f1ea362b-Ubuntu%5Bwdth,wght%5D-latin-v0.896a.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Ubuntu variable';
+  font-stretch: 100%;
+  font-style: italic;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('https://assets.ubuntu.com/v1/90b59210-Ubuntu-Italic%5Bwdth,wght%5D-latin-v0.896a.woff2') format('woff2');
+}
+```
+
+These are the same files Vanilla loads. Without them the nav falls back to a system font.
+
 ### Options
 
 The `createNav` function takes an object of options with the following property:
