@@ -8,6 +8,12 @@
 @import 'node_modules/vanilla-framework/scss/utilities_margin-collapse';
 @import 'node_modules/vanilla-framework/scss/utilities_padding-collapse';
 
+// Use the host site's fonts instead of shipping @font-face rules
+// sass-lint:disable no-empty-rulesets
+@mixin vf-b-typography-fontfaces {
+}
+// sass-lint:enable no-empty-rulesets
+
 $global-nav-breakpoint: 619px;
 $global-nav-bg-color: #262626;
 $global-nav-border-color: $colors--dark-theme--border-low-contrast;
